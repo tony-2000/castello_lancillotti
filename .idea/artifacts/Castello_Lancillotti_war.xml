@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Castello_Lancillotti:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Castello_Lancillotti</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Castello_Lancillotti-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Castello_Lancillotti:war exploded" />
+    </root>
+  </artifact>
+</component>
