@@ -6,7 +6,6 @@ import java.util.List;
 
 public class CategoriaDAO
 {
-    /*dfgfrdgfgh*/
     public List<Categoria> doRetrieveAllCategories()
     {
         List<Categoria> list = new ArrayList<Categoria>();
