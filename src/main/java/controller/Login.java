@@ -12,32 +12,30 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name="Login", urlPatterns = {"/Login"})
-    public class Login extends HttpServlet
+public class Login extends HttpServlet
+{
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+        boolean log=true;
+        String resp="http://localhost:8080/Castello_Lancillotti_war_exploded/";
+        String username = request.getParameter("nome_utente");
+        String password = request.getParameter("password");
+        UtenteDAO x= new UtenteDAO();
+        Utente user=new Utente();
+        user=x.doRetrieveByUsernamePassword(username,password);
+        HttpSession session=request.getSession();
+        if(user==null)
         {
-            boolean log=true;
-            String resp="http://localhost:8080/Castello_Lancillotti_war_exploded/";
-            String username = request.getParameter("nome_utente");
-            String password = request.getParameter("password");
-            UtenteDAO x= new UtenteDAO();
-            Utente user=new Utente();
-            user=x.doRetrieveByUsernamePassword(username,password);
-            HttpSession session=request.getSession();
-            if(user==null)
-            {
-                resp="http://localhost:8080/Castello_Lancillotti_war_exploded/WEB-INF/results/Login.jsp";
-                log=false;
-                request.setAttribute("logError",log);
-            }
-            else
-                session.setAttribute("utente",user);
-            response.sendRedirect(resp);
+            resp="http://localhost:8080/Castello_Lancillotti_war_exploded/WEB-INF/results/Login.jsp";
+            log=false;
+            request.setAttribute("logError",log);
         }
-
-        public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-        { }
-
+        else
+            session.setAttribute("utente",user);
+        response.sendRedirect(resp);
     }
+     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+     { }
+}
 
 

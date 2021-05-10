@@ -15,27 +15,27 @@ import java.util.ArrayList;
 public class Carrello
 {
 
-        public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-        {
-            doGet(request, response);
-        }
-
-        public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-        {
-            HttpSession session=request.getSession();
-            if(session.getAttribute("utente")==null)
-            {
-               ArrayList<Partecipare> carrello= (ArrayList<Partecipare>) session.getAttribute("carrello");
-               request.setAttribute("carrello",carrello);
-            }
-            else {
-                Utente utente = (Utente) session.getAttribute("utente");
-                PartecipareDAO dao=new PartecipareDAO();
-                ArrayList<Partecipare> carrello= (ArrayList<Partecipare>) dao.doRetrieveShoppingCart(utente.getIdUtente());
-                request.setAttribute("carrello",carrello);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/index.jsp");
-            dispatcher.forward(request, response);
-
-        }
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        doGet(request, response);
     }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        HttpSession session=request.getSession();
+        if(session.getAttribute("utente")==null)
+        {
+            ArrayList<Partecipare> carrello= (ArrayList<Partecipare>) session.getAttribute("carrello");
+            request.setAttribute("carrello",carrello);
+        }
+        else
+        {
+            Utente utente = (Utente) session.getAttribute("utente");
+            PartecipareDAO dao=new PartecipareDAO();
+            ArrayList<Partecipare> carrello= (ArrayList<Partecipare>) dao.doRetrieveShoppingCart(utente.getIdUtente());
+            request.setAttribute("carrello",carrello);
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/index.jsp");
+        dispatcher.forward(request, response);
+    }
+}

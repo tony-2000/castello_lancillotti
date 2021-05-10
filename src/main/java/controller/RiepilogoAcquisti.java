@@ -18,25 +18,24 @@ import java.util.ArrayList;
 @WebServlet(name="RiepilogoAcquisti", value="/RiepilogoAcquisti")
 public class RiepilogoAcquisti
 {
-        public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        doGet(request, response);
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        HttpSession session=request.getSession();
+        if(session.getAttribute("utente")==null)
         {
-            doGet(request, response);
+            boolean temp= false;
+            request.setAttribute("accessoAcquisti",temp);
+            response.sendRedirect("http://localhost:8080/Castello_Lancillotti_war_exploded/WEB-INF/results/Login.jsp");
         }
-
-
-        public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+        else
         {
-            HttpSession session=request.getSession();
-            if(session.getAttribute("utente")==null)
-            {
-                boolean temp= false;
-                request.setAttribute("accessoAcquisti",temp);
-                response.sendRedirect("http://localhost:8080/Castello_Lancillotti_war_exploded/WEB-INF/results/Login.jsp");
-            }
-            else
-            {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/RiepilogoAcquisti.jsp");
-                dispatcher.forward(request, response);
-            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/RiepilogoAcquisti.jsp");
+            dispatcher.forward(request, response);
         }
     }
+}
