@@ -40,6 +40,7 @@ public class EventoDAO
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
+
                 p.setIdEvento(rs.getInt(1));
                 p.setIdCategoria(rs.getInt(2));
                 p.setLinkImmagine(rs.getString(3));
