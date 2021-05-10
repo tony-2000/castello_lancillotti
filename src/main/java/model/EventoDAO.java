@@ -30,16 +30,16 @@ public class EventoDAO
         }
     }
 
-    public List<Evento> doRetrieveEventsByKey(int id) throws NumberFormatException
+    public Evento doRetrieveEventsByKey(int id) throws NumberFormatException
     {
-        List<Evento> list = new ArrayList<Evento>();
         try (Connection con = ConPool.getConnection())
         {
+            Evento p = new Evento();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM evento WHERE id_evento=?");
             ps.setString(1, Integer.toString(id));
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Evento p = new Evento();
+            while (rs.next())
+            {
                 p.setIdEvento(rs.getInt(1));
                 p.setIdCategoria(rs.getInt(2));
                 p.setLinkImmagine(rs.getString(3));
@@ -47,9 +47,8 @@ public class EventoDAO
                 p.setPrezzo(rs.getFloat(5));
                 p.setNome(rs.getString(6));
                 p.setPostiDisponibili(rs.getInt(7));
-                list.add(p);
             }
-            return list;
+            return p;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -114,6 +113,31 @@ public class EventoDAO
 
         } catch (SQLException e)
         {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Evento> doRetrieveEventsByCatId(int id) throws NumberFormatException
+    {
+        List<Evento> list = new ArrayList<Evento>();
+        try (Connection con = ConPool.getConnection())
+        {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM evento WHERE id_categoria=?");
+            ps.setString(1, Integer.toString(id));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Evento p = new Evento();
+                p.setIdEvento(rs.getInt(1));
+                p.setIdCategoria(rs.getInt(2));
+                p.setLinkImmagine(rs.getString(3));
+                p.setDescrizione(rs.getString(4));
+                p.setPrezzo(rs.getFloat(5));
+                p.setNome(rs.getString(6));
+                p.setPostiDisponibili(rs.getInt(7));
+                list.add(p);
+            }
+            return list;
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
