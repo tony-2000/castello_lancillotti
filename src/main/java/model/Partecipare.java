@@ -14,7 +14,6 @@ public class Partecipare
     private float prezzo;
 
 
-
     public void setIdUtente(int idUtente) { this.idUtente = idUtente; }
 
     public void setIdEvento(int idEvento) { this.idEvento = idEvento; }
