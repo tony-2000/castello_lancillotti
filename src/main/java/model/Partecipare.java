@@ -32,6 +32,7 @@ public class Partecipare
 
 
 
+
     public int getIdUtente() { return this.idUtente; }
 
     public int getIdEvento() {
