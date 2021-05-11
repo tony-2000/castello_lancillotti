@@ -34,17 +34,11 @@ public class Partecipare
 
     public int getIdUtente() { return this.idUtente; }
 
-    public int getIdEvento() {
-        return this.idEvento;
-    }
+    public int getIdEvento() { return this.idEvento; }
 
-    public boolean isAcquistato() {
-        return this.acquistato;
-    }
+    public boolean isAcquistato() { return this.acquistato; }
 
-    public int getQuantitaBiglietti() {
-        return this.quantitaBiglietti;
-    }
+    public int getQuantitaBiglietti() { return this.quantitaBiglietti; }
 
     public Date getDataPartecipazione() { return this.dataPartecipazione; }
 
