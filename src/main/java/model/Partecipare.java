@@ -11,6 +11,7 @@ public class Partecipare
     private int quantitaBiglietti;
     private Date dataPartecipazione;
     private Time orarioPartecipazione;
+    private float prezzo;
 
 
 
@@ -25,6 +26,8 @@ public class Partecipare
     public void setDataPartecipazione(Date dataPartecipazione) { this.dataPartecipazione = dataPartecipazione; }
 
     public void setOrarioPartecipazione(Time orarioPartecipazione) { this.orarioPartecipazione = orarioPartecipazione; }
+
+    public void setPrezzo(Float prezzo) {this.prezzo=prezzo;}
 
 
 
@@ -47,6 +50,7 @@ public class Partecipare
 
     public Time getOrarioPartecipazione() { return this.orarioPartecipazione; }
 
-
-
+    public Float getPrezzo() {
+        return this.prezzo;
+    }
 }

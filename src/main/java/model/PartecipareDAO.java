@@ -22,6 +22,7 @@ public class PartecipareDAO
                 p.setQuantitaBiglietti(rs.getInt(4));
                 p.setDataPartecipazione(rs.getDate(5));
                 p.setOrarioPartecipazione(rs.getTime(6));
+                p.setPrezzo(rs.getFloat(7));
                 list.add(p);
             }
             return list;
@@ -47,6 +48,7 @@ public class PartecipareDAO
                 p.setQuantitaBiglietti(rs.getInt(4));
                 p.setDataPartecipazione(rs.getDate(5));
                 p.setOrarioPartecipazione(rs.getTime(6));
+                p.setPrezzo(rs.getFloat(7));
                 list.add(p);
             }
             return list;
@@ -61,7 +63,7 @@ public class PartecipareDAO
         {
             PreparedStatement ps = con.prepareStatement
                     ("INSERT INTO partecipare (id_utente, id_evento, acquistato, " +
-                    "quantita_biglietti, data_partecipazione, orario_partecipazione) VALUES(?,?,?,?,?,?)",
+                    "quantita_biglietti, data_partecipazione, orario_partecipazione) VALUES(?,?,?,?,?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, temp.getIdUtente());
             ps.setInt(2, temp.getIdEvento());
@@ -69,6 +71,7 @@ public class PartecipareDAO
             ps.setInt(4, temp.getQuantitaBiglietti());
             ps.setDate(5, temp.getDataPartecipazione());
             ps.setTime(6, temp.getOrarioPartecipazione());
+            ps.setFloat(7, temp.getPrezzo());
 
             if (ps.executeUpdate() != 1)
             {
@@ -102,7 +105,7 @@ public class PartecipareDAO
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement("UPDATE partecipare SET quantita_biglietti=?, " +
-                            "data_partecipazione=?, orario_partecipazione=? WHERE id_utente=? AND id_evento=? ",
+                            "data_partecipazione=?, orario_partecipazione=? WHERE id_utente=? AND id_evento=? AND prezzo=?",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, temp.getQuantitaBiglietti());
@@ -110,6 +113,7 @@ public class PartecipareDAO
             ps.setTime(3, temp.getOrarioPartecipazione());
             ps.setInt(4, temp.getIdUtente());
             ps.setInt(5, temp.getIdEvento());
+            ps.setFloat(6,temp.getPrezzo());
             ps.executeUpdate();
 
         } catch (SQLException e)
@@ -152,6 +156,7 @@ public class PartecipareDAO
                 p.setQuantitaBiglietti(rs.getInt(4));
                 p.setDataPartecipazione(rs.getDate(5));
                 p.setOrarioPartecipazione(rs.getTime(6));
+                p.setPrezzo(rs.getFloat(7));
                 list.add(p);
             }
             return list;
@@ -176,6 +181,7 @@ public class PartecipareDAO
                 p.setQuantitaBiglietti(rs.getInt(4));
                 p.setDataPartecipazione(rs.getDate(5));
                 p.setOrarioPartecipazione(rs.getTime(6));
+                p.setPrezzo(rs.getFloat(7));
                 list.add(p);
             }
             return list;

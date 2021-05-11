@@ -2,10 +2,8 @@ package model;
 
 public class Categoria
 {
-
-        private int idCategoria;
-        private String nome;
-
+    private int idCategoria;
+    private String nome;
 
     public void setIdCategoria(int idCategoria) { this.idCategoria = idCategoria; }
 
@@ -19,4 +17,4 @@ public class Categoria
         return this.nome;
     }
 
-    }
+}
