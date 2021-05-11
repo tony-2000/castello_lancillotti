@@ -46,8 +46,4 @@ public class Partecipare
 
     public float getPrezzo() { return this.prezzo; }
 
-
-
-
-
 }
