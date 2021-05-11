@@ -1,6 +1,6 @@
 package model;
 
-import javax.servlet.http.Part;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +63,7 @@ public class PartecipareDAO
         {
             PreparedStatement ps = con.prepareStatement
                     ("INSERT INTO partecipare (id_utente, id_evento, acquistato, " +
-                    "quantita_biglietti, data_partecipazione, orario_partecipazione) VALUES(?,?,?,?,?,?,?)",
+                    "quantita_biglietti, data_partecipazione, orario_partecipazione,prezzo) VALUES(?,?,?,?,?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, temp.getIdUtente());
             ps.setInt(2, temp.getIdEvento());

@@ -26,7 +26,7 @@ public class Partecipare
 
     public void setOrarioPartecipazione(Time orarioPartecipazione) { this.orarioPartecipazione = orarioPartecipazione; }
 
-    public void setPrezzo(Float prezzo) {this.prezzo=prezzo;}
+    public void setPrezzo(float prezzo) { this.prezzo = prezzo;}
 
 
 
@@ -50,7 +50,10 @@ public class Partecipare
 
     public Time getOrarioPartecipazione() { return this.orarioPartecipazione; }
 
-    public Float getPrezzo() {
-        return this.prezzo;
-    }
+    public float getPrezzo() { return this.prezzo; }
+
+
+
+
+
 }
