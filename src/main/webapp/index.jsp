@@ -2,6 +2,9 @@
 <html>
 <head>
     <title>Registrazione</title>
+    <jsp:include page="WEB-INF/Partials/head.jsp">
+        <jsp:param name="title" value="Castello Lancellotti home"/>
+    </jsp:include>
 </head>
 <body>
 <h1> Inserire i dati personali:</h1>

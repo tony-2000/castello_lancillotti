@@ -11,13 +11,13 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Castello_Lancillotti" />
+          <element id="module-output" name="Castello_Lancellotti" />
         </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/Castello_Lancillotti-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Castello_Lancillotti/web/Web" />
+      <element id="javaee-facet-resources" facet="Castello_Lancellotti/web/Web" />
     </root>
   </artifact>
 </component>
