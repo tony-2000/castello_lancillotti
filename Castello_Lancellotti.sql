@@ -67,6 +67,7 @@ acquistato boolean not null,
 quantita_biglietti int not null,
 data_partecipazione date not null,
 orario_partecipazione time not null,
+prezzo float not null,
 primary key(id_utente,id_evento)
 );
 
@@ -87,34 +88,70 @@ primary key(id_utente,id_evento)
 );
 
 insert into Utente values
-(001,"antonio","aschettino",true,3512134154,"antonionola2000@gmail.com","tony2000","Password001"),
-(002,"Lorenzo","Vecchione",false,3334455566,"aaaaaaaaa@aaaa.com","lore","Password002");
+(1,"Antonio","Aschettino",true,3512134154,"antonionola2000@gmail.com","tony2000","1250b0408ac3042fb85c05aa607e8516ce661648"),
+(2,"Lorenzo","Vecchione",false,3334455566,"lorenzo.vecchione@outlook.it","lore","17ba5986228ff62bfdb53772c52e156d5d063fa2"),
+(3,"Marco","Castigliola",false,3345678231,"marco.castigliola@live.it","Casty","0fe682d7f941cff149ce9447f5ad9533a10b40ec"),
+(4,"Luca","Del Piero",false,3329870564,"luca.delPiero@gmail.com","Pinturicchiu","28ad67034af91d29db761e68b0250cf74c2e7fa1"),
+(5,"Maria","Napolitano",false,3215678342,"maria.napolitano@libero.it","maryNap","19fbf5a4dc377dcdb6ecf95a298885acf7bf1bf4");
+#Aschettino1.   Vecchione2@     Castigliola3&   DelPiero4!  Napolitano5$
+
 
 insert into Categoria values
-(001,"spettacolo"),
-(002,"visita");
+(1,"Visita Standard"),
+(2,"Evento"),
+(3,"Spettacolo"),
+(4,"Concerto");
 
 insert into Evento values
-(10,001,"aaaaaaaa","bbbbbbbbbbbbbbbbbbbbbbb",30.89,"cccccc",20),
-(20,002,"zzzzzzz","xxxxxxxxxxxxxxxx",20.88,"dddddddddd",10);
+(1,1,"Visita di gruppo","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",30.89,"link di visita di gruppo",20),
+(2,1,"Visita guidata","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",20.88,"link visita guidata",5),
+(3,2,"Lumina in Castro","ddddddddddddddddddddddddddddddddddddd",10.88,"link lumina in castro",50),
+(4,2,"Visita alle camere","wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",34.80,"link visita alle camere",30),
+(5,3,"Spettacolo circense","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",29.80,"link spettacolo circense",90),
+(6,4,"Concerto tenori","tttttttttttttttttttttttttttttttttttttttt",9.80,"link concerto tenori",40);
+
+
 
 insert into Data values
-("2020-11-30",10,"2020-12-05"),
-("2019-11-30",10,"2019-12-05"),
-("2018-05-30",20,"2018-06-05");
+("2020-11-30",1,"2020-12-05"),
+("2019-11-30",2,"2019-12-05"),
+("2030-11-30",1,"2030-12-05"),
+("2029-11-30",2,"2029-12-05"),
+("2014-05-30",3,"2017-06-05"),
+("2017-11-30",4,"2019-12-05"),
+("2011-11-30",5,"2012-12-05"),
+("2014-05-30",6,"2016-06-05");
 
 insert into Orario values
-("21:30:00","2020-11-30",10),
-("23:30:00","2020-11-30",10),
-("22:10:00","2018-05-30",20),
-("15:10:00","2019-11-30",10);
+("21:30:00","2020-11-30",1),
+("23:30:00","2030-11-30",1),
+("22:10:00","2029-11-30",2),
+("15:10:00","2019-11-30",2),
+("21:30:00","2014-05-30",3),
+("23:30:00","2017-11-30",4),
+("22:10:00","2011-11-30",5),
+("16:10:00","2014-05-30",6),
+("22:30:00","2030-11-30",1),
+("19:10:00","2029-11-30",2),
+("18:10:00","2019-11-30",2),
+("15:30:00","2014-05-30",3);
+
 
 insert into Partecipare values
-(001,10,false,2,"2020-11-30","21:30:00"),
-(002,20,true,4,"2018-05-30","22:10:00"),
-(002,10,false,10,"2019-11-30","15:10:00");
+(1,1,false,2,"2020-11-30","21:30:00",30.89),
+(2,1,false,2,"2020-11-30","21:30:00",30.89),
+(2,2,false,4,"2029-11-30","19:10:00",20.88),
+(2,5,false,10,"2011-11-30","22:10:00",29.80),
+(2,6,true,5,"2014-05-30","16:10:00",9.80),
+(3,1,true,2,"2030-11-30","23:30:00",30.89),
+(4,3,false,10,"2014-05-30","21:30:00",10.88),
+(5,4,true,2,"2017-11-30","23:30:00",34.80);
+
 
 insert into Recensione values
-(001,10,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",4,"2020-12-12", "22:10:00"),
-(002,10,"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",5,"2020-10-10","20:20:00"),
-(002,20,"ccccccccccccccccccccccccccccccccccccc",1,"2019-02-02","17:30:20");
+(1,1,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",4,"2020-12-12", "22:10:00"),
+(2,1,"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",5,"2020-10-10","20:20:00"),
+(2,2,"ccccccccccccccccccccccccccccccccccccc",1,"2019-02-02","17:30:20"),
+(3,3,"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",4,"2020-12-12", "22:10:00"),
+(4,4,"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",5,"2020-10-10","20:20:00"),
+(5,5,"ccccccccccccccccccccccccccccccccccccc",1,"2019-02-02","17:30:20");
