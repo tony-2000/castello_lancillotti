@@ -1,5 +1,6 @@
 package controller;
 
+import model.Check;
 import model.Utente;
 import model.UtenteDAO;
 
@@ -18,20 +19,37 @@ public class Registrazione extends HttpServlet
     {
         String username = request.getParameter("nome_utente");
         String password = request.getParameter("password");
+        String passwordCheck = request.getParameter("passwordCheck");
         String mail = request.getParameter("mail");
         String nome = request.getParameter("nome");
         String cognome = request.getParameter("cognome");
         String telefono = request.getParameter("telefono");
-        Utente utente = new Utente();
-        utente.setNomeUtente(username);
-        utente.setPasswordHash(password);
-        utente.setMail(mail);
-        utente.setNome(nome);
-        utente.setCognome(cognome);;
-        utente.setTelefono(telefono);
-        UtenteDAO saving = new UtenteDAO();
-        saving.doSave(utente);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/Login.jsp");
+        String url="/WEB-INF/results/Login.jsp";
+
+        int checkUsername=Check.usernameIsValid(username);
+        int checkPass=Check.passwordIsValid(password,passwordCheck);
+        int checkMail=Check.mailIsValid(mail);
+        int checkNome=Check.nameIsValid(nome);
+        int checkCognome=Check.surnameIsValid(cognome);
+        int checkTelefono=Check.telephoneisValid(telefono);
+
+        if(checkUsername+checkPass+checkMail+checkCognome+checkNome+checkTelefono==0)
+        {
+            Utente utente = new Utente();
+            utente.setNomeUtente(username);
+            utente.setPasswordHash(password);
+            utente.setMail(mail);
+            utente.setNome(nome);
+            utente.setCognome(cognome);
+            utente.setTelefono(telefono);
+            UtenteDAO saving = new UtenteDAO();
+            saving.doSave(utente);
+        }
+        else
+        {
+            url="/WEB-INF/results/Registrazione.jsp";
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 

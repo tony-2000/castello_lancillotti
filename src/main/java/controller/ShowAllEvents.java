@@ -1,6 +1,5 @@
 package controller;
 
-
 import model.Evento;
 import model.EventoDAO;
 
@@ -11,10 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
-@WebServlet(name="MostraEvento", value="/MostraEvento")
-public class MostraEvento extends HttpServlet
+@WebServlet(name="ShowAllEvents", value="/ShowAllEvents")
+public class ShowAllEvents extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -23,13 +24,13 @@ public class MostraEvento extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        int id=Integer.parseInt(request.getParameter("id_evento"));
-        EventoDAO temp=new EventoDAO();
-        Evento event=new Evento();
-        event=temp.doRetrieveEventsByKey(id);
-        request.setAttribute("event", event);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/VisualizzaElemento.jsp");
+        String url="/WEB-INF/results/VisualizzaEventi.jsp";
+        EventoDAO dao = new EventoDAO();
+        ArrayList<Evento> lista = (ArrayList<Evento>) dao.doRetrieveAllEvents();
+        lista.removeIf(x -> x.getIdCategoria() == 1);
+        request.setAttribute("listaEventi", lista);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
-
     }
 }
+
