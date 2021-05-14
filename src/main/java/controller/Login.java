@@ -15,7 +15,6 @@ import java.io.IOException;
 @WebServlet(name="Login", value="/Login")
 public class Login extends HttpServlet
 {
-    // commento
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String resp="/index.jsp";
@@ -36,5 +35,7 @@ public class Login extends HttpServlet
         dispatcher.forward(request, response);
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    { }
+    {
+        doPost(request, response);
+    }
 }
