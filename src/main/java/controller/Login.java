@@ -15,7 +15,6 @@ import java.io.IOException;
 @WebServlet(name="Login", value="/Login")
 public class Login extends HttpServlet
 {
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String resp="/index.jsp";
