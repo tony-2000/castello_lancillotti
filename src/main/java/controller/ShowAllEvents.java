@@ -1,5 +1,7 @@
 package controller;
 
+import model.Categoria;
+import model.CategoriaDAO;
 import model.Evento;
 import model.EventoDAO;
 

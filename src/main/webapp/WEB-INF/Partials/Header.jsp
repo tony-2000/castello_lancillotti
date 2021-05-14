@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #D9C6B0;
         }
 
         li {
@@ -44,6 +44,8 @@
     <li><a href="ShowAllEvents">Eventi</a></li>
     <li><a href="ToLogin">Accedi</a></li>
     <li><a href="Carrello">Carrello</a></li>
+    <li> <%if (session.getAttribute("utenteSessione")!=null){%>
+        Ciao ${utenteSessione.nomeUtente} <%;}%></li>
 </ul>
 
 </body>

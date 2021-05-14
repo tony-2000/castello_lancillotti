@@ -1,17 +1,24 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: anton
-  Date: 10/05/2021
-  Time: 16:08
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <jsp:include page="../Partials/head.jsp"/>
     <title>Title</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-Visualizza Eventi
+
+<ul>
+    <c:forEach items="${listaEventi}" var="evento" >
+        <li>
+            <form  method="get" action="MostraEvento">
+                <input type="image" name="img" src="${evento.linkImmagine}" style="width:45px;height:45px;">
+                <input type="hidden" name="idEvento" value="${evento.idEvento}">
+            </form>$ ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo} &nbsp; ${evento.postiDisponibili}
+        </li><br><br>
+        <br><br>
+    </c:forEach>
+</ul>
+
 </body>
 </html>

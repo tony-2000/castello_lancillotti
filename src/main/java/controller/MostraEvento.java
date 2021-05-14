@@ -21,13 +21,13 @@ public class MostraEvento extends HttpServlet
         doGet(request, response);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NumberFormatException
     {
-        int id=Integer.parseInt(request.getParameter("id_evento"));
+        int id=Integer.parseInt(request.getParameter("idEvento"));
         EventoDAO temp=new EventoDAO();
         Evento event=new Evento();
         event=temp.doRetrieveEventsByKey(id);
-        request.setAttribute("event", event);
+        request.setAttribute("evento", event);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/VisualizzaElemento.jsp");
         dispatcher.forward(request, response);
 

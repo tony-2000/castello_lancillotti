@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
+<%@page session="true"%>
 <meta name ="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>${param.title}</title>
 <meta name ="description" content="Ecommerce Castello Lancellotti">

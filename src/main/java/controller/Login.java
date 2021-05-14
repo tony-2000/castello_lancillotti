@@ -30,7 +30,7 @@ public class Login extends HttpServlet
             request.setAttribute("logError",log);
         }
         else
-            session.setAttribute("utente",user);
+            session.setAttribute("utenteSessione",user);
         RequestDispatcher dispatcher = request.getRequestDispatcher(resp);
         dispatcher.forward(request, response);
     }
