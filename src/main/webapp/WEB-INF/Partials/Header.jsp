@@ -44,6 +44,7 @@
     <li><a href="ShowAllEvents">Eventi</a></li>
     <li><a href="ToLogin">Accedi</a></li>
     <li><a href="Carrello">Carrello</a></li>
+    <li><a href="RiepilogoAcquisti">Riepilogo Acquisti</a></li>
     <li> <%if (session.getAttribute("utenteSessione")!=null){%>
         Ciao ${utenteSessione.nomeUtente} <%;}%></li>
 </ul>

@@ -4,6 +4,7 @@ import model.Partecipare;
 import model.PartecipareDAO;
 import model.Utente;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,24 +27,30 @@ public class RimuoviDalCarrello extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         HttpSession session=request.getSession();
-        int idEvento= (int) request.getAttribute("id_evento");
-        if(session.getAttribute("utente")==null)
+        int idEvento= Integer.parseInt((String) request.getParameter("id_evento"));
+        if(session.getAttribute("utenteSessione")==null)
         {
             ArrayList<Partecipare> temp= (ArrayList<Partecipare>) session.getAttribute("carrello");
-            for(Partecipare x :temp)
+            if(temp.size()==1)
+                temp.remove(0);
+            else
             {
-                if(x.getIdEvento()==idEvento && x.getIdUtente()==0)
-                    temp.remove(x);
+                for(Partecipare x :temp)
+                {
+                    if(x.getIdEvento()==idEvento && x.getIdUtente()==0)
+                        temp.remove(x);
+                }
             }
             session.setAttribute("carrello",temp);
         }
         else
         {
-            Utente user= (Utente) session.getAttribute("utente");
+            Utente user= (Utente) session.getAttribute("utenteSessione");
             PartecipareDAO dao=new PartecipareDAO();
             dao.doDelete(user.getIdUtente(),idEvento);
         }
-        response.sendRedirect("localhost:8080/Castello_Lancillotti_war_exploded/WEB-INF/results/Carrello");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
     }
 }
 

@@ -9,6 +9,24 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-carrello
+
+
+<ul>
+    <c:forEach items="${carrello}" var="lista">
+        ${lista.nome} ${lista.quantitaBiglietti}  ${lista.dataPartecipazione}
+        ${lista.orarioPartecipazione} ${lista.prezzo} ${lista.idEvento}
+        <br>
+
+        <form action="RimuoviDalCarrello">
+            <input type="hidden" name="id_evento" value="${lista.idEvento}">
+            <input type="submit" value="Rimuovi dal Carrello">
+        </form>
+        <br><br><br>
+
+    </c:forEach>
+</ul>
+
+
+
 </body>
 </html>

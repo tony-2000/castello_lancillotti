@@ -4,6 +4,7 @@ import model.Partecipare;
 import model.PartecipareDAO;
 import model.Utente;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +34,9 @@ public class AggiungiAlCarrello extends HttpServlet
         prodotto.setQuantitaBiglietti(Integer.parseInt(request.getParameter("quantita_biglietti")));
         prodotto.setDataPartecipazione(Date.valueOf(request.getParameter("data")));
         prodotto.setOrarioPartecipazione(Time.valueOf(request.getParameter("orario")));
+        prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
         HttpSession session=request.getSession();
-        if(session.getAttribute("utente")==null)
+        if(session.getAttribute("utenteSessione")==null)
         {
             if(session.getAttribute("carrello")==null)
             {
@@ -47,12 +49,13 @@ public class AggiungiAlCarrello extends HttpServlet
         }
         else
         {
-            Utente user= (Utente) session.getAttribute("utente");
+            Utente user= (Utente) session.getAttribute("utenteSessione");
             prodotto.setIdUtente(user.getIdUtente());
             PartecipareDAO dao=new PartecipareDAO();
             dao.doSave(prodotto);
         }
-        response.sendRedirect("localhost:8080/Castello_Lancillotti_war_exploded/WEB-INF/results/Carrello");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        dispatcher.forward(request, response);
     }
 }
 

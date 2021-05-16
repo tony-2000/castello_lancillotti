@@ -103,12 +103,12 @@ insert into Categoria values
 (4,"Concerto");
 
 insert into Evento values
-(1,1,"Visita di gruppo","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",30.89,"link di visita di gruppo",20),
-(2,1,"Visita guidata","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",20.88,"link visita guidata",5),
-(3,2,"Lumina in Castro","ddddddddddddddddddddddddddddddddddddd",10.88,"link lumina in castro",50),
-(4,2,"Visita alle camere","wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",34.80,"link visita alle camere",30),
-(5,3,"Spettacolo circense","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",29.80,"link spettacolo circense",90),
-(6,4,"Concerto tenori","tttttttttttttttttttttttttttttttttttttttt",9.80,"link concerto tenori",40);
+(1,1,"link Visita di gruppo","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",30.89,"visita di gruppo",20),
+(2,1,"link Visita guidata","xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",20.88,"visita guidata",5),
+(3,2,"link Lumina in Castro","ddddddddddddddddddddddddddddddddddddd",10.88,"lumina in castro",50),
+(4,2,"link Visita alle camere","wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",34.80,"visita alle camere",30),
+(5,3,"link Spettacolo circense","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",29.80,"spettacolo circense",90),
+(6,4,"link Concerto tenori","tttttttttttttttttttttttttttttttttttttttt",9.80,"concerto tenori",40);
 
 
 
