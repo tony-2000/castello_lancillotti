@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-
-@WebServlet(name="ShowAllEvents", value="/ShowAllEvents")
-public class ShowAllEvents extends HttpServlet
+@WebServlet(name = "VisualizzaCategorie", value = "/VisualizzaCategorie")
+public class VisualizzaCategorie extends HttpServlet
 {
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         doGet(request, response);
@@ -26,13 +25,14 @@ public class ShowAllEvents extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String url="/WEB-INF/results/VisualizzaEventi.jsp";
-        EventoDAO dao = new EventoDAO();
-        int id=Integer.parseInt(request.getParameter("idCategoria"));
-        ArrayList<Evento> lista = (ArrayList<Evento>) dao.doRetrieveEventsByCatId(id);
-        request.setAttribute("listaEventi", lista);
+        String url="/WEB-INF/results/VisualizzaCategorie.jsp";
+        CategoriaDAO dao = new CategoriaDAO();
+        ArrayList<Categoria> lista = (ArrayList<Categoria>) dao.doRetrieveAllCategories();
+        lista.removeIf(x->x.getIdCategoria()==1);
+        request.setAttribute("listaCategorie", lista);
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
+
 }
 

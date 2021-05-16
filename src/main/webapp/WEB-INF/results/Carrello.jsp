@@ -13,6 +13,9 @@
 
 <ul>
     <c:forEach items="${carrello}" var="lista">
+
+        <img src="${lista.link}" name="imgEvento" style="width:45px;height:45px;" alt="img">
+
         ${lista.nome} ${lista.quantitaBiglietti}  ${lista.dataPartecipazione}
         ${lista.orarioPartecipazione} ${lista.prezzo} ${lista.idEvento}
         <br>

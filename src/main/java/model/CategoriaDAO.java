@@ -17,6 +17,7 @@ public class CategoriaDAO
                 Categoria p = new Categoria();
                 p.setIdCategoria(rs.getInt(1));
                 p.setNome(rs.getString(2));
+                p.setLinkImmagine(rs.getString(3));
                 list.add(p);
             }
             return list;
@@ -38,6 +39,7 @@ public class CategoriaDAO
                 Categoria p = new Categoria();
                 p.setIdCategoria(rs.getInt(1));
                 p.setNome(rs.getString(2));
+                p.setLinkImmagine(rs.getString(3));
                 list.add(p);
             }
             return list;
@@ -51,9 +53,10 @@ public class CategoriaDAO
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement
-                    ("INSERT INTO categoria (nome) VALUES(?)",
+                    ("INSERT INTO categoria (nome,link_immagine) VALUES(?,?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, cat.getNome());
+            ps.setString(2,cat.getLinkImmagine());
             if (ps.executeUpdate() != 1)
             {
                 throw new RuntimeException("INSERT error.");
@@ -84,10 +87,12 @@ public class CategoriaDAO
     {
         try (Connection con = ConPool.getConnection())
         {
-            PreparedStatement ps = con.prepareStatement("UPDATE categoria SET nome=? WHERE id_categoria=?",
+            PreparedStatement ps = con.prepareStatement("UPDATE categoria SET nome=?, link_immagine=? WHERE id_categoria=?",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, temp.getNome());
-            ps.setInt(2, temp.getIdCategoria());
+            ps.setString(2, temp.getLinkImmagine());
+            ps.setInt(3, temp.getIdCategoria());
+
             ps.executeUpdate();
 
         } catch (SQLException e)

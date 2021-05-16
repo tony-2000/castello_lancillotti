@@ -1,9 +1,9 @@
 package controller;
 
-import model.Categoria;
-import model.CategoriaDAO;
+import com.mysql.cj.xdevapi.Session;
 import model.Evento;
 import model.EventoDAO;
+import model.Utente;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,13 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-
-@WebServlet(name="ShowAllEvents", value="/ShowAllEvents")
-public class ShowAllEvents extends HttpServlet
+@WebServlet(name="ShowProfilo", value="/ShowProfilo")
+public class ShowProfilo extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -26,13 +25,14 @@ public class ShowAllEvents extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String url="/WEB-INF/results/VisualizzaEventi.jsp";
-        EventoDAO dao = new EventoDAO();
-        int id=Integer.parseInt(request.getParameter("idCategoria"));
-        ArrayList<Evento> lista = (ArrayList<Evento>) dao.doRetrieveEventsByCatId(id);
-        request.setAttribute("listaEventi", lista);
+        String url="/WEB-INF/results/Profilo.jsp";
+        HttpSession sessione= request.getSession();
+        if(sessione.getAttribute("utenteSessione")==null)
+            url="/index.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
-    }
-}
 
+    }
+
+
+}

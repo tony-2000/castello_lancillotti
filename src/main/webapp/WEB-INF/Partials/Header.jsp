@@ -13,7 +13,11 @@
         }
 
         li {
-            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            float:left;
         }
 
         li a {
@@ -41,12 +45,13 @@
     <li><a class="active" href="./index.jsp">Home</a></li>
     <li><a href="ToSulCastello">Sul Castello</a></li>
     <li><a href="ShowAllVisits">Visite</a></li>
-    <li><a href="ShowAllEvents">Eventi</a></li>
-    <li><a href="ToLogin">Accedi</a></li>
-    <li><a href="Carrello">Carrello</a></li>
+    <li><a href="VisualizzaCategorie">Eventi</a></li>
+    <li><a href="ToLogin" <%if (session.getAttribute("utenteSessione")!=null){%>
+           style="display: none"  <%;}%>>Accedi</a></li>
     <li><a href="RiepilogoAcquisti">Riepilogo Acquisti</a></li>
-    <li> <%if (session.getAttribute("utenteSessione")!=null){%>
-        Ciao ${utenteSessione.nomeUtente} <%;}%></li>
+    <li style="float:right"><a href="Carrello">Carrello</a></li>
+    <li style="float:right"><a href="ShowProfilo" <%if (session.getAttribute("utenteSessione")==null){%>
+           style="display: none"  <%;}%>> Ciao ${utenteSessione.nome}</a></li>
 </ul>
 
 </body>

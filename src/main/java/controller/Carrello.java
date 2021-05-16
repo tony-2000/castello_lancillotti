@@ -63,7 +63,10 @@ public class Carrello extends HttpServlet
             for(Evento y:eventi)
             {
                 if(temp.getIdEvento()==y.getIdEvento())
+                {
                     temp.setNome(y.getNome());
+                    temp.setLink(y.getLinkImmagine());
+                }
             }
             cartElements.add(temp);
         }
