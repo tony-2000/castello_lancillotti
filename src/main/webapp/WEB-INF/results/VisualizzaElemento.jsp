@@ -17,7 +17,7 @@ ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo} &nbsp; ${evento.pos
     <input type="text" name="quantita_biglietti">
     <input type="date" name="data" >
     <input type="time" step="1" name="orario" >
-    <input type="submit" value="Aggiungi">
+    <button type="submit" >Aggiungi </button>
 </form>
 
 </body>

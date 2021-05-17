@@ -31,7 +31,7 @@ public class RiepilogoAcquisti extends HttpServlet
         {
             boolean temp= false;
             request.setAttribute("accessoAcquisti",temp);
-            url="/WEB-INF/results/Login.jsp";
+            url="Login.jsp";
         }
         else
             {

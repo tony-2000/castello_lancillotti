@@ -62,7 +62,7 @@ public class Check {
    public static int usernameIsValid(String username)
     {
         if(username=="" || username==null) return -1;
-        if(username.length()<8) return -2;
+        if(username.length()<4) return -2;
         if(username.length()>20) return -3;
         ArrayList<Utente> array = new ArrayList<>();
         UtenteDAO users = new UtenteDAO();

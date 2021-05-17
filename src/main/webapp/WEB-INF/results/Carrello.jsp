@@ -22,7 +22,7 @@
 
         <form action="RimuoviDalCarrello">
             <input type="hidden" name="id_evento" value="${lista.idEvento}">
-            <input type="submit" value="Rimuovi dal Carrello">
+            <button type="submit"> Rimuovi dal Carrello</button>
         </form>
         <br><br><br>
 
