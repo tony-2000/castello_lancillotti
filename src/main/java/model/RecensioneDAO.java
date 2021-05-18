@@ -54,6 +54,31 @@ public class RecensioneDAO
         }
     }
 
+
+    public List<Recensione> doRetrieveReviewsByEvent(int idEvento) throws NumberFormatException
+    {
+        List<Recensione> list = new ArrayList<Recensione>();
+        try (Connection con = ConPool.getConnection())
+        {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM recensione WHERE id_evento=?");
+            ps.setString(1, Integer.toString(idEvento));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Recensione p = new Recensione();
+                p.setIdUtente(rs.getInt(1));
+                p.setIdEvento(rs.getInt(2));
+                p.setCommento(rs.getString(3));
+                p.setValutazione(rs.getInt(4));
+                p.setDataRecensione(rs.getDate(5));
+                p.setOrarioRecensione(rs.getTime(6));
+                list.add(p);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void doSave(Recensione temp)
     {
         try (Connection con = ConPool.getConnection())

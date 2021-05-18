@@ -44,6 +44,27 @@ public class OrarioDAO {
         }
     }
 
+
+    public List<Orario> doRetrieveTimesByEventDate(Date dataInizio, int idEvento) throws NumberFormatException {
+        List<Orario> list = new ArrayList<Orario>();
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM orario WHERE data_inizio=? AND id_evento=?");
+            ps.setString(1, dataInizio.toString());
+            ps.setString(2, Integer.toString(idEvento));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Orario p = new Orario();
+                p.setOra(rs.getTime(1));
+                p.setDataInizio(rs.getDate(2));
+                p.setIdEvento(rs.getInt(3));
+                list.add(p);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void doSave(Orario temp) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement

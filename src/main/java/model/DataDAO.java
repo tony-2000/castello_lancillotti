@@ -49,6 +49,28 @@ public class DataDAO
         }
     }
 
+
+    public List<Data> doRetrieveDatesByEvent(int id) throws NumberFormatException
+    {
+        List<Data> list = new ArrayList<Data>();
+        try (Connection con = ConPool.getConnection())
+        {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM data WHERE id_evento=?");
+            ps.setString(1, Integer.toString(id));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Data p = new Data();
+                p.setDataInizio(rs.getDate(1));
+                p.setIdEvento(rs.getInt(2));
+                p.setDataFine( rs.getDate(3));
+                list.add(p);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void doSave(Data date)
     {
         try (Connection con = ConPool.getConnection())
