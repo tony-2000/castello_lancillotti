@@ -8,7 +8,7 @@
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
-<form action="doAggiungiEvento" method="post">
+<form action="doAggiungiEvento" method="get">
     <label id="categorie">Categoria:
     <select id="categoria" name="categorie" >
         <c:forEach items="${categorie}" var="categorie" >
@@ -22,11 +22,11 @@
     </label>
     <br><br>
     <label id="nome">Nome:
-        <input type="text" name="nome">
+        <input type="text" name="nome" minlength="2" maxlength="30">
     </label>
     <br><br>
     <label id="descrizione">Descrizione:
-        <input type="text" name="descrizione">
+        <input type="text" name="descrizione" minlength="1" maxlength="500">
     </label>
     <br><br>
     <label id="prezzo">Prezzo:

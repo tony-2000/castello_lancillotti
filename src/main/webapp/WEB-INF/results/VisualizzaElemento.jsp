@@ -14,8 +14,8 @@ ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo} &nbsp; ${evento.pos
 <form action="AggiungiAlCarrello">
     <input type="hidden" name="id_evento" value="${evento.idEvento}">
     <input type="hidden" name="prezzo" value="${evento.prezzo}">
-    <input type="text" name="quantita_biglietti">
-    <input type="date" name="data" >
+    <input type="number" name="quantita_biglietti" step="1">
+    <input type="date" name="data">
     <input type="time" step="1" name="orario" >
     <button type="submit" >Aggiungi </button>
 </form>

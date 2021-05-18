@@ -25,7 +25,7 @@ public class Login extends HttpServlet
         HttpSession session=request.getSession();
         if(user==null)
         {
-            resp="/WEB-INF/results/Login.jsp";
+            resp="Login.jsp";
             boolean log=false;
             request.setAttribute("logError",log);
         }

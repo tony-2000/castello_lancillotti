@@ -13,11 +13,11 @@
     Accesso
 
     <label for="nome_utenteID"> Nome Utente:
-    <input type="text" name="nome_utente" id="nome_utenteID">
+    <input type="text" name="nome_utente" id="nome_utenteID" maxlength="20" minlength="4">
     </label>
 
     <label for="passwordID"> Password:
-    <input type="password" name="password" id="passwordID">
+    <input type="password" name="password" id="passwordID" minlength="8" maxlength="16">
     </label>
 
     <button type="submit" >Accedi </button>

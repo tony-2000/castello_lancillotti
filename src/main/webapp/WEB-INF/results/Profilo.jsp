@@ -14,7 +14,7 @@ ${sessionScope.utenteSessione.nomeUtente}
 
 <form action="ToAggiornaProfilo" method="post">
     <label id="password">Per modificare i dati utente inserire la password:
-    <input type="password" name="password">
+    <input type="password" name="password" maxlength="16" minlength="8">
     </label>
     <button type="submit">Modifica </button>
 </form>

@@ -27,22 +27,20 @@ public class CategoriaDAO
     }
 
 
-    public List<Categoria> doRetrieveCategoriesByKey(int id) throws NumberFormatException
+    public Categoria doRetrieveCategoriesByKey(int id) throws NumberFormatException
     {
-        List<Categoria> list = new ArrayList<Categoria>();
+        Categoria cat = new Categoria();
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM categoria WHERE id_categoria=?");
             ps.setString(1, Integer.toString(id));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Categoria p = new Categoria();
-                p.setIdCategoria(rs.getInt(1));
-                p.setNome(rs.getString(2));
-                p.setLinkImmagine(rs.getString(3));
-                list.add(p);
+                cat.setIdCategoria(rs.getInt(1));
+                cat.setNome(rs.getString(2));
+                cat.setLinkImmagine(rs.getString(3));
             }
-            return list;
+            return cat;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

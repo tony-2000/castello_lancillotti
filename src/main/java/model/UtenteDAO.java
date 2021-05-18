@@ -31,9 +31,9 @@ public class UtenteDAO
         }
     }
 
-    public List<Utente> doRetrieveUsersByKey(int id) throws NumberFormatException
+    public Utente doRetrieveUsersByKey(int id) throws NumberFormatException
     {
-        List<Utente> list = new ArrayList<Utente>();
+        Utente user=new Utente();
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM utente WHERE id_utente=?");
@@ -41,18 +41,16 @@ public class UtenteDAO
             ResultSet rs = ps.executeQuery();
             while (rs.next())
             {
-                Utente p = new Utente();
-                p.setIdUtente(rs.getInt(1));
-                p.setNome(rs.getString(2));
-                p.setCognome(rs.getString(3));
-                p.setAmministratore(rs.getBoolean(4));
-                p.setTelefono(rs.getString(5));
-                p.setMail(rs.getString(6));
-                p.setNomeUtente(rs.getString(7));
-                p.setPassword(rs.getString(8));
-                list.add(p);
+                user.setIdUtente(rs.getInt(1));
+                user.setNome(rs.getString(2));
+                user.setCognome(rs.getString(3));
+                user.setAmministratore(rs.getBoolean(4));
+                user.setTelefono(rs.getString(5));
+                user.setMail(rs.getString(6));
+                user.setNomeUtente(rs.getString(7));
+                user.setPassword(rs.getString(8));
             }
-            return list;
+            return user;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

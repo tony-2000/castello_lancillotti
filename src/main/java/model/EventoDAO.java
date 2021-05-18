@@ -101,7 +101,7 @@ public class EventoDAO
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement("UPDATE evento SET link_immagine=?, " +
-                            "descrizione=?, prezzo=?, nome=?, posti_disponibili=? WHERE id_evento=? ",
+                            "descrizione=?, prezzo=?, nome=?, posti_disponibili=?, id_categoria=? WHERE id_evento=? ",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, temp.getLinkImmagine());
@@ -109,7 +109,8 @@ public class EventoDAO
             ps.setFloat(3, temp.getPrezzo());
             ps.setString(4, temp.getNome());
             ps.setInt(5, temp.getPostiDisponibili());
-            ps.setInt(6, temp.getIdEvento());
+            ps.setInt(6,temp.getIdCategoria());
+            ps.setInt(7, temp.getIdEvento());
             ps.executeUpdate();
 
         } catch (SQLException e)
