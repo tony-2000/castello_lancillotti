@@ -27,7 +27,6 @@ import java.io.IOException;
             event.setNome(request.getParameter("nome"));
             event.setDescrizione(request.getParameter("descrizione"));
             event.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
-            event.setPostiDisponibili(Integer.parseInt(request.getParameter("posti")));
             event.setLinkImmagine("cc");
             dao.doSave(event);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/AreaAdmin.jsp");

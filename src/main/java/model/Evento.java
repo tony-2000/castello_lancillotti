@@ -10,7 +10,7 @@ public class Evento
     private String descrizione;
     private float prezzo;
     private String nome;
-    private int postiDisponibili;
+
 
     public void setIdEvento(int idEvento) { this.idEvento = idEvento; }
 
@@ -24,7 +24,6 @@ public class Evento
 
     public void setNome(String nome) { this.nome=nome;}
 
-    public void setPostiDisponibili(int postiDisponibili) { this.postiDisponibili=postiDisponibili;}
 
 
 
@@ -53,7 +52,7 @@ public class Evento
         return this.nome;
     }
 
-    public int getPostiDisponibili() { return this.postiDisponibili; }
+
 
 
 

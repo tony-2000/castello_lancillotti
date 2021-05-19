@@ -8,6 +8,7 @@ public class Orario
     private Time ora;
     private Date dataInizio;
     private int idEvento;
+    private int postiDisponibili;
 
 
 
@@ -18,6 +19,8 @@ public class Orario
 
     public void setIdEvento(int idEvento) { this.idEvento=idEvento;}
 
+    public void setPostiDisponibili(int postiDisponibili) { this.postiDisponibili=postiDisponibili;}
+
 
 
     public Time getOra() { return this.ora; }
@@ -25,6 +28,8 @@ public class Orario
     public Date getDataInizio() { return this.dataInizio; }
 
     public int getIdEvento() { return this.idEvento; }
+
+    public int getPostiDisponibili() { return this.postiDisponibili; }
 
 
 }

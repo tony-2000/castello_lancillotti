@@ -29,7 +29,6 @@ public class ModificaEvento extends HttpServlet
         evento.setNome(request.getParameter("nome"));
         evento.setDescrizione(request.getParameter("descrizione"));
         evento.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
-        evento.setPostiDisponibili(Integer.parseInt(request.getParameter("postiDisponibili")));
         if(request.getParameter("linkImmagine")!=null && request.getParameter("linkImmagine")!="")
             evento.setLinkImmagine(request.getParameter("linkImmagine"));
         else

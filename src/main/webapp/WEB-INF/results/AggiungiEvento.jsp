@@ -33,10 +33,6 @@
         <input type="number" step="0.01" name="prezzo" min="0">
     </label>
     <br><br>
-    <label id="Posti">Posti Disponibili:
-        <input type="number" name="posti" min="1">
-    </label>
-    <br><br>
     <button type="submit">Aggiungi</button>
 </form>
 </body>

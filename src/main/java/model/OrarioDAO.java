@@ -15,6 +15,7 @@ public class OrarioDAO {
                 p.setOra(rs.getTime(1));
                 p.setDataInizio(rs.getDate(2));
                 p.setIdEvento(rs.getInt(3));
+                p.setPostiDisponibili(rs.getInt(4));
                 list.add(p);
             }
             return list;
@@ -23,8 +24,8 @@ public class OrarioDAO {
         }
     }
 
-    public List<Orario> doRetrieveTimesByKey(Time ora, Date dataInizio, int idEvento) throws NumberFormatException {
-        List<Orario> list = new ArrayList<Orario>();
+    public Orario doRetrieveTimesByKey(Time ora, Date dataInizio, int idEvento) throws NumberFormatException {
+        Orario temp=new Orario();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM orario WHERE ora=? AND data_inizio=? AND id_evento=?");
             ps.setString(1, ora.toString());
@@ -32,13 +33,12 @@ public class OrarioDAO {
             ps.setString(3, Integer.toString(idEvento));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Orario p = new Orario();
-                p.setOra(rs.getTime(1));
-                p.setDataInizio(rs.getDate(2));
-                p.setIdEvento(rs.getInt(3));
-                list.add(p);
+                temp.setOra(rs.getTime(1));
+                temp.setDataInizio(rs.getDate(2));
+                temp.setIdEvento(rs.getInt(3));
+                temp.setPostiDisponibili(rs.getInt(4));
             }
-            return list;
+            return temp;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -57,6 +57,7 @@ public class OrarioDAO {
                 p.setOra(rs.getTime(1));
                 p.setDataInizio(rs.getDate(2));
                 p.setIdEvento(rs.getInt(3));
+                p.setPostiDisponibili(rs.getInt(4));
                 list.add(p);
             }
             return list;
@@ -68,11 +69,12 @@ public class OrarioDAO {
     public void doSave(Orario temp) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement
-                    ("INSERT INTO orario (ora, data_inizio, id_evento) VALUES(?,?,?)",
+                    ("INSERT INTO orario (ora, data_inizio, id_evento,posti_disponibili) VALUES(?,?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setTime(1, temp.getOra());
             ps.setDate(2, temp.getDataInizio());
             ps.setInt(3, temp.getIdEvento());
+          ps.setInt(4,temp.getPostiDisponibili());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }

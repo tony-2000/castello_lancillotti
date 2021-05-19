@@ -16,7 +16,7 @@
             <form  method="get" action="MostraEvento">
                 <input type="image" name="img" src="${visita.linkImmagine}" style="width:45px;height:45px;">
                 <input type="hidden" name="idEvento" value="${visita.idEvento}">
-            </form>${visita.nome} ${visita.descrizione} &nbsp; ${visita.prezzo} &nbsp; ${visita.postiDisponibili}
+            </form>${visita.nome} ${visita.descrizione} &nbsp; ${visita.prezzo}
         </li><br><br>
         <br><br>
     </c:forEach>

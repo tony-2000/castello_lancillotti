@@ -39,10 +39,6 @@
         <input type="number" step="0.01" name="prezzo" min="0" value="${evento.prezzo}">
     </label>
     <br><br>
-    <label id="Posti">Inserisci nuovi posti disponibili:
-        <input type="number" name="postiDisponibili" min="1" value="${evento.postiDisponibili}">
-    </label>
-    <br><br>
     <button type="submit">Modifica</button>
 </form>
 

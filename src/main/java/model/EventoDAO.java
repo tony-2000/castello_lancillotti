@@ -21,7 +21,6 @@ public class EventoDAO
                 p.setDescrizione(rs.getString(4));
                 p.setPrezzo(rs.getFloat(5));
                 p.setNome(rs.getString(6));
-                p.setPostiDisponibili(rs.getInt(7));
                 list.add(p);
             }
             return list;
@@ -47,7 +46,6 @@ public class EventoDAO
                 p.setDescrizione(rs.getString(4));
                 p.setPrezzo(rs.getFloat(5));
                 p.setNome(rs.getString(6));
-                p.setPostiDisponibili(rs.getInt(7));
             }
             return p;
         } catch (SQLException e) {
@@ -60,15 +58,14 @@ public class EventoDAO
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement
-                    ("INSERT INTO evento (id_categoria, link_immagine, descrizione, prezzo, nome, posti_disponibili) " +
-                                    "VALUES(?,?,?,?,?,?)",
+                    ("INSERT INTO evento (id_categoria, link_immagine, descrizione, prezzo, nome) " +
+                                    "VALUES(?,?,?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, temp.getIdCategoria());
             ps.setString(2, temp.getLinkImmagine());
             ps.setString(3, temp.getDescrizione());
             ps.setFloat(4, temp.getPrezzo());
             ps.setString(5, temp.getNome());
-            ps.setInt(6, temp.getPostiDisponibili());
 
             if (ps.executeUpdate() != 1)
             {
@@ -101,16 +98,15 @@ public class EventoDAO
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement("UPDATE evento SET link_immagine=?, " +
-                            "descrizione=?, prezzo=?, nome=?, posti_disponibili=?, id_categoria=? WHERE id_evento=? ",
+                            "descrizione=?, prezzo=?, nome=?, id_categoria=? WHERE id_evento=? ",
                     Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, temp.getLinkImmagine());
             ps.setString(2, temp.getDescrizione());
             ps.setFloat(3, temp.getPrezzo());
             ps.setString(4, temp.getNome());
-            ps.setInt(5, temp.getPostiDisponibili());
-            ps.setInt(6,temp.getIdCategoria());
-            ps.setInt(7, temp.getIdEvento());
+            ps.setInt(5,temp.getIdCategoria());
+            ps.setInt(6, temp.getIdEvento());
             ps.executeUpdate();
 
         } catch (SQLException e)
@@ -135,7 +131,6 @@ public class EventoDAO
                 p.setDescrizione(rs.getString(4));
                 p.setPrezzo(rs.getFloat(5));
                 p.setNome(rs.getString(6));
-                p.setPostiDisponibili(rs.getInt(7));
                 list.add(p);
             }
             return list;

@@ -15,7 +15,7 @@
 
         li {
             display: block;
-            color: white;
+            color: #8C7C68;
             text-align: center;
             text-decoration: none;
             float:left;
@@ -39,7 +39,7 @@
 
         li a, .dropbtn {
             display: inline-block;
-            color: white;
+            color: #8C7C68;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
