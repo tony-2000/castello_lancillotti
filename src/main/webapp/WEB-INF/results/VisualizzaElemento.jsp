@@ -23,23 +23,23 @@ ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo}
 
 <fieldset name="Recensioni">
     <legend> Recensioni</legend>
-    <form action="AggiungiRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione")))%>>
+    <form action="AggiungiRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <input type="number" name="valutazione" step="1" min="1" max="5">
         <input type="text" name="commento" maxlength="500">
-        <button type="submit"> Aggiungi Commento </button>
+        <button type="submit"> Aggiungi Commento </button><%}%>
     </form>
 
-    <form action="ModificaRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione")))%>>
+    <form action="ModificaRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <input type="number" name="valutazione" step="1" min="1" max="5">
         <input type="text" name="commento" maxlength="500">
-        <button type="submit"> Modifica Commento </button>
+        <button type="submit"> Modifica Commento </button><%}%>
     </form>
 
-    <form action="EliminaRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione")))%>>
+    <form action="EliminaRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <button type="submit"> Elimina Commento </button>
+        <button type="submit"> Elimina Commento </button><%}%>
     </form>
 
     <c:forEach items="${recensioni}" var="recensioni" >

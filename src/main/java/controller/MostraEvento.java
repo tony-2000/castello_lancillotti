@@ -34,22 +34,22 @@ public class MostraEvento extends HttpServlet
         ArrayList<Recensione> list=new ArrayList<>();
         RecensioneDAO dao= new RecensioneDAO();
         list= (ArrayList<Recensione>) dao.doRetrieveReviewsByEvent(id);
-
-        HttpSession session=request.getSession();
-        Utente user= (Utente) session.getAttribute("utenteSessione");
-        int idUtente=user.getIdUtente();
         boolean checkRecensione=false;
-        if(dao.doRetrieveReviewsByKey(idUtente,event.getIdEvento())!=null)
-            checkRecensione=true;
-        if(checkRecensione)
+        HttpSession session=request.getSession();
+        if(session.getAttribute("utenteSessione")!=null)
         {
-            for(Recensione x:list)
-            {
-                if(x.getIdUtente() == idUtente)
-                    Collections.swap(list,0,list.indexOf(x));
+            Utente user = (Utente) session.getAttribute("utenteSessione");
+            int idUtente = user.getIdUtente();
+            if (dao.doRetrieveReviewsByKey(idUtente, event.getIdEvento()) != null)
+                checkRecensione = true;
+            if (checkRecensione) {
+                for (Recensione x : list) {
+                    if (x.getIdUtente() == idUtente)
+                        Collections.swap(list, 0, list.indexOf(x));
+                }
+
             }
         }
-
         request.setAttribute("checkRecensione",checkRecensione);
         request.setAttribute("recensioni",list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/VisualizzaElemento.jsp");

@@ -33,9 +33,6 @@
             background-color: #111;
         }
 
-        .active {
-            background-color: #4CAF50;
-        }
 
         li a, .dropbtn {
             display: inline-block;
@@ -46,7 +43,7 @@
         }
 
         li a:hover, .dropdown:hover .dropbtn {
-            background-color: red;
+            background-color: #111;
         }
 
         li.dropdown {
@@ -63,7 +60,7 @@
         }
 
         .dropdown-content a {
-            color: black;
+            color: #667339;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
