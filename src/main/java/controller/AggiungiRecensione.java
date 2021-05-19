@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Collections;
 
 @WebServlet(name="AggiungiRecensione", value="/AggiungiRecensione")
 public class AggiungiRecensione extends HttpServlet
@@ -28,18 +29,17 @@ public class AggiungiRecensione extends HttpServlet
         HttpSession session=request.getSession();
         if(session.getAttribute("utenteSessione")==null)
             url="Login.jsp";
-        else
-        {
-            Utente user= (Utente) session.getAttribute("utenteSessione");
-            int idUtente=user.getIdUtente();
-            int idEvento=Integer.parseInt(request.getParameter("idEvento"));
-            int valutazione=Integer.parseInt(request.getParameter("valutazione"));
-            String commento=request.getParameter("commento");
-            long temp=System.currentTimeMillis();
-            Date data= new Date(temp);
-            Time ora= new Time(temp);
-            RecensioneDAO dao=new RecensioneDAO();
-            Recensione rec=new Recensione();
+        else {
+            Utente user = (Utente) session.getAttribute("utenteSessione");
+            int idUtente = user.getIdUtente();
+            int idEvento = Integer.parseInt(request.getParameter("idEvento"));
+            int valutazione = Integer.parseInt(request.getParameter("valutazione"));
+            String commento = request.getParameter("commento");
+            long temp = System.currentTimeMillis();
+            Date data = new Date(temp);
+            Time ora = new Time(temp);
+            RecensioneDAO dao = new RecensioneDAO();
+            Recensione rec = new Recensione();
             rec.setOrarioRecensione(ora);
             rec.setDataRecensione(data);
             rec.setValutazione(valutazione);
@@ -47,18 +47,54 @@ public class AggiungiRecensione extends HttpServlet
             rec.setIdEvento(idEvento);
             rec.setIdUtente(idUtente);
             dao.doSave(rec);
+
+            int id = Integer.parseInt(request.getParameter("idEvento"));
+            EventoDAO eventdao = new EventoDAO();
+            Evento event = new Evento();
+            event = eventdao.doRetrieveEventsByKey(id);
+            request.setAttribute("evento", event);
+
+            ArrayList<Recensione> list = new ArrayList<>();
+            RecensioneDAO recensioneDAO = new RecensioneDAO();
+            list = (ArrayList<Recensione>) recensioneDAO.doRetrieveReviewsByEvent(id);
+            boolean checkRecensione = false;
+            if (session.getAttribute("utenteSessione") != null) {
+                if (dao.doRetrieveReviewsByKey(idUtente, event.getIdEvento()).getIdUtente() > 0)
+                    checkRecensione = true;
+                if (checkRecensione) {
+                    for (Recensione x : list) {
+                        if (x.getIdUtente() == idUtente)
+                            Collections.swap(list, 0, list.indexOf(x));
+                    }
+
+                }
+            }
+            ArrayList<RecensioneSupport> support=new ArrayList<>();
+            for(Recensione x: list)
+            {
+                RecensioneSupport rece=new RecensioneSupport();
+                rece.setIdEvento(x.getIdEvento());
+                rece.setCommento(x.getCommento());
+                rece.setDataRecensione(x.getDataRecensione());
+                rece.setValutazione(x.getValutazione());
+                rece.setIdUtente(x.getIdUtente());
+                rece.setOrarioRecensione(x.getOrarioRecensione());
+                support.add(rece);
+            }
+
+            UtenteDAO daoUtente=new UtenteDAO();
+            ArrayList<Utente> listUtenti= (ArrayList<Utente>) daoUtente.doRetrieveAllUsers();
+            for(RecensioneSupport x: support)
+            {
+                for(Utente y:listUtenti)
+                {
+                    if(x.getIdUtente()==y.getIdUtente())
+                        x.setNome(y.getNomeUtente());
+                }
+            }
+            request.setAttribute("checkRecensione",checkRecensione);
+            request.setAttribute("recensioni",support);
         }
-        int id=Integer.parseInt(request.getParameter("idEvento"));
-        EventoDAO temp=new EventoDAO();
-        Evento event=new Evento();
-        event=temp.doRetrieveEventsByKey(id);
-        request.setAttribute("evento", event);
-
-        ArrayList<Recensione> list=new ArrayList<>();
-        RecensioneDAO dao= new RecensioneDAO();
-        list= (ArrayList<Recensione>) dao.doRetrieveReviewsByEvent(id);
-        request.setAttribute("recensioni",list);
-
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
 

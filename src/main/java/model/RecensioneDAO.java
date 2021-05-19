@@ -102,15 +102,15 @@ public class RecensioneDAO
         }
     }
 
-    public void doDelete(int id, int id2)
+    public void doDelete(int idUtente, int idEvento)
     {
         try (Connection con = ConPool.getConnection())
         {
             PreparedStatement ps = con.prepareStatement
                     ("Delete FROM recensione WHERE id_utente=? and id_evento=?",
                             Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id);
-            ps.setInt(2, id2);
+            ps.setInt(1, idUtente);
+            ps.setInt(2, idEvento);
             if (ps.executeUpdate() != 1)
             {
                 throw new RuntimeException("INSERT error.");
