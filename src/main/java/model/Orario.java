@@ -6,7 +6,7 @@ import java.sql.Time;
 public class Orario
 {
     private Time ora;
-    private Date dataInizio;
+    private Date data;
     private int idEvento;
     private int postiDisponibili;
 
@@ -15,7 +15,7 @@ public class Orario
 
     public void setOra(Time ora) { this.ora=ora;}
 
-    public void setDataInizio(Date dataInizio) { this.dataInizio=dataInizio;}
+    public void setData(Date data) { this.data=data;}
 
     public void setIdEvento(int idEvento) { this.idEvento=idEvento;}
 
@@ -25,7 +25,7 @@ public class Orario
 
     public Time getOra() { return this.ora; }
 
-    public Date getDataInizio() { return this.dataInizio; }
+    public Date getData() { return this.data; }
 
     public int getIdEvento() { return this.idEvento; }
 

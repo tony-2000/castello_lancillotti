@@ -13,7 +13,7 @@ public class OrarioDAO {
             while (rs.next()) {
                 Orario p = new Orario();
                 p.setOra(rs.getTime(1));
-                p.setDataInizio(rs.getDate(2));
+                p.setData(rs.getDate(2));
                 p.setIdEvento(rs.getInt(3));
                 p.setPostiDisponibili(rs.getInt(4));
                 list.add(p);
@@ -24,17 +24,17 @@ public class OrarioDAO {
         }
     }
 
-    public Orario doRetrieveTimesByKey(Time ora, Date dataInizio, int idEvento) throws NumberFormatException {
+    public Orario doRetrieveTimesByKey(Time ora, Date data, int idEvento) throws NumberFormatException {
         Orario temp=new Orario();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM orario WHERE ora=? AND data_inizio=? AND id_evento=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM orario WHERE ora=? AND data=? AND id_evento=?");
             ps.setString(1, ora.toString());
-            ps.setString(2, dataInizio.toString());
+            ps.setString(2, data.toString());
             ps.setString(3, Integer.toString(idEvento));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 temp.setOra(rs.getTime(1));
-                temp.setDataInizio(rs.getDate(2));
+                temp.setData(rs.getDate(2));
                 temp.setIdEvento(rs.getInt(3));
                 temp.setPostiDisponibili(rs.getInt(4));
             }
@@ -45,17 +45,17 @@ public class OrarioDAO {
     }
 
 
-    public List<Orario> doRetrieveTimesByEventDate(Date dataInizio, int idEvento) throws NumberFormatException {
+    public List<Orario> doRetrieveTimesByEventDate(Date data, int idEvento) throws NumberFormatException {
         List<Orario> list = new ArrayList<Orario>();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM orario WHERE data_inizio=? AND id_evento=?");
-            ps.setString(1, dataInizio.toString());
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM orario WHERE data=? AND id_evento=?");
+            ps.setString(1, data.toString());
             ps.setString(2, Integer.toString(idEvento));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Orario p = new Orario();
                 p.setOra(rs.getTime(1));
-                p.setDataInizio(rs.getDate(2));
+                p.setData(rs.getDate(2));
                 p.setIdEvento(rs.getInt(3));
                 p.setPostiDisponibili(rs.getInt(4));
                 list.add(p);
@@ -69,10 +69,10 @@ public class OrarioDAO {
     public void doSave(Orario temp) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement
-                    ("INSERT INTO orario (ora, data_inizio, id_evento,posti_disponibili) VALUES(?,?,?,?)",
+                    ("INSERT INTO orario (ora, data, id_evento,posti_disponibili) VALUES(?,?,?,?)",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setTime(1, temp.getOra());
-            ps.setDate(2, temp.getDataInizio());
+            ps.setDate(2, temp.getData());
             ps.setInt(3, temp.getIdEvento());
           ps.setInt(4,temp.getPostiDisponibili());
             if (ps.executeUpdate() != 1) {
@@ -83,13 +83,13 @@ public class OrarioDAO {
         }
     }
 
-    public void doDelete(Time ora, Date dataInizio, int id) {
+    public void doDelete(Time ora, Date data, int id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement
-                    ("Delete FROM orario WHERE ora = ? and data_inizio=? and id_evento=?",
+                    ("Delete FROM orario WHERE ora = ? and data=? and id_evento=?",
                             Statement.RETURN_GENERATED_KEYS);
             ps.setTime(1, ora);
-            ps.setDate(2, dataInizio);
+            ps.setDate(2, data);
             ps.setInt(3, id);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");

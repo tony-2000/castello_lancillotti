@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <jsp:include page="../Partials/head.jsp"/>
@@ -8,9 +9,9 @@
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
-<form action="doAggiungiEvento" method="get">
+<form action="doAggiungiEvento" method="get" >
     <label id="categorie">Categoria:
-    <select id="categoria" name="categorie" >
+    <select id="categoria" name="categorie">
         <c:forEach items="${categorie}" var="categorie" >
             <option value="${categorie.idCategoria}"> ${categorie.nome} </option>
         </c:forEach>
@@ -18,7 +19,7 @@
     </label>
     <br><br>
     <label id="image"> Immagine:
-    <input type="file" accept="image/*">
+    <input type="file" name="file" accept="image/*">
     </label>
     <br><br>
     <label id="nome">Nome:

@@ -4,27 +4,22 @@ import java.sql.Date;
 
 public class Data
 {
-    private Date dataInizio;
+    private Date data;
     private int idEvento;
-    private Date dataFine;
 
 
-    public void setDataInizio(Date dataInizio) { this.dataInizio = dataInizio; }
+    public void setData(Date data) { this.data = data; }
 
     public void setIdEvento(int idEvento) { this.idEvento = idEvento; }
 
-    public void setDataFine(Date dataFine) { this.dataFine = dataFine; }
 
 
-    public Date getDataInizio() {
-        return this.dataInizio;
+    public Date getData() {
+        return this.data;
     }
 
     public int getIdEvento() { return this.idEvento; }
 
-    public Date getDataFine() {
-        return this.dataFine;
-    }
 
 
 }

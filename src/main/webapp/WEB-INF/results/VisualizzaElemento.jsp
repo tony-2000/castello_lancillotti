@@ -12,14 +12,18 @@
 ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo}
 
 
+
+
 <form action="AggiungiAlCarrello">
     <input type="hidden" name="id_evento" value="${evento.idEvento}">
     <input type="hidden" name="prezzo" value="${evento.prezzo}">
-    <input type="number" name="quantita_biglietti" step="1">
-    <input type="date" name="data">
+    <input type="date" name="data" >
     <input type="time" step="1" name="orario" >
+    <input type="number" name="quantita_biglietti" step="1">
     <button type="submit" >Aggiungi </button>
 </form>
+
+
 
 <fieldset name="Recensioni">
     <legend> Recensioni</legend>
@@ -48,5 +52,10 @@ ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo}
 
 
 
+
+
 </body>
 </html>
+
+
+
