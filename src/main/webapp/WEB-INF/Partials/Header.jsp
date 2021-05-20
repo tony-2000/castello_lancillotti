@@ -1,50 +1,51 @@
 <%@ page import="model.Utente" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Title</title>
     <style>
-        ul {
+
+        ul.header {
             list-style-type: none;
-            margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #D9C6B0;
+            background-color: #d9c6b0;
+            position: fixed;
+            width: 100%;
+            margin: 0;
         }
 
-        li {
+        li.header, .dropdown{
             display: block;
-            color: #8C7C68;
+            color: #8c7c68;
             text-align: center;
             text-decoration: none;
             float:left;
         }
 
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
+
+        li a:hover {
+            animation-name: hover1;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
         }
 
-        li a:hover:not(.active) {
-            background-color: #111;
+        @keyframes hover1 {
+            from{background-color: #d9c6b0}
+        to {background-color: #b19d86
+        }
         }
 
-
-        li a, .dropbtn {
+        li a.header,.dropbtn {
             display: inline-block;
-            color: #8C7C68;
+            color: #595959;
             text-align: center;
-            padding: 14px 16px;
+            padding: 1em 1.3em;
             text-decoration: none;
         }
 
-        li a:hover, .dropdown:hover .dropbtn {
-            background-color: #111;
-        }
 
         li.dropdown {
             display: inline-block;
@@ -53,44 +54,68 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            background-color: #e9e2db;
+            min-width: 10em;
+            box-shadow: 0em 0.5em 1em 0em rgba(0,0,0,0.2);
         }
 
+        li a:hover.hover2 {
+            animation-name: hover2;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes hover2 {
+            from{background-color: #e9e2db}
+            to {background-color: #bcad9d
+            }
+        }
+
+
+       .dropdown-content {
+            animation-name: fadeIn;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeIn {
+            from{opacity: 0}
+            to {opacity: 1}
+            }
+
+
         .dropdown-content a {
-            color: #667339;
-            padding: 12px 16px;
-            text-decoration: none;
+            color: #595959;
+            padding: 0.8em 1em;
+            text-decoration:none;
             display: block;
             text-align: left;
         }
 
-        .dropdown-content a:hover {background-color: #f1f1f1;}
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
     </style>
 </head>
 <body>
 
 
-<ul>
-    <li><img src="./Images/logoBase.png" alt="logo" style="width:45px;height:45px;"></li>
-    <li><a class="active" href="./index.jsp">Home</a></li>
-    <li><a href="SulCastello.jsp">Sul Castello</a></li>
-    <li><a href="ShowAllVisits">Visite</a></li>
-    <li><a href="VisualizzaCategorie">Eventi</a></li>
-    <li><a href="RiepilogoAcquisti">Riepilogo Acquisti</a></li>
-    <li style="float:right"><a href="Carrello">Carrello</a></li>
+<ul class="header">
+    <li class="header"><img src="./Images/logoBase.png" alt="logo" style="width:3.1em;height:3.1em;"></li>
+    <li class="header"><a class="header" href="./index.jsp">Home</a></li>
+    <li class="header"><a class="header" href="SulCastello.jsp">Sul Castello</a></li>
+    <li class="header"><a class="header" href="ShowAllVisits">Visite</a></li>
+    <li class="header"><a class="header" href="VisualizzaCategorie">Eventi</a></li>
+    <li class="header"><a class="header" href="RiepilogoAcquisti">Riepilogo Acquisti</a></li>
+    <li class="header" style="float:right"><a class="header" href="Carrello">Carrello</a></li>
     <li class="dropdown" style="float:right"><a  class="dropbtn" <%if (session.getAttribute("utenteSessione")==null){%>
            style="display: none"  <%;}%>> Ciao ${utenteSessione.nome}</a>
         <div class="dropdown-content">
-            <a href="ShowProfilo"> Profilo </a>
-            <a href="Logout"> Logout</a>
-            <a href="AreaAmministratore"
+            <a class="hover2" href="ShowProfilo"> Profilo </a>
+            <a class="hover2" href="Logout"> Logout</a>
+            <a class="hover2" href="AreaAmministratore"
                     <%if(session.getAttribute("utenteSessione")!=null)
                     { Utente x= (Utente) session.getAttribute("utenteSessione");
                     if(x.isAmministratore()==false){%>
@@ -98,7 +123,7 @@
         </div>
     </li>
 
-    <li style="float:right"> <a href="Login.jsp" <%if (session.getAttribute("utenteSessione")!=null){%>
+    <li class="header"style="float:right"> <a class="header" href="Login.jsp" <%if (session.getAttribute("utenteSessione")!=null){%>
                                 style="display: none"  <%;}%>>Accedi</a></li>
 
 

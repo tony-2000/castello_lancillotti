@@ -13,11 +13,4 @@
 <link rel="apple-touch-startup-image" href="../../Images/logoBase.png">
 <meta name="theme-color" content="#000000">
 <link href="${pageContext.request.contextPath}/CSS/reset.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath}/CSS/library.css" rel="stylesheet" type="text/css">
-<c:if test="${not empty param.style}">
-    <link rel="stylesheet" href="CSS/${param.style}" type="text/css">
-</c:if>
-<script src="../../JS/library.js" defer></script>
-<c:if test="${not empty param.script}">
-    <script src="JS/${param.script}" defer></script>
-</c:if>
+<link href="${pageContext.request.contextPath}/CSS/libreria.css" rel="stylesheet" type="text/css">
