@@ -32,26 +32,25 @@ nome varchar(30) not null
 );
 
 Create Table Data(
-data_inizio date not null,
+data date not null,
 id_evento int not null,
 foreign key (id_evento) references Evento(id_evento) 
 on update cascade
 on delete cascade,
-data_fine date not null,
-primary key(data_inizio,id_evento)
+primary key(data,id_evento)
 );
 
 Create Table Orario(
 ora time not null,
-data_inizio date not null,
-foreign key(data_inizio) references Data(data_inizio)
+data date not null,
+foreign key(data) references Data(data)
 on delete cascade
 on update cascade,
 id_evento int not null,
 foreign key(id_evento) references Evento(id_evento)
 on delete cascade
 on update cascade,
-primary key(ora,data_inizio,id_evento),
+primary key(ora,data,id_evento),
 posti_disponibili int not null
 );
 
@@ -114,14 +113,14 @@ insert into Evento values
 
 
 insert into Data values
-("2020-11-30",1,"2020-12-05"),
-("2019-11-30",2,"2019-12-05"),
-("2030-11-30",1,"2030-12-05"),
-("2029-11-30",2,"2029-12-05"),
-("2014-05-30",3,"2017-06-05"),
-("2017-11-30",4,"2019-12-05"),
-("2011-11-30",5,"2012-12-05"),
-("2014-05-30",6,"2016-06-05");
+("2020-11-30",1),
+("2019-11-30",2),
+("2030-11-30",1),
+("2029-11-30",2),
+("2014-05-30",3),
+("2017-11-30",4),
+("2011-11-30",5),
+("2014-05-30",6);
 
 insert into Orario values
 ("21:30:00","2020-11-30",1,20),
