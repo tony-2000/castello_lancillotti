@@ -4,13 +4,12 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Header</title>
     <style>
 
         ul.header {
             list-style-type: none;
             padding: 0;
-            overflow: hidden;
             background-color: #d9c6b0;
             position: fixed;
             width: 100%;
@@ -23,10 +22,11 @@
             text-align: center;
             text-decoration: none;
             float:left;
+
         }
 
 
-        li a:hover {
+        li a.header:hover, a.dropbtn:hover {
             animation-name: hover1;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
@@ -34,11 +34,11 @@
 
         @keyframes hover1 {
             from{background-color: #d9c6b0}
-        to {background-color: #b19d86
-        }
+            to {background-color: #b19d86
+            }
         }
 
-        li a.header,.dropbtn {
+        li a.header, .dropbtn {
             display: inline-block;
             color: #595959;
             text-align: center;
@@ -57,6 +57,7 @@
             background-color: #e9e2db;
             min-width: 10em;
             box-shadow: 0em 0.5em 1em 0em rgba(0,0,0,0.2);
+            z-index:1;
         }
 
         li a:hover.hover2 {
@@ -72,7 +73,7 @@
         }
 
 
-       .dropdown-content {
+        .dropdown-content {
             animation-name: fadeIn;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
@@ -81,7 +82,7 @@
         @keyframes fadeIn {
             from{opacity: 0}
             to {opacity: 1}
-            }
+        }
 
 
         .dropdown-content a {
@@ -96,7 +97,6 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
     </style>
 </head>
 <body>
@@ -108,12 +108,12 @@
     <li class="header"><a class="header" href="SulCastello.jsp">Sul Castello</a></li>
     <li class="header"><a class="header" href="ShowAllVisits">Visite</a></li>
     <li class="header"><a class="header" href="VisualizzaCategorie">Eventi</a></li>
-    <li class="header"><a class="header" href="RiepilogoAcquisti">Riepilogo Acquisti</a></li>
     <li class="header" style="float:right"><a class="header" href="Carrello">Carrello</a></li>
     <li class="dropdown" style="float:right"><a  class="dropbtn" <%if (session.getAttribute("utenteSessione")==null){%>
            style="display: none"  <%;}%>> Ciao ${utenteSessione.nome}</a>
         <div class="dropdown-content">
             <a class="hover2" href="ShowProfilo"> Profilo </a>
+            <a class="hover2" href="RiepilogoAcquisti">Riepilogo Acquisti</a>
             <a class="hover2" href="Logout"> Logout</a>
             <a class="hover2" href="AreaAmministratore"
                     <%if(session.getAttribute("utenteSessione")!=null)
@@ -128,5 +128,6 @@
 
 
 </ul>
+<br><br>
 </body>
 </html>
