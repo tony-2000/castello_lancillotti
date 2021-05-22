@@ -8,17 +8,29 @@
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
-<ul>
+<div class="conteinerVisite">
     <c:forEach items="${listaCategorie}" var="lista" >
-        <li>
             <form  method="get" action="ShowAllEvents">
-                <input type="image" name="img" src="${lista.linkImmagine}" style="width:45px;height:45px;">
-                <input type="hidden" name="idCategoria" value="${lista.idCategoria}">
-            </form> ${lista.nome}
-        </li><br><br>
-        <br><br>
+                <button type="submit" class="buttonEvent" style="border: 0; background: transparent">
+                    <div class="galleriaVisite" >
+                        <img src="${lista.linkImmagine}" alt="submit"/>
+                            <input type="hidden" name="idCategoria" value="${lista.idCategoria}">
+                            <div class="descVisite">  ${lista.nome} </div>
+                    </div>
+                </button>
+            </form>
     </c:forEach>
-</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

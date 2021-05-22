@@ -35,28 +35,28 @@
     }
 </script>
 
-<div class="gallery">
-    <a target="_blank" href="img_5terre.jpg">
-        <img src="img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
+<div class="container">
+<div class="gallery" >
+    <a href="SulCastello.jsp">
+        <img src="Images/SulCastello.jpg" alt="SulCastello">
     </a>
-    <div class="desc">Add a description of the image here</div>
+    <div class="desc">Sul castello</div>
 </div>
 
 <div class="gallery">
-    <a target="_blank" href="img_forest.jpg">
-        <img src="img_forest.jpg" alt="Forest" width="600" height="400">
+    <a href="ShowAllVisits">
+        <img src="Images/visita.jpg" alt="Visite">
     </a>
-    <div class="desc">Add a description of the image here</div>
+    <div class="desc">visite </div>
 </div>
 
 <div class="gallery">
-    <a target="_blank" href="img_lights.jpg">
-        <img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
+    <a href="VisualizzaCategorie">
+        <img src="Images/eventi.jpg" alt="Eventi">
     </a>
-    <div class="desc">Add a description of the image here</div>
+    <div class="desc">eventi</div>
 </div>
-
-
+</div>
 </body>
 </html>
 

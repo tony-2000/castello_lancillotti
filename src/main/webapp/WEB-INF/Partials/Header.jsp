@@ -14,6 +14,7 @@
             position: fixed;
             width: 100%;
             margin: 0;
+            z-index: 1;
         }
 
         li.header, .dropdown{

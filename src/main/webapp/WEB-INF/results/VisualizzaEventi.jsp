@@ -8,17 +8,22 @@
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
-<ul>
+<div class="conteinerVisite">
     <c:forEach items="${listaEventi}" var="evento" >
-        <li>
-            <form  method="get" action="MostraEvento">
-                <input type="image" name="img" src="${evento.linkImmagine}" style="width:45px;height:45px;">
-                <input type="hidden" name="idEvento" value="${evento.idEvento}">
-            </form> ${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo}
-        </li><br><br>
-        <br><br>
+        <form action="MostraEvento">
+            <button type="submit" class="buttonEvent" style="border: 0; background: transparent">
+                <div class="galleriaVisite" >
+                    <img src="${evento.linkImmagine}" alt="submit"/>
+                    <input type="hidden" name="idEvento" value="${evento.idEvento}">
+                    <div class="descVisite">  ${evento.nome} </div>
+                </div>
+            </button>
+        </form>
     </c:forEach>
-</ul>
+</div>
+
+
+
 
 </body>
 </html>

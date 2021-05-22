@@ -6,6 +6,7 @@ body {
     color:#595959;
     font-family:"Book Antiqua","Georgia" ,serif;
     font-size: 1.2em;
+    overflow: auto;
 }
 
 /*HOME*/
@@ -21,19 +22,26 @@ img.homeSlides{
 }
 
 
+
+div.container{
+    width: 100%;
+   margin: 0.5%;
+}
+
 div.gallery {
-    margin: 5px;
+    margin: 2%;
     border: 1px solid #ccc;
     float: left;
-    width: 180px;
+    width: 29%;
+    height: auto;
 }
 
 div.gallery:hover {
-    border: 1px solid #777;
+    opacity: 50%;
 }
 
 div.gallery img {
-    width: 30%;
+    width: 100%;
     height: auto;
 }
 
@@ -42,5 +50,44 @@ div.desc {
     text-align: center;
 }
 
+/*Visualizza Visite-Eventi-Categorie*/
 
 
+div.conteinerVisite{
+    width: 100%;
+    margin: 0.5%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: black 5px;
+}
+
+button.buttonEvent{
+    width: auto;
+    height: auto;
+}
+
+
+div.galleriaVisite {
+    margin: auto;
+    border: 3px solid black;
+    width: 100%;
+    height: auto;
+    z-index: -1 ;
+    position: relative;
+}
+
+div.galleriaVisite:hover {
+    opacity: 50%;
+}
+
+div.galleriaVisite img {
+    width: 100%;
+    height: auto;
+}
+
+div.descVisite {
+    padding: 3%;
+    text-align: center;
+}
