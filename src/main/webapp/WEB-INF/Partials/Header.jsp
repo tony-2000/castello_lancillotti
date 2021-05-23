@@ -15,6 +15,11 @@
             width: 100%;
             margin: 0;
             z-index: 1;
+            height: auto;
+        }
+
+        li{
+            font-size: 100%;
         }
 
         li.header, .dropdown{
@@ -45,6 +50,7 @@
             text-align: center;
             padding: 1em 1.3em;
             text-decoration: none;
+            cursor: pointer;
         }
 
 
@@ -98,6 +104,7 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
     </style>
 </head>
 <body>

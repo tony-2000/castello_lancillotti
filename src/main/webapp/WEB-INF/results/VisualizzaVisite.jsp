@@ -2,28 +2,30 @@
 <%@ page import="model.Evento" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
-    <title>Title</title>
+    <title>Visualizza Visite</title>
 </head>
 <body>
-<jsp:include page="../Partials/Header.jsp"/><br><br>
+<jsp:include page="../Partials/Header.jsp"/>
+
+<div class="title"><h1> Visite</h1></div>
 <div class="conteinerVisite">
     <c:forEach items="${listaVisite}" var="visita" >
-        <form action="MostraEvento">
-            <button type="submit" class="buttonEvent" style="border: 0; background: transparent">
+        <form action="MostraEvento" >
                 <div class="galleriaVisite" >
-                <img src="${visita.linkImmagine}" alt="submit"/>
-                    <input type="hidden" name="idEvento" value="${visita.idEvento}">
-                    <div class="descVisite">  ${visita.nome} </div>
-            </div>
+                    <button type="submit" style="border: 0; background: transparent" >
+                        <img src="${visita.linkImmagine}" alt="Immagine Visita"/>
+                         <input type="hidden" name="idEvento" value="${visita.idEvento}">
+                        <div class="descVisite">  ${visita.nome} </div>
             </button>
+            </div>
+
         </form>
     </c:forEach>
 </div>
-
-
 </body>
 </html>
 

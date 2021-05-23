@@ -45,7 +45,9 @@ public class MostraEvento extends HttpServlet
             if (checkRecensione) {
                 for (Recensione x : list) {
                     if (x.getIdUtente() == idUtente)
+                    {
                         Collections.swap(list, 0, list.indexOf(x));
+                    }
                 }
 
             }
@@ -71,6 +73,13 @@ public class MostraEvento extends HttpServlet
             {
                 if(x.getIdUtente()==y.getIdUtente())
                     x.setNome(y.getNomeUtente());
+            }
+        }
+        if(session.getAttribute("utenteSessione")!=null)
+        {
+            if(checkRecensione)
+            {
+                support.get(0).setNome("Questa è la tua recensione: "+support.get(0).getNome());
             }
         }
         request.setAttribute("checkRecensione",checkRecensione);

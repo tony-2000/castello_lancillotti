@@ -24,7 +24,7 @@ public class Registrazione extends HttpServlet
         String nome = request.getParameter("nome");
         String cognome = request.getParameter("cognome");
         String telefono = request.getParameter("telefono");
-        String url="/WEB-INF/results/Login.jsp";
+        String url="Login.jsp";
 
         int checkUsername=Check.usernameIsValid(username);
         int checkPass=Check.passwordIsValid(password,passwordCheck);
@@ -47,7 +47,7 @@ public class Registrazione extends HttpServlet
         }
         else
         {
-            url="/WEB-INF/results/Registrazione.jsp";
+            url="Registrazione.jsp";
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);

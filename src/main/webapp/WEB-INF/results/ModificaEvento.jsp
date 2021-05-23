@@ -1,9 +1,7 @@
-<%@ page import="model.Evento" %>
-<%@ page import="model.Categoria" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
     <title>Modifica Evento</title>
@@ -11,7 +9,7 @@
 <body>
 
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-<img alt="img" src="${evento.linkImmagine}" style="width:45px;height:45px;" >
+<img alt="immagine Evento" src="${evento.linkImmagine}" style="width:45px;height:45px;" >
 <form action="ModificaEvento" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
     <input type="hidden" name="link" value="${evento.linkImmagine}">

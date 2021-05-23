@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
-    <title>Title</title>
+    <title>Riepilogo Acquisti</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>

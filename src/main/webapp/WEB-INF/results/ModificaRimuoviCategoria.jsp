@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
     <title>Modifica o Rimuovi Categorie</title>
@@ -14,7 +14,7 @@
 <ul>
     <c:forEach items="${categoria}" var="categoria" >
         <li>
-            <img alt="img" src="${categoria.linkImmagine}" style="width:45px;height:45px;">
+            <img alt="Immagine Categoria" src="${categoria.linkImmagine}" style="width:45px;height:45px;">
             <form  method="get" action="ToModificaCategoria">
                 <input type="hidden" name="idCategoria" value="${categoria.idCategoria}">
                 <button type="submit">Modifica</button>

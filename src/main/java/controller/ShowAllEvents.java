@@ -31,6 +31,9 @@ public class ShowAllEvents extends HttpServlet
         int id=Integer.parseInt(request.getParameter("idCategoria"));
         ArrayList<Evento> lista = (ArrayList<Evento>) dao.doRetrieveEventsByCatId(id);
         request.setAttribute("listaEventi", lista);
+        CategoriaDAO catdao=new CategoriaDAO();
+        String nome=catdao.doRetrieveCategoriesByKey(id).getNome();
+        request.setAttribute("nomeCat", nome);
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

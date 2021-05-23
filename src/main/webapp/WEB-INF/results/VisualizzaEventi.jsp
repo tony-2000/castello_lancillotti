@@ -1,29 +1,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
-    <title>Title</title>
+    <title>Visualizza Eventi</title>
 </head>
 <body>
-<jsp:include page="../Partials/Header.jsp"/><br><br>
-
+<jsp:include page="../Partials/Header.jsp"/>
+<div class="title"><h1>${nomeCat}</h1></div>
 <div class="conteinerVisite">
     <c:forEach items="${listaEventi}" var="evento" >
         <form action="MostraEvento">
-            <button type="submit" class="buttonEvent" style="border: 0; background: transparent">
+
                 <div class="galleriaVisite" >
-                    <img src="${evento.linkImmagine}" alt="submit"/>
+                    <button type="submit"  style="border: 0; background: transparent">
+                    <img src="${evento.linkImmagine}" alt="Immagine Evento"/>
                     <input type="hidden" name="idEvento" value="${evento.idEvento}">
                     <div class="descVisite">  ${evento.nome} </div>
+                    </button>
                 </div>
-            </button>
+
         </form>
     </c:forEach>
 </div>
-
-
-
-
 </body>
 </html>

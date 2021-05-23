@@ -2,10 +2,11 @@
 <%@ page import="model.Partecipare" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
 <jsp:include page="../Partials/head.jsp"/>
-    <title>Title</title>
+    <title>Carrello</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
@@ -14,7 +15,7 @@
 <ul>
     <c:forEach items="${carrello}" var="lista">
 
-        <img src="${lista.link}" name="imgEvento" style="width:45px;height:45px;" alt="img">
+        <img src="${lista.link}" alt="immagine Evento" style="width:45px;height:45px;">
 
         ${lista.nome} ${lista.quantitaBiglietti}  ${lista.dataPartecipazione}
         ${lista.orarioPartecipazione} ${lista.prezzo} ${lista.idEvento}

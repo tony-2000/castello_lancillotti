@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
     <title>Modifica o rimuovi evento</title>
@@ -12,7 +12,7 @@
 <ul>
     <c:forEach items="${eventi}" var="evento" >
         <li>
-            <img alt="img" src="${evento.linkImmagine}" style="width:45px;height:45px;">
+            <img alt="Immagine Evento" src="${evento.linkImmagine}" style="width:45px;height:45px;">
             <form  method="get" action="ToModificaEvento">
                 <input type="hidden" name="idEvento" value="${evento.idEvento}">
                 <button type="submit">Modifica</button>

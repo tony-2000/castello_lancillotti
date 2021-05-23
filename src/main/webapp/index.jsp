@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <title>Home Page</title>
     <jsp:include page="WEB-INF/Partials/head.jsp">
@@ -10,12 +10,12 @@
 <body>
 <jsp:include page="WEB-INF/Partials/Header.jsp"/>
 <div class="homeSlideshow">
-    <img class="homeSlides" src="Images/SlideShow5.jpg" alt="homeSlide1">
-    <img class="homeSlides" src="Images/SlideShow6.jpg" alt="homeSlide2">
-    <img class="homeSlides" src="Images/SlideShow4.jpg" alt="homeSlide3">
-    <img class="homeSlides" src="Images/SlideShow3.jpg" alt="homeSlide4">
-    <img class="homeSlides" src="Images/SlideShow1.jpg" alt="homeSlide5">
-    <img class="homeSlides" src="Images/SlideShow2.jpg" alt="homeSlide6">
+    <img class="homeSlides" src="Images/SlideShow5.jpg" alt="home Slide 1">
+    <img class="homeSlides" src="Images/SlideShow6.jpg" alt="home Slide 2">
+    <img class="homeSlides" src="Images/SlideShow4.jpg" alt="home Slide 3">
+    <img class="homeSlides" src="Images/SlideShow3.jpg" alt="home Slide 4">
+    <img class="homeSlides" src="Images/SlideShow1.jpg" alt="home Slide 5">
+    <img class="homeSlides" src="Images/SlideShow2.jpg" alt="home Slide 6">
 </div>
 
 <script>
@@ -31,30 +31,30 @@
         myIndex++;
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 5000);
+        setTimeout(carousel, 10000);
     }
 </script>
 
 <div class="container">
 <div class="gallery" >
-    <a href="SulCastello.jsp">
-        <img src="Images/SulCastello.jpg" alt="SulCastello">
+    <a href="SulCastello.jsp" style="text-decoration: none">
+        <img src="Images/SulCastello.jpg" alt="Immagine Sul Castello">
+        <div class="desc">Sul castello</div>
     </a>
-    <div class="desc">Sul castello</div>
+</div>
+
+<div class="gallery" >
+    <a href="ShowAllVisits" style="text-decoration: none">
+        <img src="Images/visita.jpg" alt="Immagine Visite">
+        <div class="desc">Visite </div>
+    </a>
 </div>
 
 <div class="gallery">
-    <a href="ShowAllVisits">
-        <img src="Images/visita.jpg" alt="Visite">
+    <a href="VisualizzaCategorie" style="text-decoration: none">
+        <img src="Images/eventi.jpg" alt="Immagine Eventi">
+        <div class="desc">Eventi</div>
     </a>
-    <div class="desc">visite </div>
-</div>
-
-<div class="gallery">
-    <a href="VisualizzaCategorie">
-        <img src="Images/eventi.jpg" alt="Eventi">
-    </a>
-    <div class="desc">eventi</div>
 </div>
 </div>
 </body>

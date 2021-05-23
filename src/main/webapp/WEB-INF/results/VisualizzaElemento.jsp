@@ -1,57 +1,86 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
-    <title>Title</title>
+    <title>Visualizza Elemento</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
-<img src="${evento.linkImmagine}" name="imgEvento" style="width:45px;height:45px;">
+<div class="containerElemento">
 
-${evento.nome} ${evento.descrizione} &nbsp; ${evento.prezzo}
-
-
+    <h1 style="text-align: center; font-size: 250%">${evento.nome}</h1>
 
 
+        <img src="${evento.linkImmagine}" alt="immagine Evento">
+
+
+    <div class="descrizioneElemento">
+        ${evento.descrizione} &nbsp;
+    <br><p style="text-align: right"> Prezzo: ${evento.prezzo} €</p>
+    </div>
+
+    <div class="scegliElemento">
 <form action="AggiungiAlCarrello">
     <input type="hidden" name="id_evento" value="${evento.idEvento}">
     <input type="hidden" name="prezzo" value="${evento.prezzo}">
-    <input type="date" name="data" >
-    <input type="time" step="1" name="orario" >
-    <input type="number" name="quantita_biglietti" step="1">
-    <button type="submit" >Aggiungi </button>
+    <label id="data">Seleziona data:
+    <input type="date" name="data" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </label>
+    <label id="orario">Seleziona orario:
+    <input type="time" step="1" name="orario" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </label>
+    <label id="quantita_biglietti">Seleziona numero di biglietti:
+    <input type="number" name="quantita_biglietti" step="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </label>
+    <button type="submit" >Aggiungi al Carrello </button>
 </form>
+</div>
+
+</div>
 
 
+<div class="recensioni">
+<fieldset name="Recensioni" style=" border-radius: 5%;">
+    <legend style="font-size: 200%"> Recensioni</legend>
 
-<fieldset name="Recensioni">
-    <legend> Recensioni</legend>
+
     <form action="AggiungiRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <input type="number" name="valutazione" step="1" min="1" max="5">
-        <input type="text" name="commento" maxlength="500">
-        <button type="submit"> Aggiungi Commento </button>
-    </form>
-
-    <form action="ToModificaRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
-        <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <button type="submit"> Modifica Commento </button>
+        <label id="commento">La tua recensione:
+        <input type="text" name="commento" maxlength="200" style="width: 85%">
+        </label><br><br>
+        <label id="valutazione">Valutazione:
+            <input type="number" name="valutazione" step="1" min="1" max="5">
+        </label>
+        <button type="submit" style="float:right; margin-right: 1%"> Aggiungi Recensione </button><br><br>
     </form>
 
     <form action="EliminaRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <button type="submit"> Elimina Commento </button>
+        <button type="submit" style="float:right"> Elimina Recensione </button>
     </form>
 
+    <form action="ToModificaRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
+        <input type="hidden" name="idEvento" value="${evento.idEvento}">
+        <button type="submit" style="float:right"> Modifica Recensione </button><br><br>
+    </form>
+
+
     <c:forEach items="${recensioni}" var="recensioni" >
-        <li>${recensioni.nome} ${recensioni.valutazione} ${recensioni.commento} ${recensioni.dataRecensione} ${recensioni.orarioRecensione}</li>
+    <fieldset name="Recensioni" style=" border-radius: 5%;">
+        <legend style="font-size: 120%">${recensioni.nome} </legend>
+        <div class="commento">
+        <li style="list-style-type: none; padding-left: 2%; padding-right: 2%">  ${recensioni.commento}&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Valutazione:&nbsp;${recensioni.valutazione}/5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Data:&nbsp;${recensioni.dataRecensione}&nbsp;&nbsp;alle:&nbsp;${recensioni.orarioRecensione}</li>
+        </div>
+    </fieldset>
     <br><br>
     </c:forEach>
 </fieldset>
-
-
-
+</div>
 
 
 </body>
