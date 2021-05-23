@@ -45,6 +45,28 @@ public class Carrello extends HttpServlet
             PartecipareDAO dao=new PartecipareDAO();
             List<Partecipare> carrello= dao.doRetrieveShoppingCart(utente.getIdUtente());
             cart= (ArrayList<Partecipare>) carrello;
+            boolean checkBiglietti=true;
+            boolean checkData=true;
+            boolean checkOra=true;
+            OrarioDAO orariodao=new OrarioDAO();
+            Orario orario=new Orario();
+            ArrayList<Partecipare> tempcart= (ArrayList<Partecipare>) cart.clone();
+            for(Partecipare x:tempcart)
+            {
+                orario=orariodao.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
+                if(x.getQuantitaBiglietti()>orario.getPostiDisponibili())
+                {
+                    checkBiglietti=false;
+                    dao.doDelete(x.getIdUtente(),x.getIdEvento(),x.getDataPartecipazione(),x.getOrarioPartecipazione());
+                    cart.remove(x);
+                }
+                else if(System.currentTimeMillis()>orario.getData().getTime())
+                {
+                    checkData=false;
+                    dao.doDelete(x.getIdUtente(),x.getIdEvento(),x.getDataPartecipazione(),x.getOrarioPartecipazione());
+                    cart.remove(x);
+                }
+            }
         }
         ArrayList<CartElement> cartElements=new ArrayList<>();
         ArrayList<Evento> eventi=new ArrayList<>();

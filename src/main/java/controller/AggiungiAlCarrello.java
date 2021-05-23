@@ -26,36 +26,57 @@ public class AggiungiAlCarrello extends HttpServlet
     }
 
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        Partecipare prodotto= new Partecipare();
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Partecipare prodotto = new Partecipare();
         prodotto.setIdUtente(0);
         prodotto.setIdEvento(Integer.parseInt(request.getParameter("id_evento")));
         prodotto.setQuantitaBiglietti(Integer.parseInt(request.getParameter("quantita_biglietti")));
         prodotto.setDataPartecipazione(Date.valueOf(request.getParameter("data")));
         prodotto.setOrarioPartecipazione(Time.valueOf(request.getParameter("orario")));
         prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
-        HttpSession session=request.getSession();
-        if(session.getAttribute("utenteSessione")==null)
-        {
-            if(session.getAttribute("carrello")==null)
-            {
-                ArrayList<Partecipare> carrello=new ArrayList<>();
-                session.setAttribute("carrello",carrello);
+        HttpSession session = request.getSession();
+        if (session.getAttribute("utenteSessione") == null) {
+            if (session.getAttribute("carrello") == null) {
+                ArrayList<Partecipare> carrello = new ArrayList<>();
+                session.setAttribute("carrello", carrello);
             }
-            ArrayList<Partecipare> temp= (ArrayList<Partecipare>) session.getAttribute("carrello");
-            temp.add(prodotto);
-            session.setAttribute("carrello",temp);
+            ArrayList<Partecipare> temp = (ArrayList<Partecipare>) session.getAttribute("carrello");
+            ArrayList<Partecipare> scorri= (ArrayList<Partecipare>) temp.clone();
+
+            for (Partecipare x : scorri)
+            {
+                if (x.getIdEvento() == prodotto.getIdEvento() && x.getDataPartecipazione().equals(prodotto.getDataPartecipazione())
+                        && x.getOrarioPartecipazione().equals(prodotto.getOrarioPartecipazione()))
+                {
+                    int ticket = prodotto.getQuantitaBiglietti() + x.getQuantitaBiglietti();
+                    prodotto.setQuantitaBiglietti(ticket);
+                    temp.remove(x);
+                }
+            }
+                temp.add(prodotto);
+                session.setAttribute("carrello", temp);
         }
+
         else
-        {
-            Utente user= (Utente) session.getAttribute("utenteSessione");
+            {
+            Utente user = (Utente) session.getAttribute("utenteSessione");
             prodotto.setIdUtente(user.getIdUtente());
-            PartecipareDAO dao=new PartecipareDAO();
-            dao.doSave(prodotto);
+            PartecipareDAO dao = new PartecipareDAO();
+            ArrayList<Partecipare> temp = (ArrayList<Partecipare>) dao.doRetrieveShoppingCart(user.getIdUtente());
+            for (Partecipare x : temp) {
+               if (x.getIdEvento() == prodotto.getIdEvento() && x.getDataPartecipazione().equals(prodotto.getDataPartecipazione())
+                        && x.getOrarioPartecipazione().equals(prodotto.getOrarioPartecipazione()))
+                {
+                    int ticket = prodotto.getQuantitaBiglietti() + x.getQuantitaBiglietti();
+                    prodotto.setQuantitaBiglietti(ticket);
+                    dao.doDelete(prodotto.getIdUtente(), prodotto.getIdEvento(), prodotto.getDataPartecipazione(), prodotto.getOrarioPartecipazione());
+                }
+            }
+                dao.doSave(prodotto);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
 }
+
 

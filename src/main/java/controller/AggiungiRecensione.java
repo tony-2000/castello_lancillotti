@@ -92,6 +92,15 @@ public class AggiungiRecensione extends HttpServlet
                         x.setNome(y.getNomeUtente());
                 }
             }
+
+            if(session.getAttribute("utenteSessione")!=null)
+            {
+                if(checkRecensione)
+                {
+                    support.get(0).setNome("Questa è la tua recensione: "+support.get(0).getNome());
+                }
+            }
+
             request.setAttribute("checkRecensione",checkRecensione);
             request.setAttribute("recensioni",support);
         }

@@ -23,6 +23,8 @@
 
         <form action="RimuoviDalCarrello">
             <input type="hidden" name="id_evento" value="${lista.idEvento}">
+            <input type="hidden" name="data" value="${lista.dataPartecipazione}">
+            <input type="hidden" name="ora" value="${lista.orarioPartecipazione}">
             <button type="submit"> Rimuovi dal Carrello</button>
         </form>
         <br><br><br>
@@ -31,6 +33,11 @@
 </ul>
 
 
+
+<form action="Acquista" method="get" <%if (session.getAttribute("utenteSessione")==null){%>
+      style="display: none"  <%;}%>>
+    <button type="submit">Acquista</button>
+</form>
 
 </body>
 </html>

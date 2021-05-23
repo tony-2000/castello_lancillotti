@@ -19,7 +19,7 @@
 
     <div class="descrizioneElemento">
         ${evento.descrizione} &nbsp;
-    <br><p style="text-align: right"> Prezzo: ${evento.prezzo} €</p>
+    <br><p style="text-align: right"> Prezzo: ${evento.prezzo} € (a persona)</p>
     </div>
 
     <div class="scegliElemento">
@@ -30,7 +30,7 @@
     <input type="date" name="data" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </label>
     <label id="orario">Seleziona orario:
-    <input type="time" step="1" name="orario" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="time" step="1" name="orario">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </label>
     <label id="quantita_biglietti">Seleziona numero di biglietti:
     <input type="number" name="quantita_biglietti" step="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,16 +49,16 @@
 
     <form action="AggiungiRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <label id="commento">La tua recensione:
-        <input type="text" name="commento" maxlength="200" style="width: 85%">
-        </label><br><br>
+        <label id="commento">La tua recensione:<br>
+            <textarea name="commento" maxlength="200" cols="100" rows="2" style="resize: none"></textarea>
+        </label><br>
         <label id="valutazione">Valutazione:
-            <input type="number" name="valutazione" step="1" min="1" max="5">
+            <input type="number" name="valutazione" step="1" min="1" max="5"style="margin-right: 3%">
         </label>
-        <button type="submit" style="float:right; margin-right: 1%"> Aggiungi Recensione </button><br><br>
+        <button type="submit" style="margin-right: 2%"> Aggiungi Recensione </button><br><br>
     </form>
 
-    <form action="EliminaRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
+    <form action="EliminaRecensione"  method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <button type="submit" style="float:right"> Elimina Recensione </button>
     </form>

@@ -98,6 +98,24 @@ public class OrarioDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void doUpdate(Orario temp )
+    {
+        try (Connection con = ConPool.getConnection())
+        {
+            PreparedStatement ps = con.prepareStatement("UPDATE orario SET posti_disponibili=? " +
+                            "WHERE id_evento=? AND data=? AND ora=? ",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, temp.getPostiDisponibili());
+            ps.setInt(2, temp.getIdEvento());
+            ps.setDate(3, temp.getData());
+            ps.setTime(4, temp.getOra());
+            ps.executeUpdate();
+
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
-   // public void doUpdate(Orario temp )  NON IMPLEMENTABILE

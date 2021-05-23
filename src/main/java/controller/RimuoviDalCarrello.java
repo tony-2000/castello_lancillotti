@@ -28,6 +28,8 @@ public class RimuoviDalCarrello extends HttpServlet
     {
         HttpSession session=request.getSession();
         int idEvento= Integer.parseInt((String) request.getParameter("id_evento"));
+        Date data= Date.valueOf(request.getParameter("data"));
+        Time ora= Time.valueOf(request.getParameter("ora"));
         if(session.getAttribute("utenteSessione")==null)
         {
             ArrayList<Partecipare> temp= (ArrayList<Partecipare>) session.getAttribute("carrello");
@@ -47,7 +49,7 @@ public class RimuoviDalCarrello extends HttpServlet
         {
             Utente user= (Utente) session.getAttribute("utenteSessione");
             PartecipareDAO dao=new PartecipareDAO();
-            dao.doDelete(user.getIdUtente(),idEvento);
+            dao.doDelete(user.getIdUtente(),idEvento,data,ora);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
