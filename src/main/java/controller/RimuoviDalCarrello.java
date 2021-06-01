@@ -49,7 +49,7 @@ public class RimuoviDalCarrello extends HttpServlet
         {
             Utente user= (Utente) session.getAttribute("utenteSessione");
             PartecipareDAO dao=new PartecipareDAO();
-            dao.doDelete(user.getIdUtente(),idEvento,data,ora);
+            dao.doDelete(user.getIdUtente(),idEvento,data,ora,false);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);

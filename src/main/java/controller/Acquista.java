@@ -25,6 +25,7 @@ public class Acquista extends HttpServlet
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        int temporal=0;
         boolean TicketOut=false;
         String url="/WEB-INF/results/RiepilogoAcquisti.jsp";
         HttpSession session=request.getSession();
@@ -40,13 +41,28 @@ public class Acquista extends HttpServlet
             OrarioDAO daoTemp=new OrarioDAO();
             PartecipareDAO part=new PartecipareDAO();
             Orario temp=new Orario();
+            Utente utente = (Utente) session.getAttribute("utenteSessione");
+            PartecipareDAO daoPartecipare=new PartecipareDAO();
+            ArrayList<Partecipare> acquisti = (ArrayList<Partecipare>) daoPartecipare.doRetrievePurchases(utente.getIdUtente());
             for(Partecipare x: carrello)
             {
+                temporal=x.getQuantitaBiglietti();
                temp=daoTemp.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
-               if(temp.getPostiDisponibili()-x.getQuantitaBiglietti()>0)
+               for(Partecipare y:acquisti)
+               {
+                   if(x.getIdEvento()==y.getIdEvento() && x.getIdUtente()==y.getIdUtente()
+                           && x.getDataPartecipazione().equals(y.getDataPartecipazione()) && x.getOrarioPartecipazione().equals(y.getOrarioPartecipazione()))
+                   {
+                       temporal=y.getQuantitaBiglietti()+x.getQuantitaBiglietti();
+                       daoPartecipare.doDelete(y.getIdUtente(),y.getIdEvento(),y.getDataPartecipazione(),y.getOrarioPartecipazione(),y.isAcquistato());
+                   }
+               }
+               if(temp.getPostiDisponibili()-x.getQuantitaBiglietti()>=0)
                {
                    temp.setPostiDisponibili(temp.getPostiDisponibili()-x.getQuantitaBiglietti());
                    daoTemp.doUpdate(temp);
+                   x.setQuantitaBiglietti(temporal);
+                   daoPartecipare.doUpdate(x);
                    x.setAcquistato(true);
                    part.doBuy(x);
                }
@@ -56,12 +72,7 @@ public class Acquista extends HttpServlet
                    url="index.jsp";
                }
             }
-
-            ArrayList<Partecipare> lista = new ArrayList<>();
-            Utente utente = (Utente) session.getAttribute("utenteSessione");
-            PartecipareDAO daoPartecipare = new PartecipareDAO();
-            List<Partecipare> acquisti = daoPartecipare.doRetrievePurchases(utente.getIdUtente());
-            lista = (ArrayList<Partecipare>) acquisti;
+            ArrayList<Partecipare> lista = (ArrayList<Partecipare>) daoPartecipare.doRetrievePurchases(utente.getIdUtente());
             ArrayList<CartElement> cartElements = new ArrayList<>();
             ArrayList<Evento> eventi = new ArrayList<>();
             EventoDAO eventidao = new EventoDAO();

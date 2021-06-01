@@ -20,7 +20,7 @@
 <form action="Registrazione" method="post">
 
     <label for="nomeID"> Nome:<br>
-    <input type="text" name="nome" id="nomeID" minlength="2" maxlength="30">
+    <input type="text" name="nome" id="nomeID" minlength="2" maxlength="20">
     </label><br>
 
     <label for="cognomeID"> Cognome:<br>

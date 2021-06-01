@@ -28,14 +28,15 @@ public class PartecipareDAO {
         }
     }
 
-    public List<Partecipare> doRetrievePartecipationsByKey(int idUtente, int idEvento, Date data, Time orario) throws NumberFormatException {
+    public List<Partecipare> doRetrievePartecipationsByKey(int idUtente, int idEvento, Date data, Time orario,boolean acquistato) throws NumberFormatException {
         List<Partecipare> list = new ArrayList<Partecipare>();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM partecipare WHERE id_utente=? AND id_evento=? AND data_partecipazione=? AND orario_partecipazione=?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM partecipare WHERE id_utente=? AND id_evento=? AND data_partecipazione=? AND orario_partecipazione=? AND acquistato=?");
             ps.setInt(1, idUtente);
             ps.setInt(2, idEvento);
             ps.setDate(3, data);
             ps.setTime(4, orario);
+            ps.setBoolean(5, acquistato);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Partecipare p = new Partecipare();
@@ -76,15 +77,16 @@ public class PartecipareDAO {
         }
     }
 
-    public void doDelete(int id, int id2, Date data, Time orario) {
+    public void doDelete(int idUtente, int idEvento, Date data, Time orario, boolean acquistato) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement
-                    ("Delete FROM partecipare WHERE id_utente=? and id_evento=? and data_partecipazione=? and orario_partecipazione=?",
+                    ("Delete FROM partecipare WHERE id_utente=? and id_evento=? and data_partecipazione=? and orario_partecipazione=? and acquistato=?",
                             Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, id);
-            ps.setInt(2, id2);
+            ps.setInt(1, idUtente);
+            ps.setInt(2, idEvento);
             ps.setDate(3, data);
             ps.setTime(4, orario);
+            ps.setBoolean(5, acquistato);
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("INSERT error.");
             }
@@ -96,7 +98,7 @@ public class PartecipareDAO {
     public void doUpdate(Partecipare temp) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE partecipare SET quantita_biglietti=?,prezzo=? " +
-                            " WHERE id_utente=? AND id_evento=? AND data_partecipazione=? AND orario_partecipazione=?",
+                            " WHERE id_utente=? AND id_evento=? AND data_partecipazione=? AND orario_partecipazione=? and acquistato=?",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, temp.getQuantitaBiglietti());
             ps.setFloat(2, temp.getPrezzo());
@@ -104,6 +106,7 @@ public class PartecipareDAO {
             ps.setInt(4, temp.getIdEvento());
             ps.setDate(5, temp.getDataPartecipazione());
             ps.setTime(6, temp.getOrarioPartecipazione());
+            ps.setBoolean(7, temp.isAcquistato());
             ps.executeUpdate();
 
         } catch (SQLException e) {

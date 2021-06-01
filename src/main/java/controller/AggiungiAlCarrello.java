@@ -35,8 +35,10 @@ public class AggiungiAlCarrello extends HttpServlet
         prodotto.setOrarioPartecipazione(Time.valueOf(request.getParameter("orario")));
         prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
         HttpSession session = request.getSession();
-        if (session.getAttribute("utenteSessione") == null) {
-            if (session.getAttribute("carrello") == null) {
+        if (session.getAttribute("utenteSessione") == null)
+        {
+            if (session.getAttribute("carrello") == null)
+            {
                 ArrayList<Partecipare> carrello = new ArrayList<>();
                 session.setAttribute("carrello", carrello);
             }
@@ -69,7 +71,7 @@ public class AggiungiAlCarrello extends HttpServlet
                 {
                     int ticket = prodotto.getQuantitaBiglietti() + x.getQuantitaBiglietti();
                     prodotto.setQuantitaBiglietti(ticket);
-                    dao.doDelete(prodotto.getIdUtente(), prodotto.getIdEvento(), prodotto.getDataPartecipazione(), prodotto.getOrarioPartecipazione());
+                    dao.doDelete(prodotto.getIdUtente(), prodotto.getIdEvento(), prodotto.getDataPartecipazione(), prodotto.getOrarioPartecipazione(),prodotto.isAcquistato());
                 }
             }
                 dao.doSave(prodotto);

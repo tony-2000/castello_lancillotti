@@ -11,7 +11,7 @@
 
 <div class="containerElemento">
 
-    <h1 style="text-align: center; font-size: 250%">${evento.nome}</h1>
+    <h1 style="text-align: center; font-size: 250% ">${evento.nome}</h1>
 
 
         <img src="${evento.linkImmagine}" alt="immagine Evento">
@@ -43,7 +43,7 @@
 
 
 <div class="recensioni">
-<fieldset name="Recensioni" style=" border-radius: 5%;">
+<fieldset name="Recensioni" style=" border-radius: 5%; margin-bottom: 2%;margin-right: 2%;margin-left: 2%">
     <legend style="font-size: 200%"> Recensioni</legend>
 
 

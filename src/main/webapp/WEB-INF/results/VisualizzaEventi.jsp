@@ -8,7 +8,7 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/>
-<div class="title"><h1>${nomeCat}</h1></div>
+<div class="title"><h1 style="margin-bottom: 2%">${nomeCat}</h1></div>
 <div class="conteinerVisite">
     <c:forEach items="${listaEventi}" var="evento" >
         <form action="MostraEvento">

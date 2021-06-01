@@ -11,7 +11,7 @@
 <h1> Modifica dati personali</h1>
 <form action="AggiornaProfilo" method="post">
     <label for="nome"> Nome:
-    <input type="text" name="nome" id="nome" minlength="2" maxlength="30" value="${sessionScope.utenteSessione.nome}">
+    <input type="text" name="nome" id="nome" minlength="2" maxlength="20" value="${sessionScope.utenteSessione.nome}">
     </label><br>
     <label for="cognome">Cognome:
     <input type="text" name="cognome" id="cognome" minlength="2" maxlength="30" value="${sessionScope.utenteSessione.cognome}">

@@ -38,16 +38,8 @@ public class Carrello extends HttpServlet
 
             ArrayList<Partecipare> carrello= (ArrayList<Partecipare>) session.getAttribute("carrello");
             cart= carrello;
-        }
-        else
-        {
-            Utente utente = (Utente) session.getAttribute("utenteSessione");
-            PartecipareDAO dao=new PartecipareDAO();
-            List<Partecipare> carrello= dao.doRetrieveShoppingCart(utente.getIdUtente());
-            cart= (ArrayList<Partecipare>) carrello;
             boolean checkBiglietti=true;
             boolean checkData=true;
-            boolean checkOra=true;
             OrarioDAO orariodao=new OrarioDAO();
             Orario orario=new Orario();
             ArrayList<Partecipare> tempcart= (ArrayList<Partecipare>) cart.clone();
@@ -57,13 +49,41 @@ public class Carrello extends HttpServlet
                 if(x.getQuantitaBiglietti()>orario.getPostiDisponibili())
                 {
                     checkBiglietti=false;
-                    dao.doDelete(x.getIdUtente(),x.getIdEvento(),x.getDataPartecipazione(),x.getOrarioPartecipazione());
                     cart.remove(x);
                 }
+
                 else if(System.currentTimeMillis()>orario.getData().getTime())
                 {
                     checkData=false;
-                    dao.doDelete(x.getIdUtente(),x.getIdEvento(),x.getDataPartecipazione(),x.getOrarioPartecipazione());
+                    cart.remove(x);
+                }
+            }
+        }
+        else
+        {
+            Utente utente = (Utente) session.getAttribute("utenteSessione");
+            PartecipareDAO dao=new PartecipareDAO();
+            List<Partecipare> carrello= dao.doRetrieveShoppingCart(utente.getIdUtente());
+            cart= (ArrayList<Partecipare>) carrello;
+            boolean checkBiglietti=true;
+            boolean checkData=true;
+            OrarioDAO orariodao=new OrarioDAO();
+            Orario orario=new Orario();
+            ArrayList<Partecipare> tempcart= (ArrayList<Partecipare>) cart.clone();
+            for(Partecipare x:tempcart)
+            {
+                orario=orariodao.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
+                if(x.getQuantitaBiglietti()>orario.getPostiDisponibili())
+                {
+                    checkBiglietti=false;
+                    dao.doDelete(x.getIdUtente(),x.getIdEvento(),x.getDataPartecipazione(),x.getOrarioPartecipazione(),x.isAcquistato());
+                    cart.remove(x);
+                }
+
+                else if(System.currentTimeMillis()>orario.getData().getTime())
+                {
+                    checkData=false;
+                    dao.doDelete(x.getIdUtente(),x.getIdEvento(),x.getDataPartecipazione(),x.getOrarioPartecipazione(),x.isAcquistato());
                     cart.remove(x);
                 }
             }

@@ -7,15 +7,19 @@
     <title>Header</title>
     <style>
 
+        body {
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+
         ul.header {
             list-style-type: none;
             padding: 0;
             background-color: #d9c6b0;
             position: fixed;
+            height: 3.13em;
             width: 100%;
             margin: 0;
             z-index: 1;
-            height: auto;
         }
 
         li{
@@ -28,7 +32,6 @@
             text-align: center;
             text-decoration: none;
             float:left;
-
         }
 
 
@@ -111,7 +114,7 @@
 
 
 <ul class="header">
-    <li class="header"><img src="./Images/logoBase.png" alt="logo" style="width:3.1em;height:3.1em;"></li>
+    <li class="header"><img src="./Images/logoBase.png" alt="logo" style="width:3em;height:3em;"></li>
     <li class="header"><a class="header" href="./index.jsp">Home</a></li>
     <li class="header"><a class="header" href="SulCastello.jsp">Sul Castello</a></li>
     <li class="header"><a class="header" href="ShowAllVisits">Visite</a></li>
