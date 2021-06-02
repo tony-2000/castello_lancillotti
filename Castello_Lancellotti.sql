@@ -4,7 +4,7 @@ use Castello_Lancellotti;
 
 Create Table Utente(
 id_utente int primary key NOT NULL AUTO_INCREMENT,
-nome varchar(30) not null,
+nome varchar(20) not null,
 cognome varchar(30) not null,
 amministratore boolean not null,
 telefono varchar(12) not null,
@@ -68,7 +68,7 @@ quantita_biglietti int not null,
 data_partecipazione date not null,
 orario_partecipazione time not null,
 prezzo float not null,
-primary key(id_utente,id_evento)
+primary key(id_utente,id_evento,data_partecipazione,orario_partecipazione,acquistato)
 );
 
 Create Table Recensione(
@@ -92,7 +92,7 @@ insert into Utente values
 (2,"Lorenzo","Vecchione",false,3334455566,"lorenzo.vecchione@outlook.it","lore","17ba5986228ff62bfdb53772c52e156d5d063fa2"),
 (3,"Marco","Castigliola",false,3345678231,"marco.castigliola@live.it","Casty","0fe682d7f941cff149ce9447f5ad9533a10b40ec"),
 (4,"Luca","Del Piero",false,3329870564,"luca.delPiero@gmail.com","Pinturicchiu","28ad67034af91d29db761e68b0250cf74c2e7fa1"),
-(5,"Maria","Napolitano",false,3215678342,"maria.napolitano@libero.it","maryNap","19fbf5a4dc377dcdb6ecf95a298885acf7bf1bf4");
+(5,"Maria Antonietta","Napolitano",false,3215678342,"maria.napolitano@libero.it","maryNap","19fbf5a4dc377dcdb6ecf95a298885acf7bf1bf4");
 #Aschettino1.   Vecchione2@     Castigliola3&   DelPiero4!  Napolitano5$
 
 

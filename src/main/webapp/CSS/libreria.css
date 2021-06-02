@@ -34,7 +34,7 @@ div.gallery {
     width: 29%;
     height: auto;
     background-color: whitesmoke;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 div.gallery:hover {
@@ -80,7 +80,7 @@ div.galleriaVisite {
     border-left: 10px whitesmoke solid;
     border-right: 10px whitesmoke solid;
     background-color: whitesmoke;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 6% 17%;
     width: 90%;
     height: auto;
@@ -146,7 +146,7 @@ div.login{
     float:right;
     padding: 2% 3% 3%;
     border-radius: 5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: 120%;
     position: relative;
     opacity: 90%;
@@ -166,7 +166,7 @@ div.registrazione{
     float:right;
     padding: 1% 4.5% 3%;
     border-radius: 5%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: 100%;
     position: relative;
     opacity: 90%;
@@ -190,7 +190,7 @@ div.containerElemento img{
     width: 45%;
     height: auto;
     background-color: black;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     max-width: 644px;
     max-height: 363px
 }
@@ -210,4 +210,42 @@ div.scegliElemento{
     width: 100%;
     height: auto;
     margin: 2%;
+}
+
+
+/*Carrello E Riepilogo Acquisti*/
+
+div.cart{
+    width: 96%;
+    height: auto;
+    margin: 3% 2%;
+    padding: 2% 2% 3%;
+    border: 6px solid #8c7c68;
+    border-radius: 4%;
+}
+
+div.cart img{
+    float: left;
+    width: 20%;
+    height: auto;
+    margin-right: 3%;
+    min-width: 231px;
+    min-height: auto;
+}
+
+div.cart ul{
+    column-count: 2;
+}
+
+img.carrello{
+    width: 50%;
+    height: auto;
+    margin-left:25%;
+}
+
+
+img.riepilogo{
+    width: 40%;
+    height: auto;
+    margin-left:30%;
 }

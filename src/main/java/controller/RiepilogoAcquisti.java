@@ -55,7 +55,10 @@ public class RiepilogoAcquisti extends HttpServlet
                 temp.setQuantitaBiglietti(x.getQuantitaBiglietti());
                 for (Evento y : eventi) {
                     if (temp.getIdEvento() == y.getIdEvento())
+                    {
                         temp.setNome(y.getNome());
+                        temp.setLink(y.getLinkImmagine());
+                    }
                 }
                 cartElements.add(temp);
             }

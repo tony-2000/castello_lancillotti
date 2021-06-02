@@ -19,7 +19,7 @@
             height: 3.13em;
             width: 100%;
             margin: 0;
-            z-index: 1;
+            z-index: 2;
         }
 
         li{

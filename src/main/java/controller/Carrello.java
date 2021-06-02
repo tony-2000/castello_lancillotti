@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -92,8 +94,10 @@ public class Carrello extends HttpServlet
         ArrayList<Evento> eventi=new ArrayList<>();
         EventoDAO eventidao=new EventoDAO();
         eventi= (ArrayList<Evento>) eventidao.doRetrieveAllEvents();
+        float tot=0;
         for(Partecipare x: cart)
         {
+            tot+=x.getPrezzo()*x.getQuantitaBiglietti();
             CartElement temp= new CartElement();
             temp.setAcquistato(x.isAcquistato());
             temp.setDataPartecipazione(x.getDataPartecipazione());
@@ -112,6 +116,9 @@ public class Carrello extends HttpServlet
             }
             cartElements.add(temp);
         }
+        DecimalFormat dec=new DecimalFormat("##.##");
+        dec.setRoundingMode(RoundingMode.DOWN);
+        request.setAttribute("prezzoTotale", dec.format(tot));
         request.setAttribute("carrello",cartElements);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/Carrello.jsp");
         dispatcher.forward(request, response);
