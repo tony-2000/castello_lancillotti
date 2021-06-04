@@ -10,8 +10,8 @@
 
 <form action="ModificaRecensione" method="get" >
     <input type="hidden" name="idEvento" value="${idEvento}">
-    <input type="number" name="valutazione" step="1" min="1" max="5" value="${recensione.valutazione}">
-    <input type="text" name="commento" maxlength="500" value="${recensione.commento}">
+    <input type="number" name="valutazione" required step="1" min="1" max="5" value="${recensione.valutazione}">
+    <input type="text" name="commento" required maxlength="500" value="${recensione.commento}">
     <button type="submit"> Modifica Recensione </button>
 </form>
 

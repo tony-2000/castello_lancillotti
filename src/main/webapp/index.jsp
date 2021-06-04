@@ -12,7 +12,7 @@
 <div class="homeSlideshow">
     <div style="position: absolute; z-index: 1;  background-color: transparent; color: #d9c6b0; width: 100%; margin-top:0; padding-top:0;">
         <h1 style="font-family:'Century Schoolbook',serif; text-shadow: 5px 10px 10px rgba(0, 0, 0, 0.75), -3px 10px 12px rgba(0, 0, 0, 0.75);
-        font-size:5em; text-align: center; color:#DCDCDC">Castello Lancellotti</h1></div>
+        font-size:500%; text-align: center; color:#DCDCDC">Castello Lancellotti</h1></div>
 
     <img class="homeSlides" src="Images/SlideShow5.jpg" alt="home Slide 1">
     <img class="homeSlides" src="Images/SlideShow6.jpg" alt="home Slide 2">

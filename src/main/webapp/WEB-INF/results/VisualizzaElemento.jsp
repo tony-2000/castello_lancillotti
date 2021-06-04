@@ -27,13 +27,13 @@
     <input type="hidden" name="id_evento" value="${evento.idEvento}">
     <input type="hidden" name="prezzo" value="${evento.prezzo}">
     <label id="data">Seleziona data:
-    <input type="date" name="data" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" required name="data" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </label>
     <label id="orario">Seleziona orario:
-    <input type="time" step="1" name="orario">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="time" required step="1" name="orario">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </label>
     <label id="quantita_biglietti">Seleziona numero di biglietti:
-    <input type="number" name="quantita_biglietti" step="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="number" required name="quantita_biglietti" step="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </label>
     <button type="submit" >Aggiungi al Carrello </button>
 </form>
@@ -50,10 +50,10 @@
     <form action="AggiungiRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <label id="commento">La tua recensione:<br>
-            <textarea name="commento" maxlength="200" cols="100" rows="2" style="resize: none"></textarea>
+            <textarea name="commento" required maxlength="200" cols="100" rows="2" style="resize: none"></textarea>
         </label><br>
         <label id="valutazione">Valutazione:
-            <input type="number" name="valutazione" step="1" min="1" max="5"style="margin-right: 3%">
+            <input type="number" required name="valutazione" step="1" min="1" max="5"style="margin-right: 3%">
         </label>
         <button type="submit" style="margin-right: 2%"> Aggiungi Recensione </button><br><br>
     </form>

@@ -19,19 +19,19 @@
     </label>
     <br><br>
     <label id="image"> Immagine:
-    <input type="file" name="file" accept="image/*">
+    <input type="file" name="file" required accept="image/*">
     </label>
     <br><br>
     <label id="nome">Nome:
-        <input type="text" name="nome" minlength="2" maxlength="30">
+        <input type="text" name="nome" required minlength="2" maxlength="30">
     </label>
     <br><br>
     <label id="descrizione">Descrizione:
-        <input type="text" name="descrizione" minlength="1" maxlength="500">
+        <input type="text" name="descrizione" required minlength="1" maxlength="500">
     </label>
     <br><br>
     <label id="prezzo">Prezzo:
-        <input type="number" step="0.01" name="prezzo" min="0">
+        <input type="number" step="0.01" required name="prezzo" min="0">
     </label>
     <br><br>
     <button type="submit">Aggiungi</button>

@@ -8,6 +8,8 @@
     background-image: url("Images/registrazione-Background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+        background-attachment: fixed;
+        background-position: center center;
     }
     </style>
     <title>Registrazione</title>
@@ -16,35 +18,35 @@
 <jsp:include page="WEB-INF/Partials/Header.jsp"/><br><br>
 
 <div class="registrazione">
-<div class="reg"><h1> Registrazione</h1></div>
+<h1> Registrazione</h1>
 <form action="Registrazione" method="post">
 
     <label for="nomeID"> Nome:<br>
-    <input type="text" name="nome" id="nomeID" minlength="2" maxlength="20">
+    <input type="text" name="nome" required id="nomeID" minlength="2" maxlength="20">
     </label><br>
 
     <label for="cognomeID"> Cognome:<br>
-    <input type="text" name="cognome" id="cognomeID" minlength="2" maxlength="30">
+    <input type="text" name="cognome" required id="cognomeID" minlength="2" maxlength="30">
     </label><br>
 
     <label for="mailID"> Mail:<br>
-    <input type="email" name="mail" id="mailID" minlength="6" maxlength="40">
+    <input type="email" name="mail" required id="mailID" minlength="6" maxlength="40">
     </label><br>
 
     <label for="telefonoID"> telefono:<br>
-    <input type="text" name="telefono" id="telefonoID" minlength="9" maxlength="12">
+    <input type="text" name="telefono" required id="telefonoID" minlength="9" maxlength="12">
     </label><br>
 
     <label for="nome_utenteID"> Nome Utente:<br>
-    <input type="text" name="nome_utente" id="nome_utenteID" minlength="4" maxlength="20">
+    <input type="text" name="nome_utente" required id="nome_utenteID" minlength="4" maxlength="20">
     </label><br>
 
     <label for="passwordID"> Password:<br>
-    <input type="password" name="password" id="passwordID" minlength="8" maxlength="16">
+    <input type="password" name="password" required id="passwordID" minlength="8" maxlength="16">
     </label><br>
 
     <label for="passwordCheckID"> Conferma Password:<br>
-    <input type="password" name="passwordCheck" id="passwordCheckID" minlength="8" maxlength="16">
+    <input type="password" name="passwordCheck" required id="passwordCheckID" minlength="8" maxlength="16">
     </label><br><br>
 
     <button type="submit" >Registrati</button>

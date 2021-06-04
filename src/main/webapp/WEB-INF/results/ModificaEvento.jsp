@@ -22,19 +22,19 @@
     </label>
     <br><br>
     <label id="image"> Inserisci nuova Immagine:
-        <input type="file" accept="image/*" name="linkImmagine">
+        <input type="file" accept="image/*" required name="linkImmagine">
     </label>
     <br><br>
     <label id="nome">Inserisci nuovo nome:
-        <input type="text" name="nome" minlength="2" maxlength="30" value="${evento.nome}">
+        <input type="text" name="nome" required minlength="2" maxlength="30" value="${evento.nome}">
     </label>
     <br><br>
     <label id="descrizione">Inserisci nuova Descrizione:
-        <input type="text" name="descrizione" minlength="1"  maxlength="500" value="${evento.descrizione}">
+        <input type="text" name="descrizione" required minlength="1"  maxlength="500" value="${evento.descrizione}">
     </label>
     <br><br>
     <label id="prezzo">Inserisci nuovo prezzo:
-        <input type="number" step="0.01" name="prezzo" min="0" value="${evento.prezzo}">
+        <input type="number" step="0.01" required name="prezzo" min="0" value="${evento.prezzo}">
     </label>
     <br><br>
     <button type="submit">Modifica</button>

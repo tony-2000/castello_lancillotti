@@ -10,11 +10,11 @@
 
 <form action="doAggiungiCategoria" method="get">
     <label id="image"> Immagine:
-        <input type="file" accept="image/*">
+        <input type="file" required accept="image/*">
     </label>
     <br><br>
     <label id="nome">Nome:
-        <input type="text" name="nome" minlength="2" maxlength="30">
+        <input type="text" required name="nome" minlength="2" maxlength="30">
     </label>
     <button type="submit">Aggiungi</button>
 </form>

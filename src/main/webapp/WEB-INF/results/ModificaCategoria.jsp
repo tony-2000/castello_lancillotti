@@ -14,11 +14,11 @@
     <input type="hidden" name="link" value="${categoria.linkImmagine}">
 
     <label id="image"> Inserisci nuova Immagine:
-        <input type="file" accept="image/*" name="linkImmagine">
+        <input type="file" accept="image/*" required name="linkImmagine">
     </label>
     <br><br>
     <label id="nome">Inserisci nuovo nome:
-        <input type="text" name="nome" minlength="2" maxlength="30" value="${categoria.nome}">
+        <input type="text" name="nome" required minlength="2" maxlength="30" value="${categoria.nome}">
     </label>
     <br><br>
     <button type="submit">Modifica</button>

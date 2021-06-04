@@ -7,6 +7,8 @@
     background-image: url("Images/LoginBackground.jpg");
     background-repeat: no-repeat;
         background-size: cover;
+        background-attachment: fixed;
+        background-position: center center;
     }
     </style>
 <jsp:include page="WEB-INF/Partials/head.jsp"/>
@@ -17,15 +19,14 @@
 <div class="login">
 <form action="Login" method="post">
     <h1>Login</h1>
-
     <label for="nome_utenteID"> Nome Utente:
       <br>
-    <input type="text" name="nome_utente" id="nome_utenteID" maxlength="20" minlength="4">
+    <input type="text" required name="nome_utente" id="nome_utenteID" maxlength="20" minlength="4">
     </label>
             <br><br>
     <label for="passwordID"> Password:
         <br>
-        <input type="password" name="password" id="passwordID" minlength="8" maxlength="16">
+        <input type="password" required name="password" id="passwordID" minlength="8" maxlength="16">
     </label><br><br>
 
     <button type="submit" >Accedi </button><br><br>
