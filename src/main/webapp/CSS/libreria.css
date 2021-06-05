@@ -289,19 +289,16 @@ div.sulCastello img{
 
 
 
+div.mapText{
 
-
-div.maps{
-    width: 40%;
-    height: auto;
 }
 
+div.maps{
 
-div.maptext{
-    width: 100%;
-    margin-left: 20%;
-    margin-right: 20%;
-    display: block;
+}
+
+iframe.google{
+
 }
 
 
