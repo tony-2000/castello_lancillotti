@@ -7,8 +7,9 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-
-<img alt="immagine Categoria" src="${categoria.linkImmagine}" style="width:45px;height:45px;" >
+<h1 style="text-align: center; font-size: 250% ">Modifica Dati Categoria</h1>
+<div class="adminAggiungi">
+<img alt="immagine Categoria" src="${categoria.linkImmagine}" style="width:30%;height:auto;" ><br><br>
 <form action="ModificaCategoria" method="get">
     <input type="hidden" name="idCategoria" value="${categoria.idCategoria}">
     <input type="hidden" name="link" value="${categoria.linkImmagine}">
@@ -23,6 +24,6 @@
     <br><br>
     <button type="submit">Modifica</button>
 </form>
-
+</div>
 </body>
 </html>

@@ -7,7 +7,9 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
+<h1 style="text-align: center; font-size: 250% "> Aggiungi Categoria</h1>
 
+<div class="adminAggiungi">
 <form action="doAggiungiCategoria" method="get">
     <label id="image"> Immagine:
         <input type="file" required accept="image/*">
@@ -15,9 +17,10 @@
     <br><br>
     <label id="nome">Nome:
         <input type="text" required name="nome" minlength="2" maxlength="30">
-    </label>
+    </label><br><br>
     <button type="submit">Aggiungi</button>
 </form>
+</div>
 
 </body>
 </html>

@@ -8,26 +8,27 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-
-<p>ATTENZIONE. Eliminare una categoria comporterà automaticamente
+<h1 style="text-align: center; font-size: 250% ">Modifica Categoria</h1>
+<p>  ATTENZIONE. Eliminare una categoria comporterà automaticamente
     l'eliminazione di tutti gli eventi ad essa associati</p>
-<ul>
+<div class="modAddCat">
     <c:forEach items="${categoria}" var="categoria" >
-        <li>
-            <img alt="Immagine Categoria" src="${categoria.linkImmagine}" style="width:45px;height:45px;">
+        <div class="adminElementCat">
+            <img alt="Immagine Categoria" src="${categoria.linkImmagine}" style="width:60%;height:auto"><br>
+            <p style="font-size: 150%">${categoria.nome}</p><br>
             <form  method="get" action="ToModificaCategoria">
                 <input type="hidden" name="idCategoria" value="${categoria.idCategoria}">
-                <button type="submit">Modifica</button>
+                <button type="submit" style="margin-bottom: 3%">Modifica</button>
             </form>
 
             <form  method="get" action="EliminaCategoria">
                 <input type="hidden" name="idCategoria" value="${categoria.idCategoria}">
-                <button type="submit">Elimina</button>
-            </form>${categoria.nome}
-        </li><br><br>
-        <br><br>
-    </c:forEach>
-</ul>
+                <button type="submit" >Elimina</button>
+            </form>
 
+        </div>
+    </c:forEach>
+
+</div>
 </body>
 </html>

@@ -4,12 +4,13 @@
 <html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
-    <title>Modifica Evento</title>
+    <title>Modifica Dati Evento</title>
 </head>
 <body>
-
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-<img alt="immagine Evento" src="${evento.linkImmagine}" style="width:45px;height:45px;" >
+<h1 style="text-align: center; font-size: 250% "> Modifica Dati Evento</h1>
+<div class="adminAggiungi">
+<img alt="immagine Evento" src="${evento.linkImmagine}" style="width:30%;height:auto;" ><br><br>
 <form action="ModificaEvento" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
     <input type="hidden" name="link" value="${evento.linkImmagine}">
@@ -39,6 +40,6 @@
     <br><br>
     <button type="submit">Modifica</button>
 </form>
-
+</div>
 </body>
 </html>

@@ -8,7 +8,8 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-
+<h1 style="text-align: center; font-size: 250% "> Aggiungi Evento</h1>
+<div class="adminAggiungi">
 <form action="doAggiungiEvento" method="get" >
     <label id="categorie">Categoria:
     <select id="categoria" name="categorie">
@@ -36,5 +37,7 @@
     <br><br>
     <button type="submit">Aggiungi</button>
 </form>
+</div>
+
 </body>
 </html>

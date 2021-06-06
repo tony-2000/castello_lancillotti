@@ -48,27 +48,16 @@
 
 
 
-<div class="mapText" style="margin-left: 20%; width: 60%; text-align: center;">
+<div class="mapText">
     <h3>Come raggiungerci: </h3>
     <p>Indirizzo: Piazza Castello, Lauro (AV), Italia </p>
 
-<div class="maps" style="
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    padding-top: 66.67%;">
-    <iframe class="google" style="
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: none;"
+<div class="maps">
+
+    <iframe class="google"
     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3016.603233225159!2d14.6307427!3d40.8805807!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bb640fca285fb%3A0xc1a8a04f63c0e724!2sCastello%20Lancellotti!5e0!3m2!1sit!2sit!4v1622881859947!5m2!1sit!2sit"
-    allowfullscreen=""></iframe>
+    allowfullscreen="">
+    </iframe>
 </div>
 </div>
 

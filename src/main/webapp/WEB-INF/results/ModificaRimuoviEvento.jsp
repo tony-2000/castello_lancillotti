@@ -8,23 +8,22 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-
-<ul>
+<h1 style="text-align: center; font-size: 250% ">Modifica Evento</h1>
+<div class="modAddCat">
     <c:forEach items="${eventi}" var="evento" >
-        <li>
-            <img alt="Immagine Evento" src="${evento.linkImmagine}" style="width:45px;height:45px;">
+        <div class="adminElementCat">
+            <img alt="Immagine Evento" src="${evento.linkImmagine}" style="width:60%;height:auto;">
+            <p style="font-size: 150%">${evento.nome}</p><br>
             <form  method="get" action="ToModificaEvento">
                 <input type="hidden" name="idEvento" value="${evento.idEvento}">
-                <button type="submit">Modifica</button>
+                <button type="submit" style="margin-bottom: 3%">Modifica</button>
             </form>
             <form  method="get" action="EliminaEvento">
                 <input type="hidden" name="idEvento" value="${evento.idEvento}">
                 <button type="submit">Elimina</button>
-            </form>${evento.nome}
-        </li><br><br>
-        <br><br>
+            </form>
+        </div>
     </c:forEach>
-</ul>
-
+</div>
 </body>
 </html>

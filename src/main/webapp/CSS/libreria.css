@@ -284,25 +284,31 @@ div.sulCastello img{
 
 /*responsiveness: togliere i 2 float e diminuire margini e padding*/
 
-
-
-
-
-
 div.mapText{
-
+    margin-left: 20%;
+    margin-bottom: 5%;
+    width: 60%;
+    text-align: center;
 }
 
 div.maps{
-
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-top: 66.67%;
 }
 
 iframe.google{
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
-
-
-
 
 
 
@@ -322,3 +328,24 @@ div.profilo{
     position: relative;
     opacity: 90%;
 }
+
+
+/*Area Admin*/
+
+
+div.adminAggiungi{
+    margin: 3%;
+    padding: 2%;
+}
+
+div.modAddCat{
+display: flex;
+flex-wrap: wrap;
+    flex-direction: row;
+}
+
+div.adminElementCat{
+    width: 25%;
+    margin: 4%;
+}
+
