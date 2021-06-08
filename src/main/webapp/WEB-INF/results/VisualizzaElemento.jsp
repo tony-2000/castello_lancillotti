@@ -1,3 +1,6 @@
+<%@ page import="java.sql.Date" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Data" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -8,6 +11,8 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
+
+
 
 <div class="containerElemento">
 
@@ -26,20 +31,33 @@
 <form action="AggiungiAlCarrello">
     <input type="hidden" name="id_evento" value="${evento.idEvento}">
     <input type="hidden" name="prezzo" value="${evento.prezzo}">
-    <label id="data">Seleziona data:
-    <input type="date" required name="data" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%!ArrayList<Data> temp=new ArrayList<Data>();%> <%temp= (ArrayList<Data>) request.getAttribute("date");%>
+           <div <%if (temp.size()==0){%> style="display: none" <%}%>>
+            <label id="data">Seleziona data:
+    <select required onchange="loadTimes(this.value,${evento.idEvento})" name="data" id="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <option value="seleziona" selected disabled></option>
+        <c:forEach var="date" items="${date}">
+            <option value="${date.data}"> ${date.data} </option>
+        </c:forEach>
+    </select>
     </label>
-    <label id="orario">Seleziona orario:
-    <input type="time" required step="1" name="orario">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </label>
-    <label id="quantita_biglietti">Seleziona numero di biglietti:
-    <input type="number" required name="quantita_biglietti" step="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </label>
-    <button type="submit" >Aggiungi al Carrello </button>
+
+    <span id="testo"></span>
+
+               <span id="ticket"></span>
+
+
+<br>    <button type="submit" >Aggiungi al Carrello </button>
 </form>
-</div>
+    </div>
 
 </div>
+
+<p style="<%if (temp.size()!=0){%> display: none;<%}%> margin-right: 5%; text-align: center"> Non sono disponibili date per questo evento.</p>
+
+
+
 
 
 <div class="recensioni">
@@ -81,6 +99,65 @@
     </c:forEach>
 </fieldset>
 </div>
+
+<script>
+    {
+        function loadTimes(x, y) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunctionDate(this);
+                }
+            };
+            xmlhttp.open("GET", "JSONTimes?data=" + x + "&id=" + y, true);
+            xmlhttp.send();
+        }
+
+        function myFunctionDate(xmlhttp) {
+            var data = JSON.parse(xmlhttp.responseText);
+            JSON.parse(xmlhttp.responseText);
+            let text = "<label id='orario'>Seleziona orario:</label> <select required name='orario' onchange='loadTickets(this.value,".concat(${evento.idEvento}).concat(",document.getElementById('date'))'>")
+
+            for (let x in data)
+            {
+                text += "<option value='" + data[x].ora + "'> " + data[x].ora + "</option> ";
+            }
+            text+=" </select>"
+            document.getElementById("testo").innerHTML = text;
+        }
+
+
+
+
+
+
+        function loadTickets(ora, id, data)
+        {
+            alert("tttttttttttttt")
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    myFunctionTicket(this);
+                }
+            };
+            xmlhttp.open("GET", "JSONTickets?data=" + data + "&id=" + id+"&ora="+ora, true);
+            xmlhttp.send();
+        }
+
+
+        function myFunctionTicket(xmlhttp)
+        {
+            var data = JSON.parse(xmlhttp.responseText);
+            JSON.parse(xmlhttp.responseText);
+            let text = "<input type='number' id='quantity' name='quantity' min='1' max='"+ticket+"'>";
+            text+=" </input> <label id='quantity'>Biglietti disponibili:"+ticket+"</label>"
+            document.getElementById("ticket").innerHTML = text;
+        }
+    }
+</script>
+
+
 
 
 </body>

@@ -11,8 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 
 @WebServlet(name="MostraEvento", value="/MostraEvento")
@@ -82,6 +87,29 @@ public class MostraEvento extends HttpServlet
                 support.get(0).setNome("Questa è la tua recensione: "+support.get(0).getNome());
             }
         }
+
+        DataDAO daodata=new DataDAO();
+        ArrayList<Data> date= (ArrayList<Data>) daodata.doRetrieveDatesByEvent(id);
+        ArrayList<Data> copy= (ArrayList<Data>) date.clone();
+        GregorianCalendar actual=new GregorianCalendar();
+        actual.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
+        for(Data x: copy)
+        {
+            if(x.getData().getTime()<actual.getTimeInMillis())
+                date.remove(x);
+            else
+            {
+                OrarioDAO oradao=new OrarioDAO();
+                ArrayList<Orario> orari= (ArrayList<Orario>) oradao.doRetrieveTimesByEventDate(x.getData(),x.getIdEvento());
+                if(orari.size()==0)
+                {
+                    date.remove(x);
+                }
+            }
+
+        }
+
+        request.setAttribute("date",date);
         request.setAttribute("checkRecensione",checkRecensione);
         request.setAttribute("recensioni",support);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/VisualizzaElemento.jsp");
@@ -89,13 +117,5 @@ public class MostraEvento extends HttpServlet
 
     }
 }
+//Non puoi prenotare biglietti con data del giorno corrente
 
-
-//  DataDAO dao=new DataDAO();
-//        ArrayList<Data> date= (ArrayList<Data>) dao.doRetrieveDatesByEvent(id);
-//Usare in questa servlet(forse)
-
-
-//  OrarioDAO dao=new OrarioDAO();
-//        ArrayList<Orario> ora= (ArrayList<Orario>) dao.doRetrieveHoursByEventDate(id);
-//Usare in Jsp con ajax;
