@@ -88,7 +88,10 @@ public class Acquista extends HttpServlet
                 temps.setQuantitaBiglietti(x.getQuantitaBiglietti());
                 for (Evento y : eventi) {
                     if (temps.getIdEvento() == y.getIdEvento())
+                    {
                         temps.setNome(y.getNome());
+                        temps.setLink(y.getLinkImmagine());
+                    }
                 }
                 cartElements.add(temps);
             }

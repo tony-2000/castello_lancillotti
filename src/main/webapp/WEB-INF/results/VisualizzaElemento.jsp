@@ -36,19 +36,18 @@
            <div <%if (temp.size()==0){%> style="display: none" <%}%>>
             <label id="data">Seleziona data:
     <select required onchange="loadTimes(this.value,${evento.idEvento})" name="data" id="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <option value="seleziona" selected disabled></option>
+        <option value="seleziona" selected disabled>Seleziona Data</option>
         <c:forEach var="date" items="${date}">
             <option value="${date.data}"> ${date.data} </option>
         </c:forEach>
     </select>
     </label>
 
+
     <span id="testo"></span>
+               <span id="Spanticket"></span>
 
-               <span id="ticket"></span>
 
-
-<br>    <button type="submit" >Aggiungi al Carrello </button>
 </form>
     </div>
 
@@ -116,11 +115,11 @@
         function myFunctionDate(xmlhttp) {
             var data = JSON.parse(xmlhttp.responseText);
             JSON.parse(xmlhttp.responseText);
-            let text = "<label id='orario'>Seleziona orario:</label> <select required name='orario' onchange='loadTickets(this.value,".concat(${evento.idEvento}).concat(",document.getElementById('date'))'>")
+            let text = "<label id=\"orario\">Seleziona orario:</label> <select required id=\"selOr\" name=\"orario\" onchange=\"loadTickets(this.value)\"> <option value=\"seleziona\" selected disabled>Seleziona Ora</option>"
 
             for (let x in data)
             {
-                text += "<option value='" + data[x].ora + "'> " + data[x].ora + "</option> ";
+                text += "<option class=\"op\" value='" + data[x].ora + "'> " + data[x].ora + "</option> ";
             }
             text+=" </select>"
             document.getElementById("testo").innerHTML = text;
@@ -131,9 +130,10 @@
 
 
 
-        function loadTickets(ora, id, data)
+        function loadTickets(ora)
         {
-            alert("tttttttttttttt")
+            var giorno=document.getElementById("date").value;
+            var id=${evento.idEvento};
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200)
@@ -141,18 +141,20 @@
                     myFunctionTicket(this);
                 }
             };
-            xmlhttp.open("GET", "JSONTickets?data=" + data + "&id=" + id+"&ora="+ora, true);
+
+
+            xmlhttp.open("GET", "JSONTickets?data=" + giorno + "&id="+id+"&ora="+ora, true);
             xmlhttp.send();
         }
 
 
         function myFunctionTicket(xmlhttp)
         {
-            var data = JSON.parse(xmlhttp.responseText);
+            var tic = JSON.parse(xmlhttp.responseText);
             JSON.parse(xmlhttp.responseText);
-            let text = "<input type='number' id='quantity' name='quantity' min='1' max='"+ticket+"'>";
-            text+=" </input> <label id='quantity'>Biglietti disponibili:"+ticket+"</label>"
-            document.getElementById("ticket").innerHTML = text;
+            let text = "<input required type='number' id='selQuantity' name='quantity' min='1' max='"+tic.ticket+"'>";
+            text+=" </input> <label id='quantity'>Biglietti disponibili: "+tic.ticket+"</label> <button type=\"submit\" id=\"selBut\">Aggiungi al Carrello </button>"
+            document.getElementById("Spanticket").innerHTML = text;
         }
     }
 </script>

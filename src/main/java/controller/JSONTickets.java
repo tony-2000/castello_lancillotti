@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.Writer;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -36,8 +37,6 @@ public class JSONTickets extends HttpServlet
         OrarioDAO dao= new OrarioDAO();
         int tickets= dao.doRetrieveTimesByKey(ora,data,id).getPostiDisponibili();
         response.setContentType("text/plain;charset=UTF-8");
-        response.getWriter().append("[");
             response.getWriter().append("{\"ticket\":\"").append(String.valueOf(tickets)).append("\"}");
-        response.getWriter().append("]");
     }
 }

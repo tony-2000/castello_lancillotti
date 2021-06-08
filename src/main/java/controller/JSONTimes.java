@@ -34,7 +34,6 @@ public class JSONTimes extends HttpServlet
         OrarioDAO dao=new OrarioDAO();
         ArrayList<Orario> orari= (ArrayList<Orario>) dao.doRetrieveTimesByEventDate(data,id);
         ArrayList<Orario> orariClone= (ArrayList<Orario>) orari.clone();
-        int index=orari.size();
         int count=0;
         for(Orario y: orariClone)
         {
@@ -43,6 +42,7 @@ public class JSONTimes extends HttpServlet
                 orari.remove(y);
             }
         }
+        int index=orari.size();
         response.setContentType("text/plain;charset=UTF-8");
         response.getWriter().append("[");
         for(Orario x:orari)
