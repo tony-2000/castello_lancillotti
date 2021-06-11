@@ -87,7 +87,7 @@ public class MostraEvento extends HttpServlet
                 support.get(0).setNome("Questa è la tua recensione: "+support.get(0).getNome());
             }
         }
-        Boolean bol;
+        boolean bol;
         DataDAO daodata=new DataDAO();
         ArrayList<Data> date= (ArrayList<Data>) daodata.doRetrieveDatesByEvent(id);
         ArrayList<Data> copy= (ArrayList<Data>) date.clone();

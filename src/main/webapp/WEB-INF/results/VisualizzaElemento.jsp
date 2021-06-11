@@ -7,11 +7,11 @@
 <html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
+    <script src="JS/JavaScriptLib.js"></script>
     <title>Visualizza Elemento</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-
 
 
 <div class="containerElemento">
@@ -29,7 +29,7 @@
 
     <div class="scegliElemento">
 <form action="AggiungiAlCarrello">
-    <input type="hidden" name="id_evento" value="${evento.idEvento}">
+    <input type="hidden" name="id_evento" id="idEventoInput" value="${evento.idEvento}">
     <input type="hidden" name="prezzo" value="${evento.prezzo}">
 
 <%!ArrayList<Data> temp=new ArrayList<Data>();%> <%temp= (ArrayList<Data>) request.getAttribute("date");%>
@@ -67,7 +67,7 @@
     <form action="AggiungiRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <label id="commento">La tua recensione:<br>
-            <textarea name="commento" required maxlength="200" cols="100" rows="2" style="resize: none"></textarea>
+            <textarea name="commento" required maxlength="200" rows="3" style="resize: none;  width:80%"></textarea>
         </label><br>
         <label id="valutazione">Valutazione:
             <input type="number" required name="valutazione" step="1" min="1" max="5"style="margin-right: 3%">
@@ -89,79 +89,16 @@
     <c:forEach items="${recensioni}" var="recensioni" >
     <fieldset name="Recensioni" style=" border-radius: 5%;">
         <legend style="font-size: 120%">${recensioni.nome} </legend>
-        <div class="commento">
-        <li style="list-style-type: none; padding-left: 2%; padding-right: 2%">  ${recensioni.commento}&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Valutazione:&nbsp;${recensioni.valutazione}/5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Data:&nbsp;${recensioni.dataRecensione}&nbsp;&nbsp;alle:&nbsp;${recensioni.orarioRecensione}</li>
+        <div style="max-width: 80%; margin-right: 1%; margin-left: 1%">
+            <textarea rows="3" readonly style="resize: none; width:80%">${recensioni.commento}</textarea>
+            &nbsp;&nbsp;&nbsp;&nbsp;<br><br>Valutazione:&nbsp;${recensioni.valutazione}/5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Data:&nbsp;${recensioni.dataRecensione}&nbsp;&nbsp;alle:&nbsp;${recensioni.orarioRecensione}
         </div>
     </fieldset>
     <br><br>
     </c:forEach>
 </fieldset>
 </div>
-
-<script>
-    {
-        function loadTimes(x, y) {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    myFunctionDate(this);
-                }
-            };
-            xmlhttp.open("GET", "JSONTimes?data=" + x + "&id=" + y, true);
-            xmlhttp.send();
-        }
-
-        function myFunctionDate(xmlhttp) {
-            var data = JSON.parse(xmlhttp.responseText);
-            JSON.parse(xmlhttp.responseText);
-            let text = "<label id=\"orario\">Seleziona orario:</label> <select required id=\"selOr\" name=\"orario\" onchange=\"loadTickets(this.value)\"> <option value=\"seleziona\" selected disabled>Seleziona Ora</option>"
-
-            for (let x in data)
-            {
-                text += "<option class=\"op\" value='" + data[x].ora + "'> " + data[x].ora + "</option> ";
-            }
-            text+=" </select>"
-            document.getElementById("testo").innerHTML = text;
-        }
-
-
-
-
-
-
-        function loadTickets(ora)
-        {
-            var giorno=document.getElementById("date").value;
-            var id=${evento.idEvento};
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200)
-                {
-                    myFunctionTicket(this);
-                }
-            };
-
-
-            xmlhttp.open("GET", "JSONTickets?data=" + giorno + "&id="+id+"&ora="+ora, true);
-            xmlhttp.send();
-        }
-
-
-        function myFunctionTicket(xmlhttp)
-        {
-            var tic = JSON.parse(xmlhttp.responseText);
-            JSON.parse(xmlhttp.responseText);
-            let text = "<input required type='number' id='selQuantity' name='quantity' min='1' max='"+tic.ticket+"'>";
-            text+=" </input> <label id='quantity'>Biglietti disponibili: "+tic.ticket+"</label> <button type=\"submit\" id=\"selBut\">Aggiungi al Carrello </button>"
-            document.getElementById("Spanticket").innerHTML = text;
-        }
-    }
-</script>
-
-
-
-
 </body>
 </html>
 

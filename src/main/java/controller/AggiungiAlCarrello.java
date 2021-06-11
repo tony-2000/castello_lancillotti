@@ -30,7 +30,7 @@ public class AggiungiAlCarrello extends HttpServlet
         Partecipare prodotto = new Partecipare();
         prodotto.setIdUtente(0);
         prodotto.setIdEvento(Integer.parseInt(request.getParameter("id_evento")));
-        prodotto.setQuantitaBiglietti(Integer.parseInt(request.getParameter("quantita_biglietti")));
+        prodotto.setQuantitaBiglietti(Integer.parseInt(request.getParameter("quantity")));
         prodotto.setDataPartecipazione(Date.valueOf(request.getParameter("data")));
         prodotto.setOrarioPartecipazione(Time.valueOf(request.getParameter("orario")));
         prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
