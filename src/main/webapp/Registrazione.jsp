@@ -19,7 +19,7 @@
 
 <div class="registrazione">
 <h1> Registrazione</h1>
-<form action="Registrazione" method="post">
+<form action="Registrazione" method="post" onsubmit="return checkRegistration()">
 
     <label for="nomeID"> Nome:<br>
     <input type="text" name="nome" required id="nomeID" minlength="2" maxlength="20">
@@ -34,7 +34,7 @@
     </label><br>
 
     <label for="telefonoID"> telefono:<br>
-    <input type="text" name="telefono" required id="telefonoID" minlength="9" maxlength="12">
+    <input type="text" name="telefono" required id="telefonoID" minlength="9" maxlength="11">
     </label><br>
 
     <label for="nome_utenteID"> Nome Utente:<br>
@@ -49,7 +49,7 @@
     <input type="password" name="passwordCheck" required id="passwordCheckID" minlength="8" maxlength="16">
     </label><br><br>
 
-    <button type="submit" >Registrati</button>
+    <button type="submit">Registrati</button>
 </form>
     </div>
 </body>

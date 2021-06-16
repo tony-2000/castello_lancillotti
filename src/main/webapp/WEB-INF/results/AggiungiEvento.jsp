@@ -24,11 +24,11 @@
     </label>
     <br><br>
     <label id="nome">Nome:
-        <input type="text" name="nome" required minlength="2" maxlength="30">
+        <input type="text" name="nome" required minlength="6" maxlength="30">
     </label>
     <br><br>
-    <label id="descrizione">Descrizione:
-        <input type="text" name="descrizione" required minlength="1" maxlength="500">
+    <label id="descrizione">Descrizione:<br>
+        <textarea name="descrizione" required minlength="20" maxlength="500" rows="3" style="width: 60%;resize: none"></textarea>
     </label>
     <br><br>
     <label id="prezzo">Prezzo:

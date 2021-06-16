@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script src="JS/JavaScriptLib.js"></script>
     <style>
     body {
     background-image: url("Images/LoginBackground.jpg");
@@ -14,7 +15,7 @@
 <jsp:include page="WEB-INF/Partials/head.jsp"/>
     <title>Login</title>
 </head>
-<body>
+<body onload="errLogin(${logError})">
 <jsp:include page="WEB-INF/Partials/Header.jsp"/><br><br>
 <div class="login">
 <form action="Login" method="post">

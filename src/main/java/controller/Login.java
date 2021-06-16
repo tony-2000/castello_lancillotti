@@ -17,6 +17,7 @@ public class Login extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        boolean log=false;
         String resp="/index.jsp";
         String username = request.getParameter("nome_utente");
         String password = request.getParameter("password");
@@ -26,11 +27,11 @@ public class Login extends HttpServlet
         if(user==null)
         {
             resp="Login.jsp";
-            boolean log=false;
-            request.setAttribute("logError",log);
+            log=true;
         }
         else
             session.setAttribute("utenteSessione",user);
+        request.setAttribute("logError",log);
         RequestDispatcher dispatcher = request.getRequestDispatcher(resp);
         dispatcher.forward(request, response);
     }

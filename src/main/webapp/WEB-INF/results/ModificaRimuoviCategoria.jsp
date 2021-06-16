@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 <h1 style="text-align: center; font-size: 250% ">Modifica Categoria</h1>
-<p>  ATTENZIONE. Eliminare una categoria comporterà automaticamente
+<p style="margin-left: 2%">  ATTENZIONE. Eliminare una categoria comporterà automaticamente
     l'eliminazione di tutti gli eventi ad essa associati</p>
 <div class="modAddCat">
     <c:forEach items="${categoria}" var="categoria" >

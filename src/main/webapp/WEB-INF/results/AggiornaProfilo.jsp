@@ -4,7 +4,7 @@
 <head>
     <style>
         body {
-            background-image: url("Images/BackgroundModProfilo.jpg");
+            background-image: url('Images/BackgroundModProfilo.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
@@ -33,13 +33,13 @@
     <input type="email" name="mail" id="mail" required minlength="6" maxlength="40" value="${sessionScope.utenteSessione.mail}">
     </label><br>
     <label for="nomeUtente">Nome Utente:<br>
-    <input type="text" name="nomeUtente" id="nomeUtente" required minlength="4" maxlength="30" value="${sessionScope.utenteSessione.nomeUtente}">
+    <input type="text" name="nomeUtente" id="nomeUtente" required minlength="4" maxlength="20" value="${sessionScope.utenteSessione.nomeUtente}">
     </label><br>
     <label for="password">Password:<br>
-    <input type="password" name="password" id="password" required maxlength="16" minlength="8">
+    <input type="password" name="password" id="password" required minlength="8" maxlength="16" >
     </label><br>
     <label for="passwordCheck">Conferma Password:<br>
-    <input type="password" name="passwordCheck" required id="passwordCheck" maxlength="16" minlength="8">
+    <input type="password" name="passwordCheck" required id="passwordCheck" minlength="8" maxlength="16" >
     </label><br><br>
     <button type="submit">Salva Modifiche</button>
 </form>

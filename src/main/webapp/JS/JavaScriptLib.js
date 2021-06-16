@@ -145,4 +145,27 @@
             }
         }
 
+        function errLogin(checkLogin)
+        {
+            if(checkLogin===true)
+                alert("Nome utente o password errati.");
+        }
+
+        function checkRegistration()
+        {
+            var telefono = $("#telefonoID").val();
+            var password = $("#passwordID").val();
+            var passwordCheck = $("#passwordCheckID").val();
+            var patTel = /[^0-9]/g;
+
+            var telefonoRegex=telefono.match(patTel)
+            if(telefonoRegex!=null)
+            {
+                alert("number error")
+                return false;
+            }
+
+            return false;
+        }
+
 }

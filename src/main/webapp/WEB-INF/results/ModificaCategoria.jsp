@@ -19,7 +19,7 @@
     </label>
     <br><br>
     <label id="nome">Inserisci nuovo nome:
-        <input type="text" name="nome" required minlength="2" maxlength="30" value="${categoria.nome}">
+        <input type="text" name="nome" required minlength="4" maxlength="30" value="${categoria.nome}">
     </label>
     <br><br>
     <button type="submit">Modifica</button>

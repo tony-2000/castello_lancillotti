@@ -27,11 +27,12 @@
     </label>
     <br><br>
     <label id="nome">Inserisci nuovo nome:
-        <input type="text" name="nome" required minlength="2" maxlength="30" value="${evento.nome}">
+        <input type="text" name="nome" required minlength="6" maxlength="30" value="${evento.nome}">
     </label>
     <br><br>
-    <label id="descrizione">Inserisci nuova Descrizione:
-        <input type="text" name="descrizione" required minlength="1"  maxlength="500" value="${evento.descrizione}">
+    <label id="descrizione">Inserisci nuova Descrizione:<br>
+        <textarea name="descrizione" required minlength="20"  maxlength="500" rows="3"
+                  style="resize: none;width: 60%">${evento.descrizione}</textarea>
     </label>
     <br><br>
     <label id="prezzo">Inserisci nuovo prezzo:
