@@ -349,3 +349,8 @@ div.adminElementCat{
     margin: 4%;
 }
 
+div.adminAggiungi fieldset
+{
+    border-radius: 8%;
+}
+

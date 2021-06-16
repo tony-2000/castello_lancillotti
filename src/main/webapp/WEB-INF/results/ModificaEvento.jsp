@@ -41,5 +41,16 @@
     <button type="submit">Modifica</button>
 </form>
 </div>
+
+
+<div class="adminAggiungi">
+<form action="AdminModDate" method="get">
+    <input type="hidden" name="idEvento" value="${evento.idEvento}">
+    <label id="gestisci" style="font-size: 130%"> Gestisci Date e Orari:
+    <button type="submit" name="gestisci">Gestisci</button>
+    </label>
+</form>
+</div>
+
 </body>
 </html>

@@ -14,6 +14,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 @WebServlet(name="AggiungiRecensione", value="/AggiungiRecensione")
 public class AggiungiRecensione extends HttpServlet
@@ -101,6 +103,35 @@ public class AggiungiRecensione extends HttpServlet
                 }
             }
 
+
+            boolean bol;
+            DataDAO daodata=new DataDAO();
+            ArrayList<Data> date= (ArrayList<Data>) daodata.doRetrieveDatesByEvent(id);
+            ArrayList<Data> copy= (ArrayList<Data>) date.clone();
+            GregorianCalendar actual=new GregorianCalendar();
+            actual.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
+            for(Data x: copy) {
+                if (x.getData().getTime() < actual.getTimeInMillis())
+                    date.remove(x);
+                else {
+                    bol=false;
+                    OrarioDAO oradao = new OrarioDAO();
+                    ArrayList<Orario> orari = (ArrayList<Orario>) oradao.doRetrieveTimesByEventDate(x.getData(), x.getIdEvento());
+                    for(Orario z: orari)
+                    {
+                        if(z.getPostiDisponibili()!=0)
+                            bol=true;
+                    }
+                    if(!bol)
+                        date.remove(x);
+                    if (orari.size() == 0)
+                    {
+                        date.remove(x);
+                    }
+                }
+            }
+
+            request.setAttribute("date",date);
             request.setAttribute("checkRecensione",checkRecensione);
             request.setAttribute("recensioni",support);
         }

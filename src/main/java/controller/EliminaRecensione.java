@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 @WebServlet(name="EliminaRecensione", value="/EliminaRecensione")
 public class EliminaRecensione extends HttpServlet
@@ -82,6 +84,35 @@ public class EliminaRecensione extends HttpServlet
                 support.get(0).setNome("Questa è la tua recensione: "+support.get(0).getNome());
             }
         }
+
+        boolean bol;
+        DataDAO daodata=new DataDAO();
+        ArrayList<Data> date= (ArrayList<Data>) daodata.doRetrieveDatesByEvent(idEvento);
+        ArrayList<Data> copy= (ArrayList<Data>) date.clone();
+        GregorianCalendar actual=new GregorianCalendar();
+        actual.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
+        for(Data x: copy) {
+            if (x.getData().getTime() < actual.getTimeInMillis())
+                date.remove(x);
+            else {
+                bol=false;
+                OrarioDAO oradao = new OrarioDAO();
+                ArrayList<Orario> orari = (ArrayList<Orario>) oradao.doRetrieveTimesByEventDate(x.getData(), x.getIdEvento());
+                for(Orario z: orari)
+                {
+                    if(z.getPostiDisponibili()!=0)
+                        bol=true;
+                }
+                if(!bol)
+                    date.remove(x);
+                if (orari.size() == 0)
+                {
+                    date.remove(x);
+                }
+            }
+        }
+
+        request.setAttribute("date",date);
         request.setAttribute("checkRecensione",checkRecensione);
         request.setAttribute("recensioni",support);
     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/VisualizzaElemento.jsp");
