@@ -4,24 +4,34 @@ import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 @WebServlet(name="ModificaEvento", value="/ModificaEvento")
-
+@MultipartConfig
 public class ModificaEvento extends HttpServlet
 {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        doGet(request,response);
-    }
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        doPost(request,response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        Part image=request.getPart("image");
+        String nameImage= Paths.get(image.getSubmittedFileName()).getFileName().toString();
+        String uploadPath=System.getenv("CATALINA_HOME")+ File.separator+"uploads"+File.separator;
+        InputStream stream=image.getInputStream();
+        String linkImmagine=uploadPath+nameImage;
+        File file=new File(linkImmagine);
+        Files.copy(stream,file.toPath());
+
         Evento evento=new Evento();
         EventoDAO dao=new EventoDAO();
         evento.setIdEvento(Integer.parseInt(request.getParameter("idEvento")));
@@ -29,10 +39,8 @@ public class ModificaEvento extends HttpServlet
         evento.setNome(request.getParameter("nome"));
         evento.setDescrizione(request.getParameter("descrizione"));
         evento.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
-        if(request.getParameter("linkImmagine")!=null && request.getParameter("linkImmagine")!="")
-            evento.setLinkImmagine(request.getParameter("linkImmagine"));
-        else
-            evento.setLinkImmagine(request.getParameter("link"));
+
+        evento.setLinkImmagine("/Castello_Lancillotti_war_exploded/covers/"+nameImage);
         dao.doUpdate(evento);
         ArrayList<Evento> eventi=new ArrayList<>();
         eventi= (ArrayList<Evento>) dao.doRetrieveAllEvents();

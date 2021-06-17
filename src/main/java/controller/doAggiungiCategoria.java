@@ -34,11 +34,10 @@ public class doAggiungiCategoria extends HttpServlet {
         File file=new File(linkImmagine);
         Files.copy(stream,file.toPath());
 
-
         Categoria cat= new Categoria();
         CategoriaDAO dao=new CategoriaDAO();
         cat.setNome(request.getParameter("nome"));
-        cat.setLinkImmagine(linkImmagine);
+        cat.setLinkImmagine("/Castello_Lancillotti_war_exploded/covers/"+nameImage);
         dao.doSave(cat);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/AreaAdmin.jsp");
         dispatcher.forward(request, response);

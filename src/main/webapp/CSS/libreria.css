@@ -82,8 +82,8 @@ div.galleriaVisite {
     background-color: whitesmoke;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 6% 17%;
-    width: 90%;
-    height: auto;
+    width: 80%;
+    height: 45%;
     z-index: -1 ;
     cursor: pointer;
 }
@@ -105,8 +105,9 @@ div.galleriaVisite img {
     height: auto;
     cursor: pointer;
     max-width: 644px;
-    max-height: 363px;
+    max-height: 362px;
 }
+
 
 div.descVisite {
     width: 100%;

@@ -111,7 +111,7 @@ public class FileServlet extends HttpServlet {
         }
 
         // URL-decode the file name (might contain spaces and on) and prepare file object.
-        File file = new File(basePath, URLDecoder.decode(requestedFile, StandardCharsets.UTF_8));
+        File file = new File(basePath, URLDecoder.decode(requestedFile, "UTF-8"));
 
         // Check if file actually exists in filesystem.
         if (!file.exists()) {

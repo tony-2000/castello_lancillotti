@@ -10,7 +10,7 @@
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 <h1 style="text-align: center; font-size: 250% "> Aggiungi Evento</h1>
 <div class="adminAggiungi">
-<form action="doAggiungiEvento" method="get" >
+<form action="doAggiungiEvento" method="post" enctype="multipart/form-data" >
     <label id="categorie">Categoria:
     <select id="categoria" name="categorie">
         <c:forEach items="${categorie}" var="categorie" >
@@ -20,7 +20,7 @@
     </label>
     <br><br>
     <label id="image"> Immagine:
-    <input type="file" name="file" required accept="image/*">
+    <input type="file" name="image" required accept="image/*">
     </label>
     <br><br>
     <label id="nome">Nome:
