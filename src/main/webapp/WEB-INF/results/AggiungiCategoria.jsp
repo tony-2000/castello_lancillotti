@@ -10,9 +10,9 @@
 <h1 style="text-align: center; font-size: 250% "> Aggiungi Categoria</h1>
 
 <div class="adminAggiungi">
-<form action="doAggiungiCategoria" method="get">
-    <label id="image"> Immagine:
-        <input type="file" required accept="image/*">
+<form action="doAggiungiCategoria" method="post" enctype="multipart/form-data">
+    <label for="imageID"> Immagine:
+        <input type="file" name="image" id="imageID" required accept="image/*">
     </label>
     <br><br>
     <label id="nome">Nome:

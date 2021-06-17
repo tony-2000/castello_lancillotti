@@ -28,9 +28,6 @@
 
 
 
-
-
-
     function loadTickets(ora)
     {
         var giorno=document.getElementById("date").value;
@@ -110,17 +107,10 @@
     }
     */
 
-
-
-        function showButton1()
-        {
+        function showButton1(){
           $("#button1").show();
         }
 
-        function showButton2()
-        {
-           $("#button2").show();
-        }
 
         function control(control) {
             switch (control) {
@@ -151,21 +141,36 @@
                 alert("Nome utente o password errati.");
         }
 
-        function checkRegistration()
+        function errPass(checkPass)
         {
-            var telefono = $("#telefonoID").val();
-            var password = $("#passwordID").val();
-            var passwordCheck = $("#passwordCheckID").val();
-            var patTel = /[^0-9]/g;
-
-            var telefonoRegex=telefono.match(patTel)
-            if(telefonoRegex!=null)
-            {
-                alert("number error")
-                return false;
-            }
-
-            return false;
+            if(checkPass===true)
+                alert("Password errata.");
         }
+
+    function checkPassword()
+    {
+        var password=document.getElementById("passwordID").value;
+        var passwordCheck=document.getElementById("passwordCheckID").value;
+
+        if(password!==passwordCheck)
+        {
+            alert("Le password non combaciano")
+            return false
+        }
+
+    }
+
+    function showButton2()
+    {
+        $("#button2").show();
+    }
+
+    function datiPresenti(dati)
+    {
+        if(dati===-1)
+            alert("Nome Utente già registrato in Database")
+        if(dati===-2)
+            alert("Mail già registrata in Database")
+    }
 
 }

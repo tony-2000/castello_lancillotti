@@ -169,6 +169,36 @@ div.registrazione{
 }
 
 
+
+.checkForm .checkFormText {
+    visibility: hidden;
+    background-color: #595959;
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 6%;
+    padding: 2%;
+    position: absolute;
+    z-index: 1;
+    width: 70%;
+    bottom: 50%;
+    right:105%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.checkForm .checkFormText::after {
+    content: "";
+    position: absolute;
+}
+
+.checkForm:hover .checkFormText {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
 /*Visualizza Elemento*/
 
 div.containerElemento{
@@ -353,4 +383,6 @@ div.adminAggiungi fieldset
 {
     border-radius: 8%;
 }
+
+
 

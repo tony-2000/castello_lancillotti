@@ -15,6 +15,7 @@ import java.io.IOException;
     public class ToAggiornaProfilo extends HttpServlet {
         public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
         {
+            boolean pass=true;
             String url ="/WEB-INF/results/Profilo.jsp";
             HttpSession session=request.getSession();
             Utente utente= (Utente) session.getAttribute("utenteSessione");
@@ -23,7 +24,9 @@ import java.io.IOException;
             if(utente.getPassword().equals(temp.getPassword()))
             {
                 url="/WEB-INF/results/AggiornaProfilo.jsp";
+                pass=false;
             }
+            request.setAttribute("passError",pass);
             RequestDispatcher dispatcher = request.getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }

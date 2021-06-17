@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+    <script src="JS/JavaScriptLib.js"></script>
     <style>
     body {
         background-image: url("Images/BackgroundProfilo.jpg");
@@ -15,7 +16,7 @@
     <title>Profilo</title>
 
 </head>
-<body>
+<body onload="errPass(${passError})">
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
 

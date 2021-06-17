@@ -89,13 +89,13 @@ public class Check {
                 password.contains("\"") || password.contains("\\") || password.contains("/") ||
                 password.contains("€") || password.contains("(") || password.contains(")") ||
                 password.contains("!") || password.contains("?") || password.contains("'") ||
-                password.contains("+") || password.contains("-") || password.contains("*") ||
+                password.contains("+") || password.contains("*") || password.contains(",") ||
                 password.contains("=") || password.contains("#") || password.contains("-") ||
                 password.contains("_") || password.contains("[") || password.contains("]") ||
                 password.contains("{") || password.contains("}") || password.contains("§") ||
                 password.contains("^") || password.contains("ç") || password.contains("°") ||
                 password.contains("<") || password.contains(">") || password.contains(";") ||
-                password.contains(":") || password.contains(","))) return -8;
+                password.contains(":") )) return -8;
         return 0;
     }
 
@@ -103,7 +103,7 @@ public class Check {
     {
         if(name=="" || name==null) return -1;
         if(name.length()<2) return -2;
-        if(name.length()>30) return -3;
+        if(name.length()>20) return -3;
         return 0;
     }
 
@@ -119,7 +119,7 @@ public class Check {
     {
         if(telephone=="" || telephone==null) return -1;
         if(telephone.length()<9) return -2;
-        if(telephone.length()>12) return -3;
+        if(telephone.length()>10) return -3;
         int i=0;
         char temp;
         while(i<telephone.length())

@@ -47,7 +47,13 @@ public class Registrazione extends HttpServlet
         }
         else
         {
+            int check=0;
+            if(checkUsername==-4)
+                check=-1;
+            if(checkMail==-6)
+                check=-2;
             url="Registrazione.jsp";
+            request.setAttribute("datiPresenti",check);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
