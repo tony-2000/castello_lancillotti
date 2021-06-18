@@ -15,7 +15,7 @@
 
                 <div class="galleriaVisite" >
                     <button type="submit"  style="border: 0; background: transparent">
-                    <img src="${evento.linkImmagine}" alt="Immagine Evento"/>
+                    <img src="${evento.linkImmagine}" alt="Immagine Evento" />
                     <input type="hidden" name="idEvento" value="${evento.idEvento}">
                     <div class="descVisite">  ${evento.nome} </div>
                     </button>

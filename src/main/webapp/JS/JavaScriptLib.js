@@ -173,4 +173,23 @@
             alert("Mail già registrata in Database")
     }
 
+    function showNavbar()
+    {
+        $("#navbar").show(300);
+    }
+
+    function closeNavbar()
+    {
+        var temp=$("#navbar").css("z-index")
+        if(temp==100)
+            $("#navbar").hide(300);
+    }
+
+    function resetNavbar() {
+        var width = window.innerWidth;
+        if (width > 1100)
+            $("#navbar").show();
+    }
+
+
 }

@@ -4,124 +4,32 @@
 
 <html>
 <head>
+    <script src="JS/JavaScriptLib.js"></script>
+    <script src="JS/jquery-3.6.0.min.js"></script>
     <title>Header</title>
-    <style>
-
-        body {
-            overflow-x: hidden; /* Hide horizontal scrollbar */
-        }
-
-        ul.header {
-            list-style-type: none;
-            padding: 0;
-            background-color: #d9c6b0;
-            position: fixed;
-            height: 3.13em;
-            width: 100%;
-            margin: 0;
-            z-index: 2;
-        }
-
-        li{
-            font-size: 100%;
-        }
-
-        li.header, .dropdown{
-            display: block;
-            color: #8c7c68;
-            text-align: center;
-            text-decoration: none;
-            float:left;
-        }
-
-
-        li a.header:hover, a.dropbtn:hover {
-            animation-name: hover1;
-            animation-duration: 0.3s;
-            animation-fill-mode: forwards;
-        }
-
-        @keyframes hover1 {
-            from{background-color: #d9c6b0}
-            to {background-color: #b19d86
-            }
-        }
-
-        li a.header, .dropbtn {
-            display: inline-block;
-            color: #595959;
-            text-align: center;
-            padding: 1em 1.3em;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-
-        li.dropdown {
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #e9e2db;
-            min-width: 10em;
-            box-shadow: 0em 0.5em 1em 0em rgba(0,0,0,0.2);
-            z-index:1;
-        }
-
-        li a:hover.hover2 {
-            animation-name: hover2;
-            animation-duration: 0.3s;
-            animation-fill-mode: forwards;
-        }
-
-        @keyframes hover2 {
-            from{background-color: #e9e2db}
-            to {background-color: #bcad9d
-            }
-        }
-
-
-        .dropdown-content {
-            animation-name: fadeIn;
-            animation-duration: 0.3s;
-            animation-fill-mode: forwards;
-        }
-
-        @keyframes fadeIn {
-            from{opacity: 0}
-            to {opacity: 1}
-        }
-
-
-        .dropdown-content a {
-            color: #595959;
-            padding: 0.8em 1em;
-            text-decoration:none;
-            display: block;
-            text-align: left;
-        }
-
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-    </style>
 </head>
-<body>
+<body >
 
+<div class="responsiveBar">
+        <div onclick="showNavbar()" class="responsiveDiv">
+            <img src="./Images/logoBase.png" alt="logo" style="width:3em;height:3em; float: left">
+        <p style="float: left; padding-left: 1em">Menu</p>
+    </div>
+    <p style="text-align: center">Castello Lancellotti</p>
+</div>
 
-<ul class="header">
-    <li class="header"><img src="./Images/logoBase.png" alt="logo" style="width:3em;height:3em;"></li>
+<ul class="header" id="navbar" onmouseleave="closeNavbar()">
+    <li class="header"><img class="close" src="./Images/closeNavbar.png" alt="logo" onclick="closeNavbar()"></li>
+    <li class="header"><img class="logo" src="./Images/logoBase.png" alt="logo"></li>
     <li class="header"><a class="header" href="./index.jsp">Home</a></li>
     <li class="header"><a class="header" href="SulCastello.jsp">Sul Castello</a></li>
     <li class="header"><a class="header" href="ShowAllVisits">Visite</a></li>
     <li class="header"><a class="header" href="VisualizzaCategorie">Eventi</a></li>
     <li class="header" style="float:right"><a class="header" href="Carrello">Carrello</a></li>
-    <li class="dropdown" style="float:right"><a  class="dropbtn" <%if (session.getAttribute("utenteSessione")==null){%>
-           style="display: none"  <%;}%>> Ciao ${utenteSessione.nome}</a>
+    <li class="header"style="float:right"> <a class="header" href="Login.jsp" <%if (session.getAttribute("utenteSessione")!=null){%>
+                                              style="display: none"  <%;}%>>Accedi</a></li>
+    <li class="dropdown" ><a  class="dropbtn" <%if (session.getAttribute("utenteSessione")==null){%>
+           style="display: none"<%;}%>> Ciao ${utenteSessione.nome}</a>
         <div class="dropdown-content">
             <a class="hover2" href="ShowProfilo"> Profilo </a>
             <a class="hover2" href="RiepilogoAcquisti">Riepilogo Acquisti</a>
@@ -134,11 +42,12 @@
         </div>
     </li>
 
-    <li class="header"style="float:right"> <a class="header" href="Login.jsp" <%if (session.getAttribute("utenteSessione")!=null){%>
-                                style="display: none"  <%;}%>>Accedi</a></li>
-
+<script>
+    window.addEventListener("resize", resetNavbar);
+</script>
 
 </ul>
+
 <br><br>
 </body>
 </html>
