@@ -5,10 +5,10 @@
 <html>
 <head>
     <script src="JS/JavaScriptLib.js"></script>
-    <script src="JS/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="JS/jquery-3.6.0.min.js"> </script>
     <title>Header</title>
 </head>
-<body >
+<body>
 
 <div class="responsiveBar">
         <div onclick="showNavbar()" class="responsiveDiv">
@@ -17,7 +17,6 @@
     </div>
     <p style="text-align: center">Castello Lancellotti</p>
 </div>
-
 <ul class="header" id="navbar" onmouseleave="closeNavbar()">
     <li class="header"><img class="close" src="./Images/closeNavbar.png" alt="logo" onclick="closeNavbar()"></li>
     <li class="header"><img class="logo" src="./Images/logoBase.png" alt="logo"></li>

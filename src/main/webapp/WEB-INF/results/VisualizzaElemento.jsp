@@ -7,56 +7,46 @@
 <html lang="it">
 <head>
     <jsp:include page="../Partials/head.jsp"/>
-    <script src="JS/JavaScriptLib.js"></script>
+    <script src="/JS/JavaScriptLib.js"></script>
     <title>Visualizza Elemento</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
+<h1 style="text-align: center; font-size: 250% ">${evento.nome}</h1>
 
 <div class="containerElemento">
+        <p><img src="${evento.linkImmagine}" alt="immagine Evento">${evento.descrizione}</p>
+        <br><p style="text-align: right; float: bottom"> Prezzo: ${evento.prezzo} € (a persona)</p>
+</div>
+<div class="scegliElemento">
 
-    <h1 style="text-align: center; font-size: 250% ">${evento.nome}</h1>
+    <form action="AggiungiAlCarrello">
+        <input type="hidden" name="id_evento" id="idEventoInput" value="${evento.idEvento}">
+        <input type="hidden" name="prezzo" value="${evento.prezzo}">
+        <%!ArrayList<Data> temp=new ArrayList<Data>();%> <%temp= (ArrayList<Data>) request.getAttribute("date");%>
 
+        <div <%if (temp.size()==0){%> style="display: none" <%}%>>
 
-        <img src="${evento.linkImmagine}" alt="immagine Evento">
+            <hr style="position:relative; left:-2%; width: 102%"><br><br>
 
-
-    <div class="descrizioneElemento">
-        ${evento.descrizione} &nbsp;
-    <br><p style="text-align: right"> Prezzo: ${evento.prezzo} € (a persona)</p>
-    </div>
-
-    <div class="scegliElemento">
-<form action="AggiungiAlCarrello">
-    <input type="hidden" name="id_evento" id="idEventoInput" value="${evento.idEvento}">
-    <input type="hidden" name="prezzo" value="${evento.prezzo}">
-
-<%!ArrayList<Data> temp=new ArrayList<Data>();%> <%temp= (ArrayList<Data>) request.getAttribute("date");%>
-           <div <%if (temp.size()==0){%> style="display: none" <%}%>>
             <label id="data">Seleziona data:
-    <select required onchange="loadTimes(this.value,${evento.idEvento})" name="data" id="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <option value="seleziona" selected disabled>Seleziona Data</option>
-        <c:forEach var="date" items="${date}">
-            <option value="${date.data}"> ${date.data} </option>
-        </c:forEach>
-    </select>
-    </label>
-
-
-    <span id="testo"></span>
-               <span id="Spanticket"></span>
-
-
-</form>
-    </div>
-
+                <select required onchange="loadTimes(this.value,${evento.idEvento})" name="data" id="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <option value="seleziona" selected disabled>Seleziona Data</option>
+                    <c:forEach var="date" items="${date}">
+                        <option value="${date.data}"> ${date.data} </option>
+                    </c:forEach>
+                </select>
+            </label>
+            <span id="testo"></span>
+            <span id="Spanticket"></span>
+        </div>
+    </form>
 </div>
 
-<p style="<%if (temp.size()!=0){%> display: none;<%}%> margin-right: 5%; text-align: center"> Non sono disponibili date per questo evento.</p>
+<%if (temp.size()==0){%> <br><hr><br><%}%>
 
-
-
+<p style="<%if (temp.size()!=0){%> display: none;<%}%> margin-right: 5%; text-align: center"> Non sono disponibili date per questo evento.</p><br>
 
 
 <div class="recensioni">

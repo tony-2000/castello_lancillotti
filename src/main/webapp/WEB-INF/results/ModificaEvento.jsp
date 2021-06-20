@@ -13,6 +13,7 @@
 <img alt="immagine Evento" src="${evento.linkImmagine}" style="width:30%;height:auto;" ><br><br>
 <form action="ModificaEvento" method="post" enctype="multipart/form-data">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
+    <input type="hidden" name="link" value="${evento.linkImmagine}">
     <label id="cate"> Categoria:
         <select id="cat" name="cate" >
             <c:forEach items="${categorie}" var="categoria" >
@@ -22,7 +23,7 @@
     </label>
     <br><br>
     <label id="image"> Inserisci nuova Immagine:
-        <input type="file" accept="image/*" required name="image">
+        <input type="file" accept="image/*" name="image">
     </label>
     <br><br>
     <label id="nome">Inserisci nuovo nome:

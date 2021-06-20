@@ -12,9 +12,10 @@
 <img alt="immagine Categoria" src="${categoria.linkImmagine}" style="width:30%;height:auto;" ><br><br>
 <form action="ModificaCategoria" method="post" enctype="multipart/form-data">
     <input type="hidden" name="idCategoria" value="${categoria.idCategoria}">
-
+    <input type="hidden" name="link" value="${categoria.linkImmagine}">
     <label id="image"> Inserisci nuova Immagine:
-        <input type="file" accept="image/*" required name="image">
+        <input type="file" accept="image/*" name="image">
+
     </label>
     <br><br>
     <label id="nome">Inserisci nuovo nome:

@@ -13,6 +13,7 @@ import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,19 +28,33 @@ public class ModificaCategoria extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        Part image=request.getPart("image");
-        String nameImage= Paths.get(image.getSubmittedFileName()).getFileName().toString();
-        String uploadPath=System.getenv("CATALINA_HOME")+ File.separator+"uploads"+File.separator;
-        InputStream stream=image.getInputStream();
-        String linkImmagine=uploadPath+nameImage;
-        File file=new File(linkImmagine);
-        Files.copy(stream,file.toPath());
-
         Categoria categoria=new Categoria();
         CategoriaDAO dao=new CategoriaDAO();
         categoria.setIdCategoria(Integer.parseInt(request.getParameter("idCategoria")));
         categoria.setNome(request.getParameter("nome"));
-        categoria.setLinkImmagine("/Castello_Lancillotti_war_exploded/covers/"+nameImage);
+
+
+
+        if(!request.getPart("image").getContentType().equals("application/octet-stream")) {
+            Part image = request.getPart("image");
+            String nameImage = Paths.get(image.getSubmittedFileName()).getFileName().toString();
+            String uploadPath = System.getenv("CATALINA_HOME") + File.separator + "uploads" + File.separator;
+            InputStream stream = image.getInputStream();
+            String linkImmagine = uploadPath + nameImage;
+            File file = new File(linkImmagine);
+            try {
+                Files.copy(stream, file.toPath());
+            } catch (FileAlreadyExistsException e) {
+                /* do nothing */
+            }
+            categoria.setLinkImmagine("/Castello_Lancillotti_war_exploded/covers/"+nameImage);
+        }
+        else
+        {
+            categoria.setLinkImmagine(request.getParameter("link"));
+        }
+
+
         dao.doUpdate(categoria);
         ArrayList<Categoria> categorie= (ArrayList<Categoria>) dao.doRetrieveAllCategories();
         categorie.removeIf(x->x.getIdCategoria()==1);
