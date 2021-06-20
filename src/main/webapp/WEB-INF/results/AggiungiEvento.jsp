@@ -8,7 +8,7 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-<h1 style="text-align: center; font-size: 250% "> Aggiungi Evento</h1>
+<h1 class="titleAdmin"> Aggiungi Evento</h1>
 <div class="adminAggiungi">
 <form action="doAggiungiEvento" method="post" enctype="multipart/form-data" >
     <label id="categorie">Categoria:
@@ -19,7 +19,7 @@
     </select>
     </label>
     <br><br>
-    <label id="image"> Immagine:
+    <label id="image"> Immagine:<br class="space480"><br class="space480">
     <input type="file" name="image" required accept="image/*">
     </label>
     <br><br>
@@ -28,7 +28,7 @@
     </label>
     <br><br>
     <label id="descrizione">Descrizione:<br>
-        <textarea name="descrizione" required minlength="20" maxlength="500" rows="3" style="width: 60%;resize: none"></textarea>
+        <textarea name="descrizione" class="adminAgg" required minlength="20" maxlength="500" rows="4"></textarea>
     </label>
     <br><br>
     <label id="prezzo">Prezzo:

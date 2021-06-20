@@ -15,7 +15,7 @@
     function myFunctionDate(xmlhttp) {
         var data = JSON.parse(xmlhttp.responseText);
         JSON.parse(xmlhttp.responseText);
-        let text = "<label id=\"orario\">Seleziona orario:</label> <select required id=\"selOr\" name=\"orario\" onchange=\"loadTickets(this.value)\"> <option value=\"temp\" selected disabled>Seleziona Ora</option>"
+        let text = "<br class='space600'><br class='space600'>  <label id=\"orario\">Seleziona orario:</label> <select required id=\"selOr\" name=\"orario\" onchange=\"loadTickets(this.value)\"> <option value=\"temp\" selected disabled>Seleziona Ora</option>"
 
         for (let x in data)
         {
@@ -51,8 +51,8 @@
         var tic = JSON.parse(xmlhttp.responseText);
         JSON.parse(xmlhttp.responseText);
         document.getElementById("Spanticket").style.display="";
-        let text = "<input required type='number' id='selQuantity' name='quantity' min='1' max='"+tic.ticket+"'>";
-        text+=" </input> <label id='quantity'>Biglietti disponibili: "+tic.ticket+"</label> <button type=\"submit\" id=\"selBut\">Aggiungi al Carrello </button>"
+        let text = "<br class='space850'> <br class='space850'> <input required type='number' id='selQuantity' name='quantity' min='1' max='"+tic.ticket+"'>";
+        text+=" </input> <label id='quantity'>Biglietti disponibili: "+tic.ticket+"</label><br class='space1050'><br class='space1050'> <button type=\"submit\" id=\"selBut\">Aggiungi al Carrello </button>"
         document.getElementById("Spanticket").innerHTML = text;
     }
 
@@ -65,13 +65,13 @@
         $("#dataEliminazione").val(x);
         $.getJSON("JSONTimes?data=" + x + "&id=" + y, function myFunctionHours(data)
         {
-            let text = "<fieldset><label id=\"orario\">Seleziona orario da eliminare:</label> <select required id=\"selOr\" " +
+            let text = "<fieldset><label id=\"orario\">Seleziona orario da eliminare:</label> <br class='space768'><br class='space768'><select required id=\"selOr\" " +
                 "onchange=\"showButton2()\" name=\"orario\"><option value=\"sel\" selected disabled>Seleziona Orario</option>"
 
             for (let x in data) {
                 text += "<option class=\"op\" value='" + data[x].ora + "'> " + data[x].ora + "</option> ";
             }
-            text += " </select> <button id='button2' type='submit' style='display: none'>Elimina Orario</button></fieldset>"
+            text += " </select><br class='space480'><br class='space480'> <button id='button2' type='submit' style='display: none'>Elimina Orario</button></fieldset>"
             $("#eliminaOra").html(text);
         })
     }

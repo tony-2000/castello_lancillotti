@@ -7,11 +7,11 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-<h1 style="text-align: center; font-size: 250% "> Aggiungi Categoria</h1>
+<h1 class="titleAdmin"> Aggiungi Categoria</h1>
 
 <div class="adminAggiungi">
 <form action="doAggiungiCategoria" method="post" enctype="multipart/form-data">
-    <label for="imageID"> Immagine:
+    <label for="imageID"> Immagine:<br class="space480"><br class="space480">
         <input type="file" name="image" id="imageID" required accept="image/*">
     </label>
     <br><br>

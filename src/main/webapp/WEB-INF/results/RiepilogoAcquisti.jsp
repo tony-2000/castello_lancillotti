@@ -13,7 +13,7 @@
 
 <%! ArrayList<Partecipare> acquisti;%><%acquisti= (ArrayList<Partecipare>) request.getAttribute("lista");%>
 
-<h1 style="text-align: center; font-size: 250% ">Riepilogo Acquisti</h1>
+<h1 class="titleBuy">Riepilogo Acquisti</h1>
 
 <ul>
     <c:forEach items="${lista}" var="lista">
@@ -28,7 +28,7 @@
                 <li>Prezzo a persona: ${lista.prezzo}€</li>
                 <br>
             </ul>
-            <br><br><br>
+            <br class="space530"><br class="space530"><br class="space530">
         </div>
     </c:forEach>
 </ul>

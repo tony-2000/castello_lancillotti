@@ -13,10 +13,10 @@
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 
-<h1 style="text-align: center; font-size: 250% ">${evento.nome}</h1>
+<h1 class="titleEvent">${evento.nome}</h1>
 
 <div class="containerElemento">
-        <p><img src="${evento.linkImmagine}" alt="immagine Evento">${evento.descrizione}</p>
+        <p><img src="${evento.linkImmagine}" alt="immagine Evento"><br class="space768"><br class="space768"> ${evento.descrizione}</p>
         <br><p style="text-align: right; float: bottom"> Prezzo: ${evento.prezzo} € (a persona)</p>
 </div>
 <div class="scegliElemento">
@@ -28,7 +28,7 @@
 
         <div <%if (temp.size()==0){%> style="display: none" <%}%>>
 
-            <hr style="position:relative; left:-2%; width: 102%"><br><br>
+            <hr id="hrElemento"><br><br>
 
             <label id="data">Seleziona data:
                 <select required onchange="loadTimes(this.value,${evento.idEvento})" name="data" id="date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,14 +61,14 @@
         </label><br>
         <label id="valutazione">Valutazione:
             <input type="number" required name="valutazione" step="1" min="1" max="5"style="margin-right: 3%">
-        </label>
+        </label><br class="space480"><br class="space480">
         <button type="submit" style="margin-right: 2%"> Aggiungi Recensione </button><br><br>
     </form>
 
     <form action="EliminaRecensione"  method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <button type="submit" style="float:right"> Elimina Recensione </button>
-    </form>
+    </form><br class="space480"><br class="space480">
 
     <form action="ToModificaRecensione" method="get" <%if(!((boolean) request.getAttribute("checkRecensione"))){%> hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
@@ -79,10 +79,10 @@
     <c:forEach items="${recensioni}" var="recensioni" >
     <fieldset name="Recensioni" style=" border-radius: 5%;">
         <legend style="font-size: 120%">${recensioni.nome} </legend>
-        <div style="max-width: 80%; margin-right: 1%; margin-left: 1%">
+        <div style="width: 98%; margin-right: 1%; margin-left: 1%">
             <textarea rows="3" readonly style="resize: none; width:80%">${recensioni.commento}</textarea>
             &nbsp;&nbsp;&nbsp;&nbsp;<br><br>Valutazione:&nbsp;${recensioni.valutazione}/5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Data:&nbsp;${recensioni.dataRecensione}&nbsp;&nbsp;alle:&nbsp;${recensioni.orarioRecensione}
+                <br class="space600"><br class="space600"> Data:&nbsp;${recensioni.dataRecensione}&nbsp;&nbsp;<br class="space350"><br class="space350"> alle:&nbsp;${recensioni.orarioRecensione}
         </div>
     </fieldset>
     <br><br>

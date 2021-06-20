@@ -8,10 +8,10 @@
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-<h1 style="text-align: center; font-size: 250% ">Modifica Utenti</h1>
-<div class="modAddCat">
+<h1 class="titleAdmin">Modifica Utenti</h1>
+<div class="adminHome">
     <c:forEach items="${utenti}" var="utenti" >
-        <div class="adminElementCat">
+        <div class="adminElementCat" style="font-size: 75%">
             <p>Nome: ${utenti.nome}</p>
             <p>Cognome: ${utenti.cognome}</p>
             <p>Mail: ${utenti.mail}</p>

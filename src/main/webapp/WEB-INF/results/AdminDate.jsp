@@ -13,16 +13,16 @@
 <body onload="control(${control})">
 
 <jsp:include page="../Partials/Header.jsp"/><br><br>
-<h1 style="text-align: center; font-size: 170% "> Gestisci Date Evento</h1>
+<h1 class="titleAdmin"> Gestisci Date Evento</h1>
 <%!ArrayList<Data> temp=new ArrayList<Data>();%> <%temp= (ArrayList<Data>) request.getAttribute("date");%>
 
 <div class="adminAggiungi">
     <fieldset>
 <form action="AdminAddData" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
-    <label id="newData"> Aggiungi nuova data:
+    <label id="newData"> Aggiungi nuova data:<br class="space600"><br class="space600">
     <input type="date" required name="newData" id="dataEvento">
-    </label>
+    </label><br class="space480"><br class="space480">
     <button type="submit">Aggiungi</button>
 </form>
     </fieldset>
@@ -32,14 +32,14 @@
     <fieldset>
 <form action="AdminDeleteData" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <label id="data1">Seleziona data da eliminare:
+        <label id="data1">Seleziona data da eliminare:<br class="space600"><br class="space600">
             <select required name="data1" id="dates" onchange="showButton1()">
                 <option selected disabled >Seleziona Data</option>
                 <c:forEach var="date" items="${date}">
                     <option value="${date.data}"> ${date.data} </option>
                 </c:forEach>
             </select>
-        </label>
+        </label><br class="space480"><br class="space480">
         <button type="submit" style="display: none" id="button1">Elimina</button>
 </form>
         </fieldset>
@@ -47,7 +47,7 @@
 
 
 
-<h1 style="text-align: center; font-size: 170% "> Gestisci Orari Evento</h1>
+<h1 class="titleAdmin"> Gestisci Orari Evento</h1>
 
 
         <div class="adminAggiungi" <%if (temp.size()==0){%> style="display: none" <%}%>>
@@ -67,12 +67,12 @@
 <form action="AdminAddTime" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
     <input type="hidden" name="dataEvento" id="dataEv" value="">
-    <label id="newHour"> Aggiungi un nuovo orario:
+      <label id="newHour"> Aggiungi un nuovo orario:<br class="space480"> <br class="space480">
         <input type="time" step="1" required name="newHour" id="oraEvento">
     </label><br><br>
-    <label id="biglietti">Seleziona quantità biglietti:
+    <label id="biglietti">Seleziona quantità biglietti:<br class="space768"><br class="space768">
         <input type="number" min="1" required name="biglietti">
-    </label>
+    </label><br class="space480"><br class="space480">
     <button type="submit">Aggiungi</button>
 </form>
     </fieldset>

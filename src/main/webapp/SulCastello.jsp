@@ -9,37 +9,29 @@
 <jsp:include page="WEB-INF/Partials/Header.jsp"/><br><br>
 
 
-<h1 style="text-align: center; font-size: 300% ">Sul Castello</h1>
+<h1 class="titleInf">Sul Castello</h1>
 
 <div class="sulCastello">
-    <div class="testo1">
-        <p>
+        <p><img style="float: right; margin-left: 1%" src="Images/sulCastello1.jpg" alt="Sul Castello 1"/><br class="space600"><br class="space600">
             Il Castello Lancellotti è una tra le residenze storiche più incantevoli e visitate della Campania, situato nel paese di Lauro, in provincia di Avellino, ed edificato nel XI secolo su una roccia chiamata "primo sasso" perché precedentemente, su di esso, sorgeva una costruzione appartenente all’epoca romana. Di origine longobarda-normanna, il castello è citato per la prima volta in un documento del 976.
             Un'altra testimonianza della presenza del Castello fu rilevata nei Registri della Cancelleria angioina del 1277 che concedono la custodia della fortezza a Margherita de Toucy, cugina di Carlo I d’Angiò. Castello Lancellotti, nel tempo, passò nelle mani di diverse casate: nel periodo longobardo appartenne ai Nobili del Principato di Salerno, nel periodo normanno ai Conti di Caserta, poi nel periodo svevo—angioino alla famiglia Del Balzo-Conti e nel periodo aragonese agli Orsini Conti di Nola e ai Pignatelli.
-
-        </p>
-    </div>
-    <img src="Images/sulCastello1.jpg" alt="Sul Castello 1"/>
+    </p>
 </div>
 
+<br><br>
 <div class="sulCastello">
-    <div class="testo2">
-        <p >
+        <p> <img style="float: left; margin-right: 1%" src="Images/sulCastello2.jpg" alt="Sul Castello 2" /><br class="space600"><br class="space600">
             Solo nel 1632 fu acquistato dalla famiglia Lancellotti, tutt’oggi proprietaria della fortezza.
             Nella notte del 30 aprile del 1799, durante la signoria dei Lancellotti, il Castello fu incendiato dalle truppe francesi, intervenute per placare una rivolta locale degli antirepubblicani. Dopo quest’episodio il maniero fu lasciato in un stato d’abbandono fino al 1870, anno in cui, per volere del Principe Don Filippo Massimo Lancellotti, fu riedificato secondo più stili architettonici – gotico, rinascimentale, neoclassico, barocco – e inaugurato il 25 agosto dello stesso anno durante la festa dei santi patroni.
-        </p>
-    </div>
-    <img src="Images/sulCastello2.jpg" alt="Sul Castello 2" />
+    </p>
 </div>
+<br><br>
 
 <div class="sulCastello">
-        <div class="testo1">
-            <p>
+            <p> <img style="float: right; margin-left: 1%" src="Images/sulCastello3.jpg" alt="Sul Castello 3" /><br class="space600"><br class="space600">
                 Il castello è circondato da mura merlate con diverse porte d’accesso tra cui il portale rinascimentale; all’interno svettano torri quadrangolari con merlature ed archetti pensili con tetti spioventi e pinnacoli angolari. La parte abitativa è costituita da Sala della Musica, Sala delle Armi, Salone Rosso, Farmacia, scuderia con le carrozze, biblioteca e cappella privata con il cortile arricchito da una fontana realizzata con materiali architettonici di epoca romana.
                 Particolarmente suggestivo è il cortile che raccorda la cappella, il chiostrino segreto e la biblioteca creata da Filippo Massimo Lancellotti e che conserva oltre mille opere tra cui quattro libri mastri di fine XVIII secolo. Oggi è una delle residenza d’epoca più affascinanti della Campania sede di molti eventi e manifestazioni.
-            </p>
-        </div>
-        <img src="Images/sulCastello3.jpg" alt="Sul Castello 3" />
+        </p>
     </div>
 
 <br><br>
