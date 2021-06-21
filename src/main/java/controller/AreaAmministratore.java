@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/*Controlla se l'utente in sessione è amministratore. Controllo aggiuntivo già effettuato nella jsp (Header).
+* Reindirizza alla pagina di Admin*/
+
 @WebServlet(name="AreaAmministratore", value="/AreaAmministratore")
 public class AreaAmministratore extends HttpServlet
 {

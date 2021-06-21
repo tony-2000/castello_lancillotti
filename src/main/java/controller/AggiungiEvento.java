@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*carica le informazioni necessarie alla jsp*/
+
 @WebServlet(name="AggiungiEvento", value="/AggiungiEvento")
 public class AggiungiEvento extends HttpServlet
 {

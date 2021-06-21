@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*Visualizza tutte le categorie*/
+
 @WebServlet(name = "VisualizzaCategorie", value = "/VisualizzaCategorie")
 public class VisualizzaCategorie extends HttpServlet
 {

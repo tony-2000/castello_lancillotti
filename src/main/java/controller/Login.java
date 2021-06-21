@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/*Verifica che l'utente sia registrato e che le informazioni inserite siano corrette. In caso affermativo salva l'utente in
+* sessione e ritorna alla home, altrimenti rimanda alla pagina di login*/
+
 @WebServlet(name="Login", value="/Login")
 public class Login extends HttpServlet
 {
@@ -32,6 +35,7 @@ public class Login extends HttpServlet
         else
             session.setAttribute("utenteSessione",user);
         request.setAttribute("logError",log);
+        /*Flag per alert in JavaScript in caso di credenziali errate*/
         RequestDispatcher dispatcher = request.getRequestDispatcher(resp);
         dispatcher.forward(request, response);
     }

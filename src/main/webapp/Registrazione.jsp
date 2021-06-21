@@ -3,7 +3,7 @@
 <html lang="it">
 <head>
     <jsp:include page="WEB-INF/Partials/head.jsp"/>
-    <script src="JS/JavaScriptLib.js"></script>
+    <script src="JS/JavaScriptLib.js"></script><%-- CSS 487 --%>
     <style>
     body {
     background-image: url("Images/registrazione-Background.jpg");

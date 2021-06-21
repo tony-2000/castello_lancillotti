@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+/*Elimina la recensione di un utente da un prodotto specifico*/
+
 @WebServlet(name="EliminaRecensione", value="/EliminaRecensione")
 public class EliminaRecensione extends HttpServlet
 {
@@ -32,6 +34,8 @@ public class EliminaRecensione extends HttpServlet
         RecensioneDAO dao= new RecensioneDAO();
         dao.doDelete(idUtente,idEvento);
 
+        /*Carica le informazioni neccesarie per reindirizzare alla jsp. Per ulteriori informazioni andare alla
+         * servlet MostraEvento*/
 
         EventoDAO eventdao = new EventoDAO();
         Evento event = new Evento();

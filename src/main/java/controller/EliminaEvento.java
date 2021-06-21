@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+
+/*Elimina un evento dal database*/
+
 @WebServlet(name="EliminaEvento", value="/EliminaEvento")
 
 public class EliminaEvento extends HttpServlet

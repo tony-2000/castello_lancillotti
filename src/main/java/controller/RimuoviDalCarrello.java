@@ -16,6 +16,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/*Rimuove un prodotto dal carrello*/
+
 @WebServlet(name="RimuoviDalCarrello", value="/RimuoviDalCarrello")
 public class RimuoviDalCarrello extends HttpServlet
 {

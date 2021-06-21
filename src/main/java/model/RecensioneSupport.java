@@ -1,5 +1,7 @@
 package model;
 
+/*Classe di supporto a Recensione che aggiunge il nome dell'autore*/
+
 public class RecensioneSupport extends Recensione
 {
     private String nome;

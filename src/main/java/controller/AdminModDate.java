@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*Servlet che carica le informazioni per gestire date e orari di un evento*/
+
 @WebServlet(name="AdminModDate", value="/AdminModDate")
 public class AdminModDate extends HttpServlet
 {

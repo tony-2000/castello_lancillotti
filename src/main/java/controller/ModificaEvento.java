@@ -1,5 +1,7 @@
 package controller;
 
+/*Modifica le informazioni di un evento in base all'input*/
+
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -33,7 +35,7 @@ public class ModificaEvento extends HttpServlet
         evento.setDescrizione(request.getParameter("descrizione"));
         evento.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 
-
+        /*Gestisce la mancata aggiunta di una nuova immagine nell'else*/
         if(!request.getPart("image").getContentType().equals("application/octet-stream")) {
             Part image = request.getPart("image");
             String nameImage = Paths.get(image.getSubmittedFileName()).getFileName().toString();

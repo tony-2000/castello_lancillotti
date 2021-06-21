@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*Elimina un utente dal database*/
+
 @WebServlet(name="EliminaUtente", value="/EliminaUtente")
 public class EliminaUtente extends HttpServlet
 {
@@ -31,6 +33,7 @@ public class EliminaUtente extends HttpServlet
         HttpSession session=request.getSession();
         Utente user= (Utente) session.getAttribute("utenteSessione");
         ArrayList<Utente> utenti= (ArrayList<Utente>) dao.doRetrieveAllUsers();
+        /*Non si può eliminare il primo utente admin (superiore) e l'utente in sessione*/
         utenti.removeIf(x->x.getIdUtente()==1);
         utenti.removeIf(x->x.getIdUtente()==user.getIdUtente());
         request.setAttribute("utenti",utenti);

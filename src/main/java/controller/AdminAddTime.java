@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/*Servlet che aggiunge un orario ad una data*/
+
 @WebServlet(name="AdminAddTime", value="/AdminAddTime")
 public class AdminAddTime extends HttpServlet
 {
@@ -39,19 +41,19 @@ public class AdminAddTime extends HttpServlet
         ArrayList<Orario> orari= (ArrayList<Orario>) dao.doRetrieveTimesByEventDate(temp.getData(),id);
 
         int cont=3;
-        boolean control=false;
         for(Orario x: orari)
         {
+            /*Controllo se orario già presente per quella data*/
             if (x.getOra().equals(temp.getOra()))
             {
-                control = true;
                 cont=-3;
                 break;
             }
 
         }
-        if(!control)
+        if(cont==3)
             dao.doSave(temp);
+        /*control per alert in funzione JavaScript*/
 
         ArrayList<Data> date= (ArrayList<Data>) datadao.doRetrieveDatesByEvent(id);
         request.setAttribute("control",cont);

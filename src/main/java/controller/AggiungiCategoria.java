@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/*Reindirizzamento del bottone verso la jsp*/
+
 @WebServlet(name="AggiungiCategoria", value="/AggiungiCategoria")
 public class AggiungiCategoria extends HttpServlet
 {

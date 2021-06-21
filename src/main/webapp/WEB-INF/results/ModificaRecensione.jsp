@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/><%-- CSS 706 --%>
     <title>Modifica Recensione</title>
 </head>
 <body>

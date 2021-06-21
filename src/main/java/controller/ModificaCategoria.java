@@ -1,7 +1,6 @@
 package controller;
 
 import model.*;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -17,6 +16,9 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
+/*Modifica le informazioni di una categoria in base all'input*/
+
 @WebServlet(name="ModificaCategoria", value="/ModificaCategoria")
 @MultipartConfig
 public class ModificaCategoria extends HttpServlet
@@ -34,7 +36,7 @@ public class ModificaCategoria extends HttpServlet
         categoria.setNome(request.getParameter("nome"));
 
 
-
+        /*Gestisce la mancata aggiunta di una nuova immagine nell'else*/
         if(!request.getPart("image").getContentType().equals("application/octet-stream")) {
             Part image = request.getPart("image");
             String nameImage = Paths.get(image.getSubmittedFileName()).getFileName().toString();

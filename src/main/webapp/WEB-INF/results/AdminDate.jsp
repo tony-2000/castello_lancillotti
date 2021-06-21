@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script src="JS/JavaScriptLib.js"></script>
+    <script src="JS/JavaScriptLib.js"></script> <%-- CSS 1042 --%>
     <script src="JS/jquery-3.6.0.min.js"></script>
     <jsp:include page="../Partials/head.jsp"/>
     <title>Gestisci Date Evento</title>
@@ -14,6 +14,7 @@
 
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 <h1 class="titleAdmin"> Gestisci Date Evento</h1>
+<a href="AreaAmministratore" class="linkBack">Area Amministratore</a><br><br>
 <%!ArrayList<Data> temp=new ArrayList<Data>();%> <%temp= (ArrayList<Data>) request.getAttribute("date");%>
 
 <div class="adminAggiungi">
@@ -32,7 +33,7 @@
     <fieldset>
 <form action="AdminDeleteData" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
-        <label id="data1">Seleziona data da eliminare:<br class="space600"><br class="space600">
+        <label for="dates">Seleziona data da eliminare:<br class="space600"><br class="space600">
             <select required name="data1" id="dates" onchange="showButton1()">
                 <option selected disabled >Seleziona Data</option>
                 <c:forEach var="date" items="${date}">
@@ -51,7 +52,7 @@
 
 
         <div class="adminAggiungi" <%if (temp.size()==0){%> style="display: none" <%}%>>
-            <label id="data" style="font-size: 115%">Seleziona data:
+            <label for="date" style="font-size: 115%">Seleziona data:
                 <select required onchange="loadHours(this.value,${evento.idEvento})" name="data" id="date">
                     <option value="seleziona" selected disabled>Seleziona Data</option>
                     <c:forEach var="date" items="${date}">
@@ -67,11 +68,11 @@
 <form action="AdminAddTime" method="get">
     <input type="hidden" name="idEvento" value="${evento.idEvento}">
     <input type="hidden" name="dataEvento" id="dataEv" value="">
-      <label id="newHour"> Aggiungi un nuovo orario:<br class="space480"> <br class="space480">
+      <label for="oraEvento"> Aggiungi un nuovo orario:<br class="space480"> <br class="space480">
         <input type="time" step="1" required name="newHour" id="oraEvento">
     </label><br><br>
-    <label id="biglietti">Seleziona quantità biglietti:<br class="space768"><br class="space768">
-        <input type="number" min="1" required name="biglietti">
+    <label for="big">Seleziona quantità biglietti:<br class="space768"><br class="space768">
+        <input type="number" min="1" required name="biglietti" id="big">
     </label><br class="space480"><br class="space480">
     <button type="submit">Aggiungi</button>
 </form>

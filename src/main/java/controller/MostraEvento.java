@@ -1,6 +1,4 @@
 package controller;
-
-
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -19,6 +17,7 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+/*Carica tutte le informazioni necessarie per mostrare un evento*/
 
 @WebServlet(name="MostraEvento", value="/MostraEvento")
 public class MostraEvento extends HttpServlet
@@ -43,6 +42,7 @@ public class MostraEvento extends HttpServlet
         HttpSession session=request.getSession();
         if(session.getAttribute("utenteSessione")!=null)
         {
+            /*Mette la recensione dell'utente in sessione come prima della lista*/
             Utente user = (Utente) session.getAttribute("utenteSessione");
             int idUtente = user.getIdUtente();
             if (dao.doRetrieveReviewsByKey(idUtente, event.getIdEvento()).getIdUtente()>0)
@@ -57,6 +57,7 @@ public class MostraEvento extends HttpServlet
 
             }
         }
+        /*Utilizza una classe di supporto per salvare il nome dell'utente che ha scritto la recensione*/
         ArrayList<RecensioneSupport> support=new ArrayList<>();
         for(Recensione x: list)
         {
@@ -84,9 +85,11 @@ public class MostraEvento extends HttpServlet
         {
             if(checkRecensione)
             {
+                /*verifica se l'utente in sessione ha effettuato una recensione*/
                 support.get(0).setNome("Questa è la tua recensione: "+support.get(0).getNome());
             }
         }
+        /*controlli sulle date che poi non verranno visualizzate*/
         boolean bol;
         DataDAO daodata=new DataDAO();
         ArrayList<Data> date= (ArrayList<Data>) daodata.doRetrieveDatesByEvent(id);
@@ -94,6 +97,7 @@ public class MostraEvento extends HttpServlet
         GregorianCalendar actual=new GregorianCalendar();
         actual.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));
         for(Data x: copy) {
+            /*data passata viene eliminata*/
             if (x.getData().getTime() < actual.getTimeInMillis())
                 date.remove(x);
             else {
@@ -102,6 +106,7 @@ public class MostraEvento extends HttpServlet
                 ArrayList<Orario> orari = (ArrayList<Orario>) oradao.doRetrieveTimesByEventDate(x.getData(), x.getIdEvento());
                 for(Orario z: orari)
                 {
+                    /*biglietti esauriti*/
                     if(z.getPostiDisponibili()!=0)
                      bol=true;
                 }
@@ -109,6 +114,7 @@ public class MostraEvento extends HttpServlet
                     date.remove(x);
                 if (orari.size() == 0)
                 {
+                    /*orari non disponibili*/
                     date.remove(x);
                 }
             }

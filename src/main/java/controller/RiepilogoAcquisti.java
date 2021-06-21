@@ -15,6 +15,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+/*Mostra gli acquisti effettuati dall'utente*/
+
 @WebServlet(name="RiepilogoAcquisti", value="/RiepilogoAcquisti")
 public class RiepilogoAcquisti extends HttpServlet
 {
@@ -28,6 +30,7 @@ public class RiepilogoAcquisti extends HttpServlet
         String url="/WEB-INF/results/RiepilogoAcquisti.jsp";
         HttpSession session=request.getSession();
         if(session.getAttribute("utenteSessione")==null)
+        /*controllo aggiuntivo per utente non in sessione*/
         {
             boolean temp= false;
             request.setAttribute("accessoAcquisti",temp);

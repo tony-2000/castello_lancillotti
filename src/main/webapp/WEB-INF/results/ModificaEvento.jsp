@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/><%-- CSS 1042 --%>
     <title>Modifica Dati Evento</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 <h1 class="titleAdmin"> Modifica Dati Evento</h1>
+<a href="AreaAmministratore" class="linkBack">Area Amministratore</a><br><br>
 <div class="adminAggiungi">
 <img alt="immagine Evento" src="${evento.linkImmagine}" ><br><br>
 <form action="ModificaEvento" method="post" enctype="multipart/form-data">

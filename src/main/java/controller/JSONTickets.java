@@ -15,6 +15,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/*Recupera il numero dei biglietti per un orario*/
+
 @WebServlet("/JSONTickets")
 public class JSONTickets extends HttpServlet
 {

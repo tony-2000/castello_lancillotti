@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="WEB-INF/Partials/head.jsp"/>
+    <jsp:include page="WEB-INF/Partials/head.jsp"/><%-- CSS 895 --%>
     <title>Sul Castello</title>
 </head>
 <body>

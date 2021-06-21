@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <script src="JS/JavaScriptLib.js"></script>
+    <script src="JS/JavaScriptLib.js"></script><%-- CSS 1007 --%>
     <style>
     body {
         background-image: url("Images/BackgroundProfilo.jpg");

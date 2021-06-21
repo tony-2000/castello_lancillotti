@@ -3,15 +3,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/><%-- CSS 1042 --%>
     <title>Aggiungi Evento</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 <h1 class="titleAdmin"> Aggiungi Evento</h1>
+<a href="AreaAmministratore" class="linkBack">Area Amministratore</a><br><br>
 <div class="adminAggiungi">
 <form action="doAggiungiEvento" method="post" enctype="multipart/form-data" >
-    <label id="categorie">Categoria:
+    <label for="categoria">Categoria:
     <select id="categoria" name="categorie">
         <c:forEach items="${categorie}" var="categorie" >
             <option value="${categorie.idCategoria}"> ${categorie.nome} </option>
@@ -19,20 +20,20 @@
     </select>
     </label>
     <br><br>
-    <label id="image"> Immagine:<br class="space480"><br class="space480">
-    <input type="file" name="image" required accept="image/*">
+    <label for="imageEvento"> Immagine:<br class="space480"><br class="space480">
+    <input type="file" name="image" id="imageEvento" required accept="image/*">
     </label>
     <br><br>
-    <label id="nome">Nome:
-        <input type="text" name="nome" required minlength="6" maxlength="30">
+    <label for="nome">Nome:
+        <input type="text" name="nome" id="nome" required minlength="6" maxlength="30">
     </label>
     <br><br>
-    <label id="descrizione">Descrizione:<br>
-        <textarea name="descrizione" class="adminAgg" required minlength="20" maxlength="500" rows="4"></textarea>
+    <label for="descrizione">Descrizione:<br>
+        <textarea name="descrizione" id="descrizione" class="adminAgg" required minlength="20" maxlength="500" rows="4"></textarea>
     </label>
     <br><br>
-    <label id="prezzo">Prezzo:
-        <input type="number" step="0.01" required name="prezzo" min="0">
+    <label for="prezzo">Prezzo:
+        <input type="number" step="0.01" id="prezzo" required name="prezzo" min="0">
     </label>
     <br><br>
     <button type="submit">Aggiungi</button>

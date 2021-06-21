@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/> <%-- CSS 1042 --%>
     <title>Area Admin</title>
 </head>
 <body>

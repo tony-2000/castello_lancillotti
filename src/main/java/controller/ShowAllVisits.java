@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*Mostra tutte le visite*/
 
 @WebServlet(name="ShowAllVisits", value="/ShowAllVisits")
 public class ShowAllVisits extends HttpServlet

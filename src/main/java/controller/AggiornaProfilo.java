@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/*Aggiorna i nuovi dati raccolti nel profilo dell'utente.
+Utilizza la classe 'Check' per effettuare controlli aggiuntivi sull'input */
+
 @WebServlet(name="AggiornaProfilo", value="/AggiornaProfilo")
 public class AggiornaProfilo extends HttpServlet
 {

@@ -1,5 +1,7 @@
 package model;
 
+/*Classe di supporto a Partecipare che aggiunge nome e immagine dell'evento*/
+
 public class CartElement extends Partecipare
 {
     private String nome;

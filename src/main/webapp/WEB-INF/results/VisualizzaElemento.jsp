@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/><%-- CSS 559 --%>
     <script src="/JS/JavaScriptLib.js"></script>
     <title>Visualizza Elemento</title>
 </head>

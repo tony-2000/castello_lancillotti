@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*Acquistare prodotti dal carrello e reindirizzare al Riepilogo acquisti*/
+
 @WebServlet(name="Acquista", value="/Acquista")
 public class Acquista extends HttpServlet
 {
@@ -26,7 +28,6 @@ public class Acquista extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         int temporal=0;
-        boolean TicketOut=false;
         String url="/WEB-INF/results/RiepilogoAcquisti.jsp";
         HttpSession session=request.getSession();
         Utente user= (Utente) session.getAttribute("utenteSessione");
@@ -35,16 +36,17 @@ public class Acquista extends HttpServlet
         if(carrello.size()==0)
         {
             url="index.jsp";
+            /*Controllo gestito dalla jsp, questo risulta come controllo aggiuntivo*/
         }
         else
         {
             OrarioDAO daoTemp=new OrarioDAO();
             PartecipareDAO part=new PartecipareDAO();
             Orario temp=new Orario();
-            Utente utente = (Utente) session.getAttribute("utenteSessione");
             PartecipareDAO daoPartecipare=new PartecipareDAO();
-            ArrayList<Partecipare> acquisti = (ArrayList<Partecipare>) daoPartecipare.doRetrievePurchases(utente.getIdUtente());
+            ArrayList<Partecipare> acquisti = (ArrayList<Partecipare>) daoPartecipare.doRetrievePurchases(user.getIdUtente());
             for(Partecipare x: carrello)
+                /*Gestione di nuovi acquisti di eventi già acquistati in precedenza*/
             {
                 temporal=x.getQuantitaBiglietti();
                temp=daoTemp.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
@@ -58,6 +60,7 @@ public class Acquista extends HttpServlet
                    }
                }
                if(temp.getPostiDisponibili()-x.getQuantitaBiglietti()>=0)
+                   /*Controllo aggiuntivo già gestito in 'carrello':disponibilità di posti messi nel carrello.*/
                {
                    temp.setPostiDisponibili(temp.getPostiDisponibili()-x.getQuantitaBiglietti());
                    daoTemp.doUpdate(temp);
@@ -68,11 +71,12 @@ public class Acquista extends HttpServlet
                }
                else
                {
-                   TicketOut=true;
                    url="index.jsp";
                }
             }
-            ArrayList<Partecipare> lista = (ArrayList<Partecipare>) daoPartecipare.doRetrievePurchases(utente.getIdUtente());
+            /*Caricamento lista di acquisti da mostrare nel riepilogo acquisti. Utilizzo di classe di supporto CartElement
+            * per avere informazioni su nome dell'evento e link immagine*/
+            ArrayList<Partecipare> lista = (ArrayList<Partecipare>) daoPartecipare.doRetrievePurchases(user.getIdUtente());
             ArrayList<CartElement> cartElements = new ArrayList<>();
             ArrayList<Evento> eventi = new ArrayList<>();
             EventoDAO eventidao = new EventoDAO();

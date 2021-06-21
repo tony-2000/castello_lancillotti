@@ -13,8 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-@WebServlet(name="ToModificaCategoria", value="/ToModificaCategoria")
+/*reindirizza alla categoria da modificare*/
 
+@WebServlet(name="ToModificaCategoria", value="/ToModificaCategoria")
 public class ToModificaCategoria extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

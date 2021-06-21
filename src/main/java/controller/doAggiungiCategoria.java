@@ -17,6 +17,8 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/*Aggiunge una categoria tramite le informazioni inserite*/
+
 @WebServlet(name="doAggiungiCategoria", value="/doAggiungiCategoria")
 @MultipartConfig
 public class doAggiungiCategoria extends HttpServlet {
@@ -38,7 +40,6 @@ public class doAggiungiCategoria extends HttpServlet {
         } catch (FileAlreadyExistsException e) {
             /* do nothing */
         }
-
 
         Categoria cat= new Categoria();
         CategoriaDAO dao=new CategoriaDAO();

@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/*Recupera gli orari di un evento da una data*/
+
 @WebServlet("/JSONTimes")
 public class JSONTimes extends HttpServlet
 {
@@ -34,6 +36,7 @@ public class JSONTimes extends HttpServlet
         OrarioDAO dao=new OrarioDAO();
         ArrayList<Orario> orari= (ArrayList<Orario>) dao.doRetrieveTimesByEventDate(data,id);
         ArrayList<Orario> orariClone= (ArrayList<Orario>) orari.clone();
+        /*rimuove gli orari senza posti disponibili*/
         int count=0;
         for(Orario y: orariClone)
         {

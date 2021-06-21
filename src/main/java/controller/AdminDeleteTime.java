@@ -13,6 +13,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/*Servlet per eliminare un orario da una specifica data*/
+
 @WebServlet(name="AdminDeleteTime", value="/AdminDeleteTime")
 public class AdminDeleteTime extends HttpServlet
 {
@@ -37,6 +39,7 @@ public class AdminDeleteTime extends HttpServlet
         ArrayList<Data> date= (ArrayList<Data>) dao.doRetrieveDatesByEvent(id);
 
         int control=4;
+        /*control per alert in funzione javaScript*/
 
         request.setAttribute("control",control);
         request.setAttribute("evento",evento);

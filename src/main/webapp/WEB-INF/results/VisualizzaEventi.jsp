@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/><%-- CSS 325 --%>
     <title>Visualizza Eventi</title>
 </head>
 <body>

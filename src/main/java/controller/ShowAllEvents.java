@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/*Mostra tutti gli eventi di una categoria*/
 
 @WebServlet(name="ShowAllEvents", value="/ShowAllEvents")
 public class ShowAllEvents extends HttpServlet
@@ -31,6 +32,7 @@ public class ShowAllEvents extends HttpServlet
         int id=Integer.parseInt(request.getParameter("idCategoria"));
         ArrayList<Evento> lista = (ArrayList<Evento>) dao.doRetrieveEventsByCatId(id);
         request.setAttribute("listaEventi", lista);
+
         CategoriaDAO catdao=new CategoriaDAO();
         String nome=catdao.doRetrieveCategoriesByKey(id).getNome();
         request.setAttribute("nomeCat", nome);

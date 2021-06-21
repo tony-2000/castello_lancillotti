@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/*Carica le informazioni necessarie per visualizzare il carrello ed effettua controlli su di esso*/
+
 @WebServlet(name="Carrello", value="/Carrello")
 public class Carrello extends HttpServlet
 {
@@ -31,6 +33,7 @@ public class Carrello extends HttpServlet
         HttpSession session=request.getSession();
         if(session.getAttribute("utenteSessione")==null)
         {
+            /*Utente ospite*/
             if(session.getAttribute("carrello")==null)
             {
                 ArrayList<Partecipare> carrello=new ArrayList<>();
@@ -47,6 +50,7 @@ public class Carrello extends HttpServlet
             ArrayList<Partecipare> tempcart= (ArrayList<Partecipare>) cart.clone();
             for(Partecipare x:tempcart)
             {
+                /*Controllo su biglietti disponibili e date disponibili*/
                 orario=orariodao.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
                 if(x.getQuantitaBiglietti()>orario.getPostiDisponibili())
                 {
@@ -63,6 +67,7 @@ public class Carrello extends HttpServlet
         }
         else
         {
+            /*Utente registrato*/
             Utente utente = (Utente) session.getAttribute("utenteSessione");
             PartecipareDAO dao=new PartecipareDAO();
             List<Partecipare> carrello= dao.doRetrieveShoppingCart(utente.getIdUtente());
@@ -74,6 +79,7 @@ public class Carrello extends HttpServlet
             ArrayList<Partecipare> tempcart= (ArrayList<Partecipare>) cart.clone();
             for(Partecipare x:tempcart)
             {
+                /*Controllo su biglietti disponibili e date disponibili*/
                 orario=orariodao.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
                 if(x.getQuantitaBiglietti()>orario.getPostiDisponibili())
                 {
@@ -90,6 +96,7 @@ public class Carrello extends HttpServlet
                 }
             }
         }
+        /*Carica informazioni necessarie alla jsp tramite classe di supporto CartElement*/
         ArrayList<CartElement> cartElements=new ArrayList<>();
         ArrayList<Evento> eventi=new ArrayList<>();
         EventoDAO eventidao=new EventoDAO();
@@ -116,6 +123,7 @@ public class Carrello extends HttpServlet
             }
             cartElements.add(temp);
         }
+        /*Prezzo con due cifre decimali*/
         DecimalFormat dec=new DecimalFormat("##.##");
         dec.setRoundingMode(RoundingMode.DOWN);
         request.setAttribute("prezzoTotale", dec.format(tot));

@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+/*Aggiunge una recensione ad un prodotto*/
+
 @WebServlet(name="AggiungiRecensione", value="/AggiungiRecensione")
 public class AggiungiRecensione extends HttpServlet
 {
@@ -30,8 +32,10 @@ public class AggiungiRecensione extends HttpServlet
        String url="/WEB-INF/results/VisualizzaElemento.jsp";
         HttpSession session=request.getSession();
         if(session.getAttribute("utenteSessione")==null)
+            /*Controllo aggiuntivo già gestito nella jsp*/
             url="Login.jsp";
-        else {
+        else
+            {
             Utente user = (Utente) session.getAttribute("utenteSessione");
             int idUtente = user.getIdUtente();
             int idEvento = Integer.parseInt(request.getParameter("idEvento"));
@@ -49,6 +53,9 @@ public class AggiungiRecensione extends HttpServlet
             rec.setIdEvento(idEvento);
             rec.setIdUtente(idUtente);
             dao.doSave(rec);
+
+                /*Carica le informazioni neccesarie per reindirizzare alla jsp. Per ulteriori informazioni andare alla
+                * servlet MostraEvento*/
 
             int id = Integer.parseInt(request.getParameter("idEvento"));
             EventoDAO eventdao = new EventoDAO();

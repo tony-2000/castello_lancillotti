@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/*Servlet che elimina una data dal database*/
+
 @WebServlet(name="AdminDeleteData", value="/AdminDeleteData")
 public class AdminDeleteData extends HttpServlet
 {
@@ -39,6 +41,7 @@ public class AdminDeleteData extends HttpServlet
         ArrayList<Data> date= (ArrayList<Data>) dao.doRetrieveDatesByEvent(id);
 
         int control=2;
+        /*control per alert in funzione JavaScript*/
 
         request.setAttribute("control",control);
         request.setAttribute("evento",evento);

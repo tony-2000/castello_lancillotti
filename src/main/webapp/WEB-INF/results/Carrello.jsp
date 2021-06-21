@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<jsp:include page="../Partials/head.jsp"/>
+<jsp:include page="../Partials/head.jsp"/> <%-- CSS 761 --%>
     <title>Carrello</title>
 </head>
 <body>

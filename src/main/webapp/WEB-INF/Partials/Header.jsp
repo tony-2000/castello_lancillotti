@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <script src="JS/JavaScriptLib.js"></script>
+    <script src="JS/JavaScriptLib.js"></script> <%-- CSS 20 --%>
     <script type="text/javascript" src="JS/jquery-3.6.0.min.js"> </script>
     <title>Header</title>
 </head>
@@ -12,7 +12,7 @@
 
 <div class="responsiveBar">
         <div onclick="showNavbar()" class="responsiveDiv">
-            <img src="./Images/logoBase.png" alt="logo" style="width:3em;height:3em; float: left">
+            <img src="./Images/logoBase.png" alt="logo" style="width:3em;height:3em; float: left;">
         <p style="float: left; padding-left: 1em">Menu</p>
     </div>
     <p style="text-align: center">Castello Lancellotti</p>

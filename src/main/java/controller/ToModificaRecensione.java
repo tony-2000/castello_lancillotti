@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/*Reindirizza alla pagina di modifica della recensione*/
+
 @WebServlet(name="ToModificaRecensione", value="/ToModificaRecensione")
 public class ToModificaRecensione extends HttpServlet
 {

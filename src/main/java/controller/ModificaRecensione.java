@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+/*Modifica le informazioni di una recensione in base all'input*/
+
 @WebServlet(name="ModificaRecensione", value="/ModificaRecensione")
 public class ModificaRecensione extends HttpServlet
 {
@@ -44,6 +46,8 @@ public class ModificaRecensione extends HttpServlet
         temp.setOrarioRecensione(ora);
         dao.doUpdate(temp);
 
+        /*Carica le informazioni neccesarie per reindirizzare alla jsp. Per ulteriori informazioni andare alla
+         * servlet MostraEvento*/
 
         EventoDAO eventdao = new EventoDAO();
         Evento event = new Evento();

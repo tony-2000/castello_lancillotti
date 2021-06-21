@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/*Servlet che aggiunge nuove date ad un evento*/
+
 @WebServlet(name="AdminAddData", value="/AdminAddData")
 public class AdminAddData extends HttpServlet
 {
@@ -38,19 +40,19 @@ public class AdminAddData extends HttpServlet
         Evento evento=daoEv.doRetrieveEventsByKey(id);
         ArrayList<Data> date= (ArrayList<Data>) dao.doRetrieveDatesByEvent(id);
         int cont=1;
-        boolean control=false;
         for(Data x: date)
+            /*Controllo che la data non sia già presente*/
         {
             if (x.getData().equals(temp.getData()))
             {
-                control = true;
                 cont=-1;
                 break;
             }
 
         }
-        if(!control)
+        if(cont==1)
             dao.doSave(temp);
+        /*control per alert in funzione JavaScript*/
 
         date= (ArrayList<Data>) dao.doRetrieveDatesByEvent(id);
         request.setAttribute("control",cont);

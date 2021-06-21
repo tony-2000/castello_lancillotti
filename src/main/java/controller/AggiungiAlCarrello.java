@@ -16,6 +16,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/*Servlet che aggiunge un prodotto al carrello*/
+
 @WebServlet(name="AggiungiAlCarrello", value="/AggiungiAlCarrello")
 public class AggiungiAlCarrello extends HttpServlet
 {
@@ -37,6 +39,8 @@ public class AggiungiAlCarrello extends HttpServlet
         HttpSession session = request.getSession();
         if (session.getAttribute("utenteSessione") == null)
         {
+            /*gestione se l'utente non è in sessione (utente ospite)*/
+
             if (session.getAttribute("carrello") == null)
             {
                 ArrayList<Partecipare> carrello = new ArrayList<>();
@@ -47,6 +51,8 @@ public class AggiungiAlCarrello extends HttpServlet
 
             for (Partecipare x : scorri)
             {
+                /*Controllo per verificare che non ci siano più prodotti uguali nel carrello, in caso
+                * affermativo si somma il numero di biglietti.*/
                 if (x.getIdEvento() == prodotto.getIdEvento() && x.getDataPartecipazione().equals(prodotto.getDataPartecipazione())
                         && x.getOrarioPartecipazione().equals(prodotto.getOrarioPartecipazione()))
                 {
@@ -61,6 +67,7 @@ public class AggiungiAlCarrello extends HttpServlet
 
         else
             {
+                /*gestione se l'utente è in sessione (utente che ha effettuato il login) con gestione dei prodotti uguali*/
             Utente user = (Utente) session.getAttribute("utenteSessione");
             prodotto.setIdUtente(user.getIdUtente());
             PartecipareDAO dao = new PartecipareDAO();

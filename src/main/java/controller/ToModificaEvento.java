@@ -13,8 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-@WebServlet(name="ToModificaEvento", value="/ToModificaEvento")
+/*Reindirizza all'evento da modificare*/
 
+@WebServlet(name="ToModificaEvento", value="/ToModificaEvento")
 public class ToModificaEvento extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -31,12 +32,13 @@ public class ToModificaEvento extends HttpServlet
         ArrayList<Categoria> categorie=new ArrayList<>();
         CategoriaDAO temp=new CategoriaDAO();
         categorie= (ArrayList<Categoria>) temp.doRetrieveAllCategories();
-        request.setAttribute("categorie",categorie);
+        /*informazioni necessarie per cambiare la categoria, mettendo come prima quella attuale*/
         for(Categoria x: categorie)
         {
             if(x.getIdCategoria()==evento.getIdCategoria())
                 Collections.swap(categorie,0,categorie.indexOf(x));
         }
+        request.setAttribute("categorie",categorie);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ModificaEvento.jsp");
         dispatcher.forward(request, response);
     }

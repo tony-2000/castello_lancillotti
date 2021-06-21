@@ -16,7 +16,9 @@ hr{
 }
 
 
+
 /*HEADER*/
+
 div.responsiveBar{
     display: none;
     padding: 0;
@@ -1065,6 +1067,11 @@ div.adminElementCat{
     float: left;
 }
 
+a.linkBack{
+    float: right;
+    margin-right: 3%;
+}
+
 @media (max-width: 768px){
 
     div.adminHome{
@@ -1074,6 +1081,10 @@ div.adminElementCat{
 
     textarea#adminAgg{
         width: 90%;
+    }
+
+    a.linkBack{
+        font-size: 90%;
     }
 }
 
@@ -1086,6 +1097,10 @@ div.adminElementCat{
     }
     h1.titleAdmin{
         font-size: 200%;
+    }
+
+    a.linkBack{
+        font-size: 80%;
     }
 }
 

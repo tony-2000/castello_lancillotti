@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <jsp:include page="../Partials/head.jsp"/>
+    <jsp:include page="../Partials/head.jsp"/><%-- CSS 1042 --%>
     <title>Modifica o rimuovi evento</title>
 </head>
 <body>
 <jsp:include page="../Partials/Header.jsp"/><br><br>
 <h1 class="titleAdmin">Modifica Evento</h1>
+<a href="AreaAmministratore" class="linkBack">Area Amministratore</a><br><br>
 <div class="adminHome">
     <c:forEach items="${eventi}" var="evento" >
         <div class="adminElementCat" style="margin-top: 10% !important;">

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/*Cambia lo stato di un utente (si può accedere a questa servlet solo lato admin).*/
+
 @WebServlet(name="CambiaStatoAdmin", value="/CambiaStatoAdmin")
 public class CambiaStatoAdmin extends HttpServlet
 {
@@ -36,6 +38,7 @@ public class CambiaStatoAdmin extends HttpServlet
         HttpSession session=request.getSession();
         Utente user= (Utente) session.getAttribute("utenteSessione");
         ArrayList<Utente> utenti= (ArrayList<Utente>) dao.doRetrieveAllUsers();
+        /*Non si può cambiare lo stato del primo utente admin (superiore) e dell'utente in sessione*/
         utenti.removeIf(x->x.getIdUtente()==1);
         utenti.removeIf(x->x.getIdUtente()==user.getIdUtente());
         request.setAttribute("utenti",utenti);

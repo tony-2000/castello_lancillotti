@@ -1,5 +1,7 @@
 package controller;
 
+/*Servlet di supporto per recuperare le immagini da una locazione*/
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;

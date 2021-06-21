@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/*Utilizza i dati in input per registrare un utente*/
+
 @WebServlet(name="Registrazione", urlPatterns = {"/Registrazione"})
 public class Registrazione extends HttpServlet
 {
@@ -26,6 +28,7 @@ public class Registrazione extends HttpServlet
         String telefono = request.getParameter("telefono");
         String url="Login.jsp";
 
+        /*Controlli aggiuntivi effettuati con la classe di supporto Check*/
         int checkUsername=Check.usernameIsValid(username);
         int checkPass=Check.passwordIsValid(password,passwordCheck);
         int checkMail=Check.mailIsValid(mail);
@@ -47,6 +50,7 @@ public class Registrazione extends HttpServlet
         }
         else
         {
+            /*Utilizza check per mostrare nella jsp i messaggi di errore(mail o username già registrati)*/
             int check=0;
             if(checkUsername==-4)
                 check=-1;

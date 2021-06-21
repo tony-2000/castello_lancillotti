@@ -1,7 +1,6 @@
 package controller;
 
 import model.*;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-@WebServlet(name="ModificaRimuoviCategoria", value="/ModificaRimuoviCategoria")
 
+/*Mostra tutte le categorie che si possono modificare o eliminare*/
+
+@WebServlet(name="ModificaRimuoviCategoria", value="/ModificaRimuoviCategoria")
 public class ModificaRimuoviCategoria extends HttpServlet
 {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

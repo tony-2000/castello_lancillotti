@@ -1,7 +1,5 @@
 package controller;
 
-import model.Categoria;
-import model.CategoriaDAO;
 import model.Utente;
 import model.UtenteDAO;
 
@@ -14,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+
+/*Mostra tutti gli utenti che si possono eliminare o a cui si può cambiare lo stato admin*/
 
 @WebServlet(name="ModificaUtenti", value="/ModificaUtenti")
 public class ModificaUtenti extends HttpServlet

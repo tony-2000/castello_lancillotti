@@ -1,10 +1,5 @@
 package controller;
 
-import com.mysql.cj.xdevapi.Session;
-import model.Evento;
-import model.EventoDAO;
-import model.Utente;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
+
+/*Manda alla pagina del profilo personale. Controlli aggiuntivi sull'utente in sessione*/
 
 @WebServlet(name="ShowProfilo", value="/ShowProfilo")
 public class ShowProfilo extends HttpServlet

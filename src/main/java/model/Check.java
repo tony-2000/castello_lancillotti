@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/*Controlli vari agli input*/
+
 public class Check {
 
     public static boolean isFloat(Object c){

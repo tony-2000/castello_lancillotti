@@ -21,6 +21,8 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
+/*Aggiunge un evento tramite le informazioni inserite*/
+
 @WebServlet(name="doAggiungiEvento", value="/doAggiungiEvento")
 @MultipartConfig
     public class doAggiungiEvento extends HttpServlet {
