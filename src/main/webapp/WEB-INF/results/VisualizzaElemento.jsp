@@ -57,7 +57,7 @@
     <form action="AggiungiRecensione" method="get" <%if(((boolean) request.getAttribute("checkRecensione"))){%>hidden<%}%>>
         <input type="hidden" name="idEvento" value="${evento.idEvento}">
         <label id="commento">La tua recensione:<br>
-            <textarea name="commento" required maxlength="200" rows="3" style="resize: none;  width:80%"></textarea>
+            <textarea name="commento" required maxlength="200" minlength="5" rows="3" style="resize: none;  width:80%"></textarea>
         </label><br>
         <label id="valutazione">Valutazione:
             <input type="number" required name="valutazione" step="1" min="1" max="5"style="margin-right: 3%">

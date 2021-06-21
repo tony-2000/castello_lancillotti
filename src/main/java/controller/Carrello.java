@@ -69,6 +69,7 @@ public class Carrello extends HttpServlet
         {
             /*Utente registrato*/
             Utente utente = (Utente) session.getAttribute("utenteSessione");
+            EventoDAO eventidao=new EventoDAO();
             PartecipareDAO dao=new PartecipareDAO();
             List<Partecipare> carrello= dao.doRetrieveShoppingCart(utente.getIdUtente());
             cart= (ArrayList<Partecipare>) carrello;
@@ -79,7 +80,12 @@ public class Carrello extends HttpServlet
             ArrayList<Partecipare> tempcart= (ArrayList<Partecipare>) cart.clone();
             for(Partecipare x:tempcart)
             {
-                /*Controllo su biglietti disponibili e date disponibili*/
+                /*Controllo su biglietti disponibili, date disponibili e cambiamenti di prezzo*/
+                Evento eventoTemp=eventidao.doRetrieveEventsByKey(x.getIdEvento());
+                if(eventoTemp.getPrezzo()!=x.getPrezzo())
+                {
+                    x.setPrezzo(eventoTemp.getPrezzo());
+                }
                 orario=orariodao.doRetrieveTimesByKey(x.getOrarioPartecipazione(),x.getDataPartecipazione(),x.getIdEvento());
                 if(x.getQuantitaBiglietti()>orario.getPostiDisponibili())
                 {
@@ -98,13 +104,13 @@ public class Carrello extends HttpServlet
         }
         /*Carica informazioni necessarie alla jsp tramite classe di supporto CartElement*/
         ArrayList<CartElement> cartElements=new ArrayList<>();
-        ArrayList<Evento> eventi=new ArrayList<>();
-        EventoDAO eventidao=new EventoDAO();
-        eventi= (ArrayList<Evento>) eventidao.doRetrieveAllEvents();
+
         float tot=0;
         for(Partecipare x: cart)
         {
             tot+=x.getPrezzo()*x.getQuantitaBiglietti();
+            EventoDAO eventidao = new EventoDAO();
+            ArrayList<Evento> eventi= (ArrayList<Evento>) eventidao.doRetrieveAllEvents();
             CartElement temp= new CartElement();
             temp.setAcquistato(x.isAcquistato());
             temp.setDataPartecipazione(x.getDataPartecipazione());
