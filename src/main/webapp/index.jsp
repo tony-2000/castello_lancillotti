@@ -4,8 +4,8 @@
 <head>
     <title>Home Page</title>
     <jsp:include page="WEB-INF/Partials/head.jsp">
-        <jsp:param name="title" value="Castello Lancellotti home"/><%-- CSS 203 --%>
-    </jsp:include>
+        <jsp:param name="title" value="Castello Lancellotti home"/>
+    </jsp:include><%-- CSS 203 --%>
 </head>
 <body>
 <jsp:include page="WEB-INF/Partials/Header.jsp"/>
