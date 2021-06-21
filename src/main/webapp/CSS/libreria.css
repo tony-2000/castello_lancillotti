@@ -602,6 +602,7 @@ div.containerElemento{
     margin-top: 2%;
     color: #595959;
     overflow: hidden;
+    font-size: 125%;
 }
 
 div.containerElemento img{
@@ -652,6 +653,10 @@ div.scegliElemento{
         width: 80%;
     }
 
+    div.containerElemento{
+        font-size: 115%;
+    }
+
     br.space768 {
         display: block;
     }
@@ -675,6 +680,10 @@ div.scegliElemento{
 
 
 @media (max-width: 480px) {
+
+    div.containerElemento{
+        font-size: 100%;
+    }
 
     h1.titleEvent{
         font-size: 170%;
