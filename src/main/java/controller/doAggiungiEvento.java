@@ -30,7 +30,7 @@ import java.util.List;
         {
             Part image = request.getPart("image");
             String nameImage = Paths.get(image.getSubmittedFileName()).getFileName().toString();
-            String uploadPath = System.getenv("CATALINA_HOME") + File.separator + "uploads" + File.separator;
+            String uploadPath = "C:"+ File.separator+"Program Files (x86)" +File.separator + "Apache Software Foundation" + File.separator + "Tomcat 9.0" + File.separator + "uploads" + File.separator;
             InputStream stream = image.getInputStream();
             String linkImmagine = uploadPath + nameImage;
             File file = new File(linkImmagine);
